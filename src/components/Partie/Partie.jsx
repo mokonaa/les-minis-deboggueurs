@@ -2,18 +2,20 @@ import { data } from '../../data/data';
 
 export default function Partie() {
 
+    console.log(data);
+    let joueurs =data.enfants;
     const choisirJoueur = () => {
         console.log('im here');
-        //console.log(data);
+        console.log(data);
     }
 
-    choisirJoueur();
+    console.log(joueurs);
+    joueurs.map(enfant => console.log(enfant));
+    //choisirJoueur();
 
   return (
-      <>
           <div>
-              Partie
+              { joueurs.map(enfant => enfant.nom)}
           </div>
-      </>
   )
 }
