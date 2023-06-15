@@ -1,5 +1,5 @@
 
-export default function Game() {
+export default function Partie() {
 
   return (
       <>

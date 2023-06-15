@@ -1,6 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Partie from "./components/Partie/Partie";
+import Quizz from "./components/Quizz/Quizz";
+import Galerie from "./components/Galerie/Galerie";
 
 function App() {
   return (
@@ -8,6 +10,8 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home/>} />
                 <Route path="/partie" element={<Partie/>} />
+                <Route path="/quizzs" element={<Quizz/>} />
+                <Route path="/galerie" element={<Galerie/>} />
             </Routes>
       </div>
     );
