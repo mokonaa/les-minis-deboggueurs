@@ -1,4 +1,5 @@
 import { data } from '../../data/data';
+import Configuration from '../Configuration/Configuration';
 
 export default function Partie() {
 
@@ -17,13 +18,7 @@ export default function Partie() {
   return (
           <div>
               { joueurs.map(enfant => enfant.nom)}
-              <p>Combien de personnes jouent ? </p>
-              <div>
-                <button>2</button>
-                <button>3</button>
-                <button>4</button>
-              </div>
-
+                <Configuration/>
               
           </div>
   )
