@@ -18,7 +18,6 @@ export default function Animation() { // param -> data passé par Maria
         <>
             <div>
                 Animation
-              
             </div>
         </>
     )
