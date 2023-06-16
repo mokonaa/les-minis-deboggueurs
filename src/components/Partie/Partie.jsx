@@ -19,7 +19,6 @@ export default function Partie() {
     // TODO gestion des affichages (affichers d'abord component config puis animation)
   return (
           <div>
-              { joueurs.map(enfant => enfant.nom)}
                 <Configuration/>
                 <AnimationPartie/>
               
