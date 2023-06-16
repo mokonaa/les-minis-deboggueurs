@@ -55,6 +55,7 @@ export const data = {
                 nom: "Kenza",
                 pseudo: "La Fouineuse",
                 deplacement: 3,
+                priorite: 10,
                 objectifs: {
                     animateurs: {
                         img: "https://i.ibb.co/Jt7N2wQ/Capture-d-e-cran-2023-06-15-a-14-14-13.png",
@@ -92,6 +93,7 @@ export const data = {
                 nom: "Kevin",
                 pseudo: "Aninomous",
                 deplacement: 3,
+                priorite: 9,
                 objectifs: {
                     animateurs: {
                         img: "https://i.ibb.co/Jt7N2wQ/Capture-d-e-cran-2023-06-15-a-14-14-13.png",
@@ -123,6 +125,7 @@ export const data = {
                 nom: "David",
                 pseudo: "Mr.Trollolol",
                 deplacement: 3,
+                priorite: 8,
                 objectifs: {
                     animateurs: {
                         img: "https://i.ibb.co/Jt7N2wQ/Capture-d-e-cran-2023-06-15-a-14-14-13.png",
@@ -154,6 +157,7 @@ export const data = {
                 nom: "Yuki",
                 pseudo: "Hyperco",
                 deplacement: 4,
+                priorite: 7,
                 objectifs: {
                     animateurs: {
                         img: "https://i.ibb.co/Jt7N2wQ/Capture-d-e-cran-2023-06-15-a-14-14-13.png",
