@@ -37,7 +37,7 @@ export const data = {
         }
     ],
     thematique: {
-        reseaux: {
+        addiction: {
             questions: [{
                     titre: "Il est important de vérifier les paramètres de confidentialité de tes comptes de médias sociaux régulièrement pour t'assurer que tes informations personnelles ne sont pas exposées.",
                     choix: ["Vrai", "Faux", "Je ne sais pas"],
