@@ -1,3 +1,4 @@
+import AnimationPartie from "../AnimationPartie/AnimationPartie";
 
 export default function Configuration() {
 
@@ -11,6 +12,9 @@ export default function Configuration() {
                 <button>3</button>
                 <button>4</button>
               </div>
+            </div>
+            <div>
+              <AnimationPartie />
             </div>
         </>
     )

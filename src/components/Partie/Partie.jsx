@@ -1,6 +1,6 @@
 import { data } from '../../data/data';
 import Configuration from '../Configuration/Configuration';
-import Animation from '../Animation/Animation';
+import AnimationPartie from '../AnimationPartie/AnimationPartie';
 
 export default function Partie() {
 
@@ -21,7 +21,7 @@ export default function Partie() {
           <div>
               { joueurs.map(enfant => enfant.nom)}
                 <Configuration/>
-                <Animation/>
+                <AnimationPartie/>
               
           </div>
   )
