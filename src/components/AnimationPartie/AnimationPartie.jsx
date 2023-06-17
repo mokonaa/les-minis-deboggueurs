@@ -15,17 +15,18 @@ export default function AnimationPartie() { // param -> data passé par Maria
 
     // Récupération de la data via Configuration, pour le moment création d'une fake data en triant les animateurs selon leur ordre
 
-    let animateursTab = [];
-    const animateurs = [data.thematique.addiction.animateurs, data.thematique.cyber_harcelement.animateurs, data.thematique.fake_news.animateurs, data.thematique.securite.animateurs].map((animateurObject) => animateurObject.map((animateur) => animateursTab.push(animateur)));
+    let animateursTries = [];
+    const thematiques = data.thematique;
+    // Il faut récupérer chaque animateur de chaque thématique
+    Object.keys(thematiques).forEach((theme) => {
+        const animateurs = thematiques[theme].animateurs;
+        animateursTries.push(...animateurs);
+    });
 
-    // Taux de priorité
-    let animateursTries = animateurs.map((animateur, i) => console.log(animateursTab[i].priorite))
+    // Tri des animateurs par priorité (ordre décroissant)
+    animateursTries.sort((a, b) => a.priorite + b.priorite);
+    console.log(animateursTries);
 
-
-    // console.log(animateursTries);
-    
-    // animateurs.map((animateurObject) => animateurObject.map((animateur) => console.log(animateur)));
-    // let numeroManche = 1; 
 
     return (
         <>
