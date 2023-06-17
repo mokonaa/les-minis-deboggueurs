@@ -25,64 +25,177 @@ export default function AnimationPartie({ nbDeJoueursChoisis }) { // param -> da
     });
 
     // Tri des animateurs par priorité (ordre décroissant)
-    animateursTries.sort((a, b) => a.priorite + b.priorite);
-    console.log('----- Animateurs Triés en ordre décroissant -----');
-    console.log(animateursTries);
-    console.log('-------------------------------------------------');
+    animateursTries.sort((a, b) => b.priorite - a.priorite);
+    // console.log('----- Animateurs Triés en ordre décroissant -----');
+    // console.log(animateursTries);
+    // console.log('-------------------------------------------------');
 
     // Sélection de l'ordre des joueurs selon le nb de joueurs, il faut récupérer cb de joueurs jouent
 
     const enfants = data.enfants;
 
     // fausse data en attendant de recevoir
-    const enfantsChoisis = enfants;
+    const [enfantsChoisis, setEnfantsChoisis] = useState(enfants);
     // Le nb de joueurs choisis
     const nbDeJoueurs = enfants.length;
 
+    const [joueurActuel, setJoueurActuel] = useState('animateur'); // par défaut animateur, // /!\ L'animateur qui a la plus grosse priorité commence toujours en premier
+
     // Gestion des manches et des tours (animateur -> enfant -> animateur -> enfant etc...)
     const [nbManches, setNbManches] = useState(1);
-    const [nbTours, setNbTours] = useState(1);
+    const nbManchesMax = 10;
+    const [nbTours, setNbTours] = useState(nbDeJoueurs * 2);
     const [nbTourActuel, setNbTourActuel] = useState(1);
 
     // nbTours -> correspond au nombre de tours dans une manche
     // nbTourActuel -> c'est le tour actuel de la partie si on est au tour 1 ou tour 2
     const gestionNbTours = () => {
         // Calcul du nombre total de tours en fonction du nombre de joueurs (animateurs et enfants)
-        setNbTours(nbDeJoueurs * 2);
         setNbTourActuel(nbTourActuel + 1);
+        if (nbTourActuel % 2 === 0) {
+            setJoueurActuel('animateur');
+        } else {
+            setJoueurActuel('enfant');
+        }
 
         // Vérifie si la manche est terminée après chaque tour
         gestionNbManche();
     };
 
     const gestionNbManche = () => {
-        // Une manche se termine au bout d'un certain nombre de tours (par exemple, 8 tours)
+        // Une manche se termine au bout du tours calculés selon le nb de Joueurs calculés plus tôt
         if (nbTourActuel >= nbTours) {
             setNbManches(nbManches + 1); // Passage à la prochaine manche
             setNbTourActuel(1);
+            setJoueurActuel('animateur');
+        }
+        if (nbManches > nbManchesMax) {
+            setNbTourActuel(0);
+            setNbManches(0);
         }
     };
 
-    // const [joueurActuel, setJoueurActuel] = useState('animateur'); // par défaut animateur, // /!\ L'animateur qui a la plus grosse priorité commence toujours en premier
-    // const handleNextTurn = () => {
-    //     // Changer le tour en fonction du joueur actuel
-    //     if (joueurActuel === 'animateur') {
-    //         setJoueurActuel('enfant');
-    //     } else {
-    //         setJoueurActuel('animateur');
-    //     }
-    // };
+    // Faire une phase "choisir l'ordre des enfants" qu'à partir du 2e tour de la 1e manche
+    const phaseOrdre = () => {
+        if (nbTourActuel === 2 && nbManches === 1) {
+            selectionnerOrdreJoueursEnfant();
+        }
+    };
 
+    // État pour stocker l'ordre des joueurs "enfant"
+    const [ordreJoueursEnfant, setOrdreJoueursEnfant] = useState([]);
 
+    // Fonction pour gérer la sélection de l'ordre des joueurs "enfant"
+    // Il faut que je teste et que j'affiche "les enfants" qui jouent 
+    const selectionnerOrdreJoueursEnfant = (nouvelOrdre) => {
+        setOrdreJoueursEnfant(nouvelOrdre);
+    };
+    const [afficherSelection, setSelection] = useState(true); // Variable d'état pour afficher/cacher la div d'ordre
+    const validerOrdre = () => {
+        selectionnerOrdreJoueursEnfant(enfantsChoisis);
+        // A partir d'ici on récupère l'ordre que les enfants ont choisis
+        setOrdreJoueursEnfant(enfantsChoisis);
+        genererOrdreJoueurs(enfantsChoisis, animateursTries);
+        setSelection(false);
+    };
+
+    const deplacerJoueur = (index, nouvelIndex) => {
+        const joueursEnfantCopies = [...enfantsChoisis];
+        const joueurDeplace = joueursEnfantCopies.splice(index, 1)[0];
+        joueursEnfantCopies.splice(nouvelIndex, 0, joueurDeplace);
+        setEnfantsChoisis(joueursEnfantCopies);
+    };
+
+    const [ordreFinal, setOrdreFinal] = useState();
+
+    // Il faut générer un nouvel ordre pour la suite du jeu
+    const genererOrdreJoueurs = (ordreJoueursEnfant, animateursTries) => {
+        const nouvelOrdre = [];
+
+        const nbJoueurs = ordreJoueursEnfant.length;
+        const nbAnimateurs = animateursTries.length;
+
+        // Déterminer le nombre de tours nécessaire pour combiner tous les joueurs
+        const nbTours = Math.max(nbJoueurs, nbAnimateurs);
+
+        // Combinaison des joueurs "enfant" et des animateurs en alternance
+        for (let i = 0; i < nbTours; i++) {
+            const joueurEnfant = ordreJoueursEnfant[i % nbJoueurs]; // modulo % est utilisé pour revenir au début des tableaux lorsque l'index dépasse leur longueur
+            const animateur = animateursTries[i % nbAnimateurs];
+            console.log(ordreFinal);
+            nouvelOrdre.push(animateur);
+            nouvelOrdre.push(joueurEnfant);
+        }
+
+        setOrdreFinal(nouvelOrdre);
+    };
     // Il faut aussi penser à chaque déplacement, panel d'actions dont un seul qui est réellement intéractif (les questions)
     // Bouton Tour terminé selon cliquable dès qu'ils ont fait au moins toutes les actions qu'ils peuvent faire
 
     return (
         <>
             <div>
-                <h3>{nbManches}e Manche - {nbTourActuel}e Tour</h3>
+                <h3>{nbManches}e Manche - {nbTourActuel}e Tour - joueur actuel : {joueurActuel}</h3>
+                {nbTourActuel == 1 &&
+                    <div>
+                        <p>Tour de {animateursTries[0].nom}</p>
+                        <p>Bla bla bla elle fait telle action</p>
+                    </div>
+                }
+                {nbTourActuel == 2 ?
+                    <div>
+                        {joueurActuel === 'enfant' && nbTourActuel === 2 && nbManches == 1 && afficherSelection && (
+                            <div>
+                                <h2>l'ordre des enfants</h2>
+                                <ul>
+                                    {enfantsChoisis.map((enfant, index) => (
+                                        <li key={enfant.id}>
+                                            {enfant.nom}
+                                            <button onClick={() => deplacerJoueur(index, index - 1)}>▲</button>
+                                            <button onClick={() => deplacerJoueur(index, index + 1)}>▼</button>
+                                        </li>
+                                    ))}
+                                </ul>
+                                <button onClick={validerOrdre}>Valider l'ordre</button>
+                            </div>
+                        )}
+                        {!afficherSelection && (
+                            <div>
+                                <h2>Tour de {ordreFinal[nbTourActuel - 1].nom}</h2>
+                                <button onClick={gestionNbTours}>Passer au prochain tour</button>
 
-                <button onClick={gestionNbTours}>Passer au prochain tour</button>
+                            </div>
+                        )}
+                    </div>
+                    :
+                    <div>
+                        {nbTourActuel > 2 && (
+                            <div>
+                                <h2>Tour de {ordreFinal[nbTourActuel - 1].nom}</h2>
+                                <ul>
+                                    {ordreFinal.map((personne) => (
+                                        <li key={personne.id}>
+                                            {personne.nom}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
+                        <button onClick={gestionNbTours}>Passer au prochain tour</button>
+                    </div>
+
+                }
+
+                <div>
+                    {/* Affichage du tour de l'animateur */}
+                    {joueurActuel === 'animateur' && (
+                        <div>
+                            Animateur
+                        </div>
+                    )}
+
+
+                </div>
             </div>
 
         </>
