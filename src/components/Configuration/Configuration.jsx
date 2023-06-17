@@ -13,9 +13,6 @@ export default function Configuration() {
                 <button>4</button>
               </div>
             </div>
-            <div>
-              <AnimationPartie />
-            </div>
         </>
     )
 }
