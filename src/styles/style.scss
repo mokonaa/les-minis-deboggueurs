@@ -126,3 +126,82 @@ body {
     }
 }
 
+
+
+
+
+
+
+/* NAVBAR */
+nav {
+    height: 70px;
+}
+/* Burger */
+.bm-burger-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    right: 36px;
+    top: 20px;
+  }
+  
+  .bm-burger-bars {
+    background: black;
+    height: 15%!important;
+  }
+  
+  .bm-burger-bars-hover {
+    background: red;
+  }
+  
+  .bm-cross-button {
+    display: none;
+  }
+  
+  .bm-cross {
+    background: #bdc3c7;
+  }
+  
+  .bm-menu-wrap {
+    position: fixed;
+    height: 100%;
+  }
+  
+  .bm-menu {
+    background: white;
+    padding: 2.5em 1.5em 0;
+    font-size: 1.15em;
+  }
+  
+  .bm-morph-shape {
+    fill: white;
+  }
+  
+  .bm-item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    color: #b8b7ad;
+  }
+  
+  .bm-item-list a {
+    color: black;
+    font-weight: 500;
+    text-decoration: none;
+    display: flex !important;
+    flex-direction: row;
+    gap: 1rem;
+  }
+  
+  .bm-item {
+    display: inline-block;
+    padding: 0.2rem;
+  }
+  
+  .bm-overlay {
+    background: rgba(228, 106, 72, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  

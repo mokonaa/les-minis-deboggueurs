@@ -1,4 +1,3 @@
-import { data } from '../../data/data';
 import Configuration from '../Configuration/Configuration';
 import AnimationPartie from '../Suivi/Suivi';
 
