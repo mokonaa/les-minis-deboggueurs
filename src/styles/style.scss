@@ -1,3 +1,128 @@
-@use 'base';
-@use 'abstracts';
-@use 'components';
+
+body {
+    margin: 0;
+}
+
+/*HOME*/
+.accueilBtns {
+    display: flex;
+    flex-direction: column;
+    background-color: #28226b;
+    padding: 30px 10px;
+
+    button {
+        width: 100%;
+        color: white;
+        border-style: solid;
+        border-color: transparent;
+        border-radius: 20px;
+        font-weight: bold;
+        margin: 10px 0;
+        padding: 20px 0;
+    }
+
+    button:nth-child(1) {
+        background-color: #4fab78;
+    }
+
+    button:nth-child(2) {
+        background-color: #e375a3;
+    }
+
+    button:nth-child(3) {
+        background-color: #e06f4d;
+    }
+}
+
+
+/*CONFIGURATION*/
+
+#configurationContainer {
+    color: white;
+
+    .buttonChoixPerso {
+        background-color: #28226b;
+        color: white;
+        border-style: solid;
+        border-color: transparent;
+        border-radius: 20px;
+        font-weight: bold;
+        margin: 20px auto;
+        padding: 16px;
+        width: 90%;
+    }
+
+    .subTitle {
+        text-align: center;
+    }
+
+    #choixNombreJoueur {
+        background-color: #28226b;
+        padding: 30px 10px;
+
+        div {
+            display: flex;
+            flex-direction: column;
+
+            button {
+                margin: 10px 0;
+                padding: 10px 0;
+                border-style: solid;
+                border-color: transparent;
+                border-radius: 20px;
+                font-weight: bold;
+            }
+        }
+    }
+
+
+
+    #joueursEnfants {
+        background-color: #28226b;
+        padding: 30px 10px;
+
+        .joueursEnfants_list {
+            display: flex;
+            flex-direction: column;
+
+                .enfantInfos {
+                    background-color: white;
+                    padding: 20px;
+                    color: black;
+                    text-align: center;
+                    border-style: solid;
+                    border-color: transparent;
+                    border-radius: 20px;
+                    margin: 10px 0;
+                }
+        }
+    }
+
+
+    #animateurs {
+        background-color: #28226b;
+        padding: 30px 10px;
+
+        .animateurs_list {
+            display: flex;
+            flex-direction: column;
+
+                .animateurInfos {
+                    background-color: white;
+                    padding: 20px;
+                    color: black;
+                    text-align: center;
+                    border-style: solid;
+                    border-color: transparent;
+                    border-radius: 20px;
+                    margin: 10px 0;
+                }
+        }
+    }
+
+    #installationPlateau {
+        background-color: #28226b;
+        padding: 30px 10px;
+    }
+}
+
