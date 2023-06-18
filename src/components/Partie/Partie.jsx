@@ -1,6 +1,6 @@
 import { data } from '../../data/data';
 import Configuration from '../Configuration/Configuration';
-import AnimationPartie from '../AnimationPartie/AnimationPartie';
+import AnimationPartie from '../Suivi/Suivi';
 
 export default function Partie() {
 

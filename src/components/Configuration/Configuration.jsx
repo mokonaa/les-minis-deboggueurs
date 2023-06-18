@@ -1,4 +1,4 @@
-import AnimationPartie from "../AnimationPartie/AnimationPartie";
+import AnimationPartie from "../Suivi/Suivi";
 
 export default function Configuration() {
 
