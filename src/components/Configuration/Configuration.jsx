@@ -64,51 +64,58 @@ export default function Configuration() {
     }
 
     return (
-        <>
-            <div>
-                Configuration
-           
+        <div id="configurationContainer">
+            <div>           
               {/* CHOIX DU NOMBRE DE JOUEURS */}
               { etapesConfiguration === 0 && (
                     <div id='choixNombreJoueur'>
-                        <p>Combien de personnes jouent ? </p>
-                        <button id='joueurTotal_2' onClick={() => choisirNombreJoueur(2)}>2</button>
-                        <button id='joueurTotal_3' onClick={() => choisirNombreJoueur(3)}>3</button>
-                        <button id='joueurTotal_4' onClick={() => choisirNombreJoueur(4)}>4</button>
+                        <p className='subTitle'>Combien de personnes jouent ? </p>
+                        <div>
+                            <button id='joueurTotal_2' onClick={() => choisirNombreJoueur(2)}>2</button>
+                            <button id='joueurTotal_3' onClick={() => choisirNombreJoueur(3)}>3</button>
+                            <button id='joueurTotal_4' onClick={() => choisirNombreJoueur(4)}>4</button>
+                        </div>
                     </div>
                )}
 
               {/* CHOIX DES JOUEURS */}
               { etapesConfiguration === 1 && (
-                    <div id='listJoueursEnfants'>
-                            <p>Quels joueurs jouent ?</p>
-                            <div>{listJoueurs.map(enfant => <div className='enfantInfos' id= {'joueur_'+enfant.nom} onClick={() => choixJoueur({enfant})} >{enfant.nom}</div>)}</div>                            
-                            <button  onClick={() => changerEtapeConfiguration(2)}>Continuer</button>
-                    </div>
-              )}
+                        <div>
+                            <div id='joueursEnfants'>
+                                    <p className='subTitle'>Quels joueurs jouent ?</p>
+                                    <div className='joueursEnfants_list'>{listJoueurs.map(enfant => <div className='enfantInfos' id= {'joueur_'+enfant.nom} onClick={() => choixJoueur({enfant})} >{enfant.nom}</div>)}</div>                            
+                            </div>
+                            <button className='buttonChoixPerso'  onClick={() => changerEtapeConfiguration(2)}>Continuer</button>
+                    
+                        </div>
+               )}
 
               {/* CHOIX DES ANIMATEURS */}
               { etapesConfiguration === 2 && (
-                    <div id='listAnimateurs'>
-                            <p>Quels animateurs jouent ?</p>
-                            {listAnimateurs.map(animateur => <div className='animateurInfos' id= {'animateur_'+animateur.nom} onClick={() => choixAnimateur({animateur})} >{animateur.nom}</div>)}
-                            <button onClick={() => changerEtapeConfiguration(3)}>Débuter la partie</button>
-                    </div>
+                    <>
+                        <div id='animateurs'>
+                                <p className='subTitle'>Quels animateurs jouent ?</p>
+                                <div className='animateurs_list'>{listAnimateurs.map(animateur => <div className='animateurInfos' id= {'animateur_'+animateur.nom} onClick={() => choixAnimateur({animateur})} >{animateur.nom}</div>)}</div>
+                        </div>
+                        <button className='buttonChoixPerso'  onClick={() => changerEtapeConfiguration(3)}>Débuter la partie</button>
+                    </>
               )}
 
 
               {/* INSTALL DU PLATEAU DE JEU  */}
               { etapesConfiguration === 3 && (
-                    <div>
-                        <p>Installez le plateau</p>
+                <>
+                    <div id='installationPlateau'>
+                        <p className='subTitle'>Installez le plateau</p>
                         <ul>
                             <li>1 - Déposez les cartes quizz dans l'emplacement prévue </li>
-                            <li>2 -  </li>
+                            <li>2 - Faire  </li>
                         </ul>
-                        <button>C'est fait !</button>
                     </div>
+                    <button className='buttonChoixPerso'>C'est fait !</button>
+                </>
               )}
             </div>
-        </>
+        </div>
     )
 }
