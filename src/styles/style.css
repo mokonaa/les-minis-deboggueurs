@@ -1,0 +1,142 @@
+body {
+  margin: 0;
+}
+
+/*HOME*/
+.accueilBtns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #28226b;
+  padding: 30px 10px;
+}
+
+.accueilBtns button {
+  width: 100%;
+  color: white;
+  border-style: solid;
+  border-color: transparent;
+  border-radius: 20px;
+  font-weight: bold;
+  margin: 10px 0;
+  padding: 20px 0;
+}
+
+.accueilBtns button:nth-child(1) {
+  background-color: #4fab78;
+}
+
+.accueilBtns button:nth-child(2) {
+  background-color: #e375a3;
+}
+
+.accueilBtns button:nth-child(3) {
+  background-color: #e06f4d;
+}
+
+/*CONFIGURATION*/
+#configurationContainer {
+  color: white;
+}
+
+#configurationContainer .buttonChoixPerso {
+  background-color: #28226b;
+  color: white;
+  border-style: solid;
+  border-color: transparent;
+  border-radius: 20px;
+  font-weight: bold;
+  margin: 20px auto;
+  padding: 16px;
+  width: 90%;
+}
+
+#configurationContainer .subTitle {
+  text-align: center;
+}
+
+#configurationContainer #choixNombreJoueur {
+  background-color: #28226b;
+  padding: 30px 10px;
+}
+
+#configurationContainer #choixNombreJoueur div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#configurationContainer #choixNombreJoueur div button {
+  margin: 10px 0;
+  padding: 10px 0;
+  border-style: solid;
+  border-color: transparent;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+#configurationContainer #joueursEnfants {
+  background-color: #28226b;
+  padding: 30px 10px;
+}
+
+#configurationContainer #joueursEnfants .joueursEnfants_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#configurationContainer #joueursEnfants .joueursEnfants_list .enfantInfos {
+  background-color: white;
+  padding: 20px;
+  color: black;
+  text-align: center;
+  border-style: solid;
+  border-color: transparent;
+  border-radius: 20px;
+  margin: 10px 0;
+}
+
+#configurationContainer #animateurs {
+  background-color: #28226b;
+  padding: 30px 10px;
+}
+
+#configurationContainer #animateurs .animateurs_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#configurationContainer #animateurs .animateurs_list .animateurInfos {
+  background-color: white;
+  padding: 20px;
+  color: black;
+  text-align: center;
+  border-style: solid;
+  border-color: transparent;
+  border-radius: 20px;
+  margin: 10px 0;
+}
+
+#configurationContainer #installationPlateau {
+  background-color: #28226b;
+  padding: 30px 10px;
+}
+/*# sourceMappingURL=style.css.map */
