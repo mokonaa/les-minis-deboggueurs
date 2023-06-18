@@ -5,7 +5,6 @@ import {
 export const data = {
     enfants: [{
             id: uuidv4(),
-            role: "enfant",
             nom: "Gaby",
             description: "Gaby est très maline ! Studieuse et sérieuse, ses parents l'ont envoyé à l'internat car elle commençait à se laisser distraire par les séries disponibles sur les différents plateformes de vidéo à la demande",
             deplacement: 3,
@@ -15,7 +14,6 @@ export const data = {
         },
         {
             id: uuidv4(),
-            role: "enfant",
             nom: "Ambre",
             description: "Ambre est très sportive, jolie mais très égocentrique. Elle diffusait à un peu trop gagner en confiance selon ses parents. Elle diffusait des photos d’elle et de ses résultats sportifs en permanence sur les réseaux sociaux !",
             deplacement: 3,
@@ -25,7 +23,6 @@ export const data = {
         },
         {
             id: uuidv4(),
-            role: "enfant",
             nom: "Paul",
             description: "Paul est timide, discret, voire renfermé, il passe son temps à jouer aux jeux vidéo et à streamer... Ses parents souhaitent qu’il découvre le monde réel et qu’il se fasse de vrais amis.",
             deplacement: 3,
@@ -35,7 +32,6 @@ export const data = {
         },
         {
             id: uuidv4(),
-            role: "enfant",
             nom: "Ethan",
             description: "Ethan se la pète, il a tout fait, il a tout vu et s’en vante sur les réseaux sociaux et en live sur sa chaine youtube. Il a également tout acheté et tout testé... bref, ses parents veulent lui faire prendre conscience qu’il vaut mieux que ça.",
             deplacement: 4,
