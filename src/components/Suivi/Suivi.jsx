@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { data } from '../../data/data'
+import { data } from '../../data/fake-data'
 import FicheJoueur from '../FicheJoueur/FicheJoueur';
 
-export default function AnimationPartie({}) { // param -> data passé par Maria 
+export default function AnimationPartie({ nbDeJoueursChoisis, enfantsConfigurationTab }) { // param -> data passé par Maria 
 
     /**
      * 

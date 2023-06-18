@@ -7,18 +7,6 @@ export default function Partie() {
   const [tabEnfantsChoisis, setTabEnfantsChoisis] = useState([]);
   const [tabAnimateursChoisis, setTabAnimateursChoisis] = useState([]);
 
-<<<<<<< HEAD
-
-=======
-    const choisirJoueur = () => {
-        // console.log('im here');
-        // console.log(data);
-    }
-
-    // console.log(joueurs);
-    // joueurs.map(enfant => console.log(enfant));
-    //choisirJoueur();
->>>>>>> d14ace8 ((feat:) code optimisé et trié en ordre décroissant)
 
     useEffect(() => {
       console.log(tabEnfantsChoisis);
