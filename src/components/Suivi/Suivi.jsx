@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { data } from '../../data/fake-data'
 import FicheJoueur from '../FicheJoueur/FicheJoueur';
+import PanelAction from '../PanelAction/PanelAction';
+
 
 export default function Suivi({ joueursChoisis,animateursChoisis }) { // param -> data passé par Maria 
 
@@ -154,6 +156,7 @@ export default function Suivi({ joueursChoisis,animateursChoisis }) { // param -
                 {nbTourActuel === 1 &&
                     <div>
                         <FicheJoueur nbDeplacements={animateursTries[0].deplacement} pouvoir={animateursTries[0].pouvoir} nom={animateursTries[0].nom} nbVie={5 - animateursTries[0].objectifs.enfants.points} description={animateursTries[0].description} maudit={animateursTries[0].maudit} objectif={animateursTries[0].objectifs.animateurs.points} role={roleActuel} img={animateursTries[0].img} />
+                        <PanelAction/>
                     </div>
                 }
                 {nbTourActuel === 2 ?
@@ -177,13 +180,19 @@ export default function Suivi({ joueursChoisis,animateursChoisis }) { // param -
                         {!afficherSelection && nbTourActuel > 0 && (
                             <div>
                                 {roleActuel === 'enfant' ?
-                                    <FicheJoueur nbDeplacements={joueurActuel.deplacement} pouvoir={joueurActuel.pouvoir} nom={joueurActuel.nom} nbVie={joueurActuel.pv} description={joueurActuel.description} maudit={""} objectif={""} role={roleActuel} img={joueurActuel.img} />
+                                    <>
+                                         <FicheJoueur nbDeplacements={joueurActuel.deplacement} pouvoir={joueurActuel.pouvoir} nom={joueurActuel.nom} nbVie={joueurActuel.pv} description={joueurActuel.description} maudit={""} objectif={""} role={roleActuel} img={joueurActuel.img} />
+                                         <PanelAction/>
+                                    </>
                                     :
                                     roleActuel === 'animateur' && (
-                                        <FicheJoueur nbDeplacements={joueurActuel.deplacement} pouvoir="" nom={joueurActuel.nom}
-                                            nbVie={joueurActuel.objectifs.animateurs.points ? 0 : 5 - joueurActuel.objectifs.animateurs.points}
-                                            description={joueurActuel.description} maudit={joueurActuel.maudit}
-                                            objectif={joueurActuel.objectifs.enfants.points ? joueurActuel.objectifs.enfants.points : 0} role={roleActuel} img={joueurActuel.img} />
+                                        <>
+                                            <FicheJoueur nbDeplacements={joueurActuel.deplacement} pouvoir="" nom={joueurActuel.nom}
+                                                nbVie={joueurActuel.objectifs.animateurs.points ? 0 : 5 - joueurActuel.objectifs.animateurs.points}
+                                                description={joueurActuel.description} maudit={joueurActuel.maudit}
+                                                objectif={joueurActuel.objectifs.enfants.points ? joueurActuel.objectifs.enfants.points : 0} role={roleActuel} img={joueurActuel.img} />
+                                            <PanelAction/>
+                                        </>
                                     )
                                 }
                                 <button onClick={gestionNbTours}>Passer au prochain tour</button>
@@ -194,13 +203,19 @@ export default function Suivi({ joueursChoisis,animateursChoisis }) { // param -
                     <div>
                         {nbTourActuel >= 3 && (
                             roleActuel === 'enfant' ?
-                            <FicheJoueur nbDeplacements={joueurActuel.deplacement} pouvoir={joueurActuel.pouvoir} nom={joueurActuel.nom} nbVie={joueurActuel.pv} description={joueurActuel.description} maudit={""} objectif={""} role={roleActuel} img={joueurActuel.img} />
+                            <>
+                                <FicheJoueur nbDeplacements={joueurActuel.deplacement} pouvoir={joueurActuel.pouvoir} nom={joueurActuel.nom} nbVie={joueurActuel.pv} description={joueurActuel.description} maudit={""} objectif={""} role={roleActuel} img={joueurActuel.img} />
+                                <PanelAction/>
+                            </>
                             :
                             roleActuel === 'animateur' && (
-                                <FicheJoueur nbDeplacements={joueurActuel.deplacement} pouvoir="" nom={joueurActuel.nom}
-                                    nbVie={joueurActuel.objectifs.animateurs.points ? 0 : 5 - joueurActuel.objectifs.animateurs.points}
-                                    description={joueurActuel.description} maudit={joueurActuel.maudit}
-                                    objectif={joueurActuel.objectifs.enfants.points ? joueurActuel.objectifs.enfants.points : 0} role={roleActuel} img={joueurActuel.img} />
+                                <>
+                                    <FicheJoueur nbDeplacements={joueurActuel.deplacement} pouvoir="" nom={joueurActuel.nom}
+                                        nbVie={joueurActuel.objectifs.animateurs.points ? 0 : 5 - joueurActuel.objectifs.animateurs.points}
+                                        description={joueurActuel.description} maudit={joueurActuel.maudit}
+                                        objectif={joueurActuel.objectifs.enfants.points ? joueurActuel.objectifs.enfants.points : 0} role={roleActuel} img={joueurActuel.img} />
+                                    <PanelAction/>
+                                </>
                             )
                         )}
                         <button onClick={gestionNbTours}>Passer au prochain tour</button>
