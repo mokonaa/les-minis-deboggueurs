@@ -55,6 +55,7 @@ export const data = {
             animateurs: [{
                 nom: "Kenza",
                 pseudo: "La Fouineuse",
+                nomThematique: "addiction",
                 maudit: true,
                 deplacement: 3,
                 priorite: 10,
@@ -94,6 +95,7 @@ export const data = {
             animateurs: [{
                 nom: "Kevin",
                 pseudo: "Aninomous",
+                nomThematique: "cyber_harcelement",
                 maudit: true,
                 deplacement: 3,
                 priorite: 9,
@@ -127,6 +129,7 @@ export const data = {
             animateurs: [{
                 nom: "David",
                 pseudo: "Mr.Trollolol",
+                nomThematique: "securite",
                 maudit: true,
                 deplacement: 3,
                 priorite: 7,
@@ -161,6 +164,7 @@ export const data = {
             animateurs: [{
                 nom: "Yuki",
                 pseudo: "Hyperco",
+                nomThematique: "fake_news",
                 maudit: true,
                 deplacement: 4,
                 priorite: 8,

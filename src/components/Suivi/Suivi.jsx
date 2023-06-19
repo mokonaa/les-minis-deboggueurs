@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { data } from '../../data/data'
+import { data } from '../../data/data';
 import FicheJoueur from '../FicheJoueur/FicheJoueur';
 import PanelAction from '../PanelAction/PanelAction';
 
