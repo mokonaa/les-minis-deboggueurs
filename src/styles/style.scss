@@ -205,3 +205,33 @@ nav {
     -webkit-backdrop-filter: blur(6px);
   }
   
+
+  /*GALERIE*/
+
+#thematiques {
+    color: white;
+    background-color: #28226b;
+    padding: 30px 10px;
+
+
+    .subTitle {
+        text-align: center;
+    }
+
+    #thematiques_list {
+        display: flex;
+        flex-direction: column;
+
+            .thematiquesInfos {
+                background-color: white;
+                padding: 20px;
+                color: black;
+                text-align: center;
+                border-style: solid;
+                border-color: transparent;
+                border-radius: 20px;
+                margin: 10px 0;
+            }
+    }
+    
+}

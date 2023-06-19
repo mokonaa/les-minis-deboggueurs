@@ -18,13 +18,12 @@ export default function Galerie() {
     
     }
 
-
     return (
         <>
             <div>
-                Galerie
-                <div id='listThematiques'>
-                    {tabThematiques.map(thematique => <div className='thematiquesInfos' id= {'thematique'+thematique.nomThematique} onClick={() => choixThematique({thematique})} >{thematique.nomThematique}</div>)}
+                <div id='thematiques'>
+                    <p className='subTitle'>Galerie</p>
+                    <div id='thematiques_list'>{tabThematiques.map(thematique => <div className='thematiquesInfos' id= {'thematique'+thematique.nomThematique} onClick={() => choixThematique({thematique})} >{thematique.nomThematique}</div>)}</div>
                 </div>
             </div>
         </>
