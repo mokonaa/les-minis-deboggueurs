@@ -6,20 +6,24 @@ export default function Partie() {
 
   const [tabEnfantsChoisis, setTabEnfantsChoisis] = useState([]);
   const [tabAnimateursChoisis, setTabAnimateursChoisis] = useState([]);
-
+  const [displaySuiviComponent, setDisplaySuiviComponent] = useState(false);
 
     useEffect(() => {
       console.log(tabEnfantsChoisis);
       console.log(tabAnimateursChoisis);
+      console.log(displaySuiviComponent);
     });
-    // TODO envoyer param enfantPreChoisiConfig (sous forme de tableaux d'objets)
+
     // TODO gestion des affichages (affichers d'abord component config puis animation)
- 
-    
     return (
           <div>
-                <Configuration joueursChoisis={tabEnfantsChoisis} setJoueursChoisis={setTabEnfantsChoisis} animateursChoisis ={tabAnimateursChoisis} setAnimateursChoisis={setTabAnimateursChoisis}/>
-                <Suivi joueursChoisis={tabEnfantsChoisis} animateursChoisis ={tabAnimateursChoisis}/>
+                {!displaySuiviComponent &&
+                    <Configuration joueursChoisis={tabEnfantsChoisis} setJoueursChoisis={setTabEnfantsChoisis} animateursChoisis ={tabAnimateursChoisis} setAnimateursChoisis={setTabAnimateursChoisis} setAffichageSuiviComponent={setDisplaySuiviComponent}/>
+                }
+
+                {displaySuiviComponent &&
+                   <Suivi joueursChoisis={tabEnfantsChoisis} animateursChoisis ={tabAnimateursChoisis}/>
+                }
           </div>
   )
 }

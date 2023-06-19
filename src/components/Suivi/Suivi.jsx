@@ -17,23 +17,31 @@ export default function Suivi ({ joueursChoisis,animateursChoisis }) { // param 
 
     // Récupération de la data via Configuration, pour le moment création d'une fake data en triant les animateurs selon leur ordre
 
-    let animateursTries = [];
-    const thematiques = data.thematique;
+    //let animateursTries = [];
+    //const thematiques = data.thematique;
+    let animateursTries = animateursChoisis;
     // Il faut récupérer chaque animateur de chaque thématique
+    
+    /*
     Object.keys(thematiques).forEach((theme) => {
         const animateurs = thematiques[theme].animateurs;
         animateursTries.push(...animateurs);
     });
+    //*/
 
     // Tri des animateurs par priorité (ordre décroissant)
     animateursTries.sort((a, b) => b.priorite - a.priorite);
+    console.log(animateursTries);
+
     // console.log('----- Animateurs Triés en ordre décroissant -----');
     // console.log(animateursTries);
     // console.log('-------------------------------------------------');
 
     // Sélection de l'ordre des joueurs selon le nb de joueurs, il faut récupérer cb de joueurs jouent
 
-    const enfants = data.enfants;
+    //
+    //const enfants = data.enfants;
+    const enfants = joueursChoisis;
 
     // fausse data en attendant de recevoir
     const [enfantsChoisis, setEnfantsChoisis] = useState(enfants);
