@@ -54,6 +54,7 @@ export const data = {
             animateurs: [{
                 nom: "Kenza",
                 pseudo: "La Fouineuse",
+                maudit: true,
                 deplacement: 3,
                 priorite: 10,
                 objectifs: {
@@ -92,6 +93,7 @@ export const data = {
             animateurs: [{
                 nom: "Kevin",
                 pseudo: "Aninomous",
+                maudit: true,
                 deplacement: 3,
                 priorite: 9,
                 objectifs: {
@@ -124,6 +126,7 @@ export const data = {
             animateurs: [{
                 nom: "David",
                 pseudo: "Mr.Trollolol",
+                maudit: true,
                 deplacement: 3,
                 priorite: 7,
                 objectifs: {
@@ -156,6 +159,7 @@ export const data = {
             animateurs: [{
                 nom: "Yuki",
                 pseudo: "Hyperco",
+                maudit: true,
                 deplacement: 4,
                 priorite: 8,
                 objectifs: {
