@@ -2,8 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Modal from "../Modal/Modal";
 
-export default function PanelAction() {
+export default function PanelAction({animateurs}) {
 
+    console.log(animateurs);
     const [showPopInQuestion,setShowPopInQuestion] = useState(false);
     const navigate = useNavigate();
     const navigateTo = (route) => {
@@ -30,7 +31,7 @@ export default function PanelAction() {
                     <p>À noter que la question quizz n’est disponible que lors de la récupération d‘un point </p>
 
                     <div className="listAnimateurChoisis">
-                        
+                        {animateurs.map(animateur => <p>{animateur.nom}</p>)}
                     </div>
 
                     <button>Super !</button>
