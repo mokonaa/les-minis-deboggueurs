@@ -1,6 +1,6 @@
 import Configuration from '../Configuration/Configuration';
 import { useState, useRef,useEffect } from 'react';
-import AnimationPartie from '../AnimationPartie/AnimationPartie';
+import Suivi from '../Suivi/Suivi';
 
 export default function Partie() {
 
@@ -18,8 +18,8 @@ export default function Partie() {
     
     return (
           <div>
-                <Configuration  joueursChoisis={tabEnfantsChoisis} setJoueursChoisis={setTabEnfantsChoisis} animateursChoisis ={tabAnimateursChoisis} setAnimateursChoisis={setTabAnimateursChoisis}/>
-                <AnimationPartie joueursChoisis={tabEnfantsChoisis} animateursChoisis ={tabAnimateursChoisis}/>
+                <Configuration joueursChoisis={tabEnfantsChoisis} setJoueursChoisis={setTabEnfantsChoisis} animateursChoisis ={tabAnimateursChoisis} setAnimateursChoisis={setTabAnimateursChoisis}/>
+                <Suivi joueursChoisis={tabEnfantsChoisis} animateursChoisis ={tabAnimateursChoisis}/>
           </div>
   )
 }

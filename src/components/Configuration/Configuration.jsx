@@ -1,8 +1,6 @@
-import AnimationPartie from "../Suivi/Suivi";
-
 import { data } from '../../data/data';
 import { useState, useRef } from 'react';
-import AnimationPartie from "../Suivi/Suivi";
+import Suivi from "../Suivi/Suivi";
 
 export default function Configuration({joueursChoisis,setJoueursChoisis, animateursChoisis, setAnimateursChoisis}) {
 

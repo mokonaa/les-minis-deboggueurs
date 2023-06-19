@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { data } from '../../data/fake-data'
 import FicheJoueur from '../FicheJoueur/FicheJoueur';
 
-export default function AnimationPartie({ nbDeJoueursChoisis, enfantsConfigurationTab }) { // param -> data passé par Maria 
+export default function Suivi ({ joueursChoisis,animateursChoisis }) { // param -> data passé par Maria 
 
     /**
      * 
@@ -131,6 +131,11 @@ export default function AnimationPartie({ nbDeJoueursChoisis, enfantsConfigurati
     };
     const joueurActuel = nbTourActuel > 0 ? ordreFinal[nbTourActuel - 1] : [];
 
+
+    useEffect(() => {
+        console.log(joueursChoisis);
+        console.log(animateursChoisis);
+    }, [joueursChoisis])
 
     // Il faut aussi penser à chaque déplacement, panel d'actions dont un seul qui est réellement intéractif (les questions)
     // Bouton Tour terminé selon cliquable dès qu'ils ont fait au moins toutes les actions qu'ils peuvent faire
