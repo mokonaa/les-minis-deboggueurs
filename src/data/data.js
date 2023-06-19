@@ -38,6 +38,7 @@ export const data = {
     ],
     thematique: {
         addiction: {
+            nomThematique: "Addiction",
             questions: [{
                     titre: "Il est important de vérifier les paramètres de confidentialité de tes comptes de médias sociaux régulièrement pour t'assurer que tes informations personnelles ne sont pas exposées.",
                     choix: ["Vrai", "Faux", "Je ne sais pas"],
@@ -70,7 +71,8 @@ export const data = {
                 image: "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2F0fGVufDB8fDB8fHww&auto=format&fit=crop&w=1400&q=60"
             }]
         },
-        cyber_harcelement: {
+        cyber_harcelement: { 
+            nomThematique: "Cyber-harcèlement",
             questions: [{
                     titre: "Quels sont les effets du cyberharcèlement ?",
                     choix: {
@@ -110,6 +112,7 @@ export const data = {
             }]
         },
         securite: {
+            nomThematique: "Cyber-sécurité",
             questions: [{
                     titre: "Est-il sûr d'utiliser le même mot de passe pour tous tes comptes en ligne ?",
                     choix: ["Vrai", "Faux", "Je ne sais pas"],
@@ -143,6 +146,7 @@ export const data = {
             }]
         },
         fake_news: {
+            nomThematique: "Fake News",
             questions: [{
                     titre: "Les fake news sont de fausses informations délibérément créées pour tromper les gens.",
                     choix: ["Vrai", "Faux", "Je ne sais pas"],
