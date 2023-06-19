@@ -3,13 +3,15 @@ import AnimationPartie from "../Suivi/Suivi";
 import { data } from '../../data/data';
 import { useState, useRef } from 'react';
 
-export default function Configuration() {
+export default function Configuration({joueursChoisis,setJoueursChoisis, animateursChoisis, setAnimateursChoisis}) {
 
     let listJoueurs = data.enfants;
     let listAnimateurs = [];
     let thematique = data.thematique;
-    let tabJoueursChoisis = [];
-    let tabAnimateursChoisis = [];
+    //let tabJoueursChoisis = [];
+    //let tabAnimateursChoisis = [];
+    let [tabJoueursChoisis, setTabJoueursChoisis] = useState([]);
+    let [tabAnimateursChoisis, setTabAnimateursChoisis] = useState([]);
     let [etapesConfiguration, setEtapesConfiguration] = useState(0);
     let [nbJoueursChoisi, setNbJoueursChoisi] = useState(0);
 
@@ -41,7 +43,7 @@ export default function Configuration() {
         else {
             console.log('cannot add more players');
         }
-        // console.log(tabJoueursChoisis);
+        console.log(tabJoueursChoisis);
         // console.log('joueurs choisis : '+tabJoueursChoisis.length);
     }
 
@@ -61,6 +63,16 @@ export default function Configuration() {
 
     const changerEtapeConfiguration = (etape) => {
       setEtapesConfiguration(etape);
+    }
+
+    const changeViewToAnimationComponent = () => {
+        console.log('here change');
+        console.log(tabJoueursChoisis);
+        console.log(tabAnimateursChoisis);
+        setJoueursChoisis(tabJoueursChoisis);
+        setAnimateursChoisis(tabAnimateursChoisis);
+        console.log(joueursChoisis);
+        console.log(animateursChoisis);
     }
 
     return (
@@ -112,7 +124,7 @@ export default function Configuration() {
                             <li>2 - Faire  </li>
                         </ul>
                     </div>
-                    <button className='buttonChoixPerso'>C'est fait !</button>
+                    <button className='buttonChoixPerso' onClick={() => changeViewToAnimationComponent()} >C'est fait !</button>
                 </>
               )}
             </div>

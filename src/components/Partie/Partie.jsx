@@ -1,26 +1,26 @@
 import Configuration from '../Configuration/Configuration';
-import AnimationPartie from '../Suivi/Suivi';
+import Animation from '../Animation/Animation';
+import { useState, useRef,useEffect } from 'react';
 
 export default function Partie() {
 
-    console.log(data);
-    let joueurs = data.enfants;
+  const [tabEnfantsChoisis, setTabEnfantsChoisis] = useState([]);
+  const [tabAnimateursChoisis, setTabAnimateursChoisis] = useState([]);
 
-    const choisirJoueur = () => {
-        // console.log('im here');
-        // console.log(data);
-    }
 
-    // console.log(joueurs);
-    // joueurs.map(enfant => console.log(enfant));
-    //choisirJoueur();
 
+    useEffect(() => {
+      console.log(tabEnfantsChoisis);
+      console.log(tabAnimateursChoisis);
+    });
+    // TODO envoyer param enfantPreChoisiConfig (sous forme de tableaux d'objets)
     // TODO gestion des affichages (affichers d'abord component config puis animation)
-  return (
+ 
+    
+    return (
           <div>
-                <Configuration/>
-                <AnimationPartie/>
-              
+                <Configuration  joueursChoisis={tabEnfantsChoisis} setJoueursChoisis={setTabEnfantsChoisis} animateursChoisis ={tabAnimateursChoisis} setAnimateursChoisis={setTabAnimateursChoisis}/>
+                <Animation joueursChoisis={tabEnfantsChoisis} animateursChoisis ={tabAnimateursChoisis}/>
           </div>
   )
 }
