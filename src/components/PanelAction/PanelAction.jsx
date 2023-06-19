@@ -73,10 +73,14 @@ export default function PanelAction({animateurs,thematiques}) {
                     console.log('non multiple choices');
                 }
         }
+
+        document.getElementById('validBtn').style.display = 'none';
+        // TODO boucler et n'affichez que les réponses choisies par le joueur
+        // TODO CSS
     }
 
     return (
-        <div className="panelActions">
+        <div id="panelActions">
             <div>
                 {/* <div>Peut relancer un dé par tour</div> */}
                 <button onClick={() => displayPopIn()}>Question Quizz</button>
@@ -88,30 +92,30 @@ export default function PanelAction({animateurs,thematiques}) {
 
                     {!displayQuestionView && (
                         <div id="choixAnimateur">
-                            <p>CHOISSISEZ L'ANIMATEUR QUE VOUS SOUHAITEZ GUÉRIR</p>
-                            <p>À noter que la question quizz n’est disponible que lors de la récupération d‘un point </p>
+                            <p className="subTitle">CHOISSISEZ L'ANIMATEUR QUE VOUS SOUHAITEZ GUÉRIR</p>
+                            <p className="remarque">À noter que la question quizz n’est disponible que lors de la récupération d‘un point </p>
 
                             <div className="listAnimateurChoisis">
-                                {animateurs.map(animateur => <div  onClick={() => displayQuestion(animateur.nomThematique)}>{animateur.nom}</div>)}
+                                {animateurs.map(animateur => <div className="animateurInfos" onClick={() => displayQuestion(animateur.nomThematique)}>{animateur.nom}</div>)}
                             </div>
 
-                            <button  onClick={() => questionQuizz.choix !== undefined ? setDisplayQuestionView(true) : console.log('nothing to display')}>Super !</button>
+                            <button className="buttonConfirmer"  onClick={() => questionQuizz.choix !== undefined ? setDisplayQuestionView(true) : console.log('nothing to display')}>Super !</button>
                         </div>
                    )}
 
                     {displayQuestionView && (
                         <div id="questionQuizz">
-                        <p>QUESTION QUIZZ</p>
-                        <p>{animateursQuestionsInfos.nomThematique}</p>
+                        <p className="subTitle">QUESTION QUIZZ</p>
+                        <p className="nomThematique">{animateursQuestionsInfos.nomThematique}</p>
                         <div>
-                            <p>{questionQuizz.titre}</p>
+                            <p className="questionTitre">{questionQuizz.titre}</p>
                             {questionQuizz.choix.multiples ?
-                                 (<div>{questionQuizz.choix.multiples.map((choix,i) => <p onClick={() => ajoutReponse(i)}>{choix}</p>)}</div>)
+                                 (<div className="listReponses">{questionQuizz.choix.multiples.map((choix,i) => <p id={"reponse"+i} onClick={() => ajoutReponse(i)}>{choix}</p>)}</div>)
                                  :
-                                 (<div>{questionQuizz.choix.map((choix,i) => <p onClick={() => ajoutReponse(i)}>{choix}</p>)}</div>)
+                                 (<div className="listReponses">{questionQuizz.choix.map((choix,i) => <p id={"reponse"+i} onClick={() => ajoutReponse(i)}>{choix}</p>)}</div>)
 
                             }
-                            <button onClick={() => verifieReponse()}>Valider</button>
+                            <button className="buttonConfirmer" id="validBtn" onClick={() => verifieReponse()}>Valider</button>
                         </div>
 
                         {/* BONNE REPONSE */}
@@ -119,8 +123,8 @@ export default function PanelAction({animateurs,thematiques}) {
                             <div>
                                 <p>Bravo ! Tu peux récupérer un point</p>
                                 <p>Pour plus d’informations n’hésite pas à aller dans la galerie pour trouver des ressources</p>
-                                <button>Fermer</button>
-                            </div>
+                                {/*<!--<button className="buttonConfirmer" >Fermer</button>-->*/}
+                                </div>
                         )}
 
                         {/* MAUVAISE REPONSE */}
@@ -128,7 +132,7 @@ export default function PanelAction({animateurs,thematiques}) {
                             <div>
                                 <p>Mince, pas de point pour cette fois</p>
                                 <p>Pour plus d’informations n’hésite pas à aller dans la galerie pour trouver des ressources</p>
-                                <button>Fermer</button>
+                                {/*<!--<button className="buttonConfirmer" >Fermer</button>-->*/}
                             </div>
                         )}
                         
