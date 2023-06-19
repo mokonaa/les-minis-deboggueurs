@@ -1,5 +1,7 @@
+import Configuration from "../Configuration/Configuration";
+import { useState, useEffect } from "react";
 
-export default function Animation() { // param -> data passé par Maria 
+export default function Animation({joueursChoisis,animateursChoisis}) { // param -> data passé par Maria 
 
     /**
      * 
@@ -12,8 +14,12 @@ export default function Animation() { // param -> data passé par Maria
      *  - Affichage statique -> Manche terminée + Btn Commencer la nouvelle manche
     */
 
-    let numeroManche = 1; 
+    useEffect(() => {
+        console.log(joueursChoisis);
+        console.log(animateursChoisis);
+    }, [joueursChoisis])
 
+    let numeroManche = 1; 
     return (
         <>
             <div>

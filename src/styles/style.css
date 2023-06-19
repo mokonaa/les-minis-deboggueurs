@@ -224,4 +224,36 @@ nav {
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
 }
+
+/*GALERIE*/
+#thematiques {
+  color: white;
+  background-color: #28226b;
+  padding: 30px 10px;
+}
+
+#thematiques .subTitle {
+  text-align: center;
+}
+
+#thematiques #thematiques_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#thematiques #thematiques_list .thematiquesInfos {
+  background-color: white;
+  padding: 20px;
+  color: black;
+  text-align: center;
+  border-style: solid;
+  border-color: transparent;
+  border-radius: 20px;
+  margin: 10px 0;
+}
 /*# sourceMappingURL=style.css.map */
