@@ -1,7 +1,8 @@
 import { data } from '../../data/data';
 import { useState, useRef } from 'react';
+import de from '../../assets/img/de.svg';
 
-export default function Configuration({joueursChoisis,setJoueursChoisis, animateursChoisis, setAnimateursChoisis}) {
+export default function Configuration({joueursChoisis,setJoueursChoisis, animateursChoisis, setAnimateursChoisis,setAffichageSuiviComponent}) {
 
     let listJoueurs = data.enfants;
     let listAnimateurs = [];
@@ -24,9 +25,9 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
     const choisirNombreJoueur = (nbJoueur) => {
         //nbJoueursChoisi = nbJoueur; 
         setNbJoueursChoisi(nbJoueur);
-        console.log('nb joueur total : '+nbJoueursChoisi);
+        //console.log('nb joueur total : '+nbJoueursChoisi);
         tabJoueursChoisis = [];
-        console.log(document.getElementsByTagName('button'));
+        //console.log(document.getElementsByTagName('button'));
         document.getElementById('joueurTotal_'+nbJoueur).style.backgroundColor = "#4fab78";
         // changer le numéro de l'étape de la config 0 -> 1
         setEtapesConfiguration(1);
@@ -34,14 +35,14 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
 
     const choixJoueur = (joueur) => {
         if (tabJoueursChoisis.length < (nbJoueursChoisi)) {
-            console.log(joueur);
+            //console.log(joueur);
             tabJoueursChoisis.push(joueur.enfant);
             document.getElementById('joueur_'+joueur.enfant.nom).style.backgroundColor = '#e46444';
         }
         else {
             console.log('cannot add more players');
         }
-        console.log(tabJoueursChoisis);
+        //console.log(tabJoueursChoisis);
         // console.log('joueurs choisis : '+tabJoueursChoisis.length);
     }
 
@@ -54,7 +55,6 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
         else {
             console.log('cannot add more animateurs');
         }
-         console.log(tabJoueursChoisis);
          console.log(tabAnimateursChoisis);
         // console.log('joueurs choisis : '+tabJoueursChoisis.length);
     }
@@ -64,11 +64,9 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
     }
 
     const changeViewToAnimationComponent = () => {
-        console.log('here change');
-        console.log(tabJoueursChoisis);
-        console.log(tabAnimateursChoisis);
         setJoueursChoisis(tabJoueursChoisis);
         setAnimateursChoisis(tabAnimateursChoisis);
+        setAffichageSuiviComponent(true);
         console.log(joueursChoisis);
         console.log(animateursChoisis);
     }
@@ -116,13 +114,14 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
               { etapesConfiguration === 3 && (
                 <>
                     <div id='installationPlateau'>
-                        <p className='subTitle'>Installez le plateau</p>
+                        <p className='subTitle'>DÉBUT DU TOUR</p>
+                        <img src={de} />
                         <ul>
-                            <li>1 - Déposez les cartes quizz dans l'emplacement prévue </li>
-                            <li>2 - Faire  </li>
+                            <li>1 - Lancez vos dés tous ensembles </li>
+                            <li>2 - Puis regroupez les dans la "réserve de dés"</li>
                         </ul>
                     </div>
-                    <button className='buttonChoixPerso' onClick={() => changeViewToAnimationComponent()} >C'est fait !</button>
+                    <button className='buttonChoixPerso' onClick={() => changeViewToAnimationComponent()} >Continuer</button>
                 </>
               )}
             </div>
