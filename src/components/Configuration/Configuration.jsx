@@ -1,5 +1,6 @@
 import { data } from '../../data/data';
 import { useState, useRef } from 'react';
+import de from '../../assets/img/de.svg';
 
 export default function Configuration({joueursChoisis,setJoueursChoisis, animateursChoisis, setAnimateursChoisis,setAffichageSuiviComponent}) {
 
@@ -113,13 +114,14 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
               { etapesConfiguration === 3 && (
                 <>
                     <div id='installationPlateau'>
-                        <p className='subTitle'>Installez le plateau</p>
+                        <p className='subTitle'>DÉBUT DU TOUR</p>
+                        <img src={de} />
                         <ul>
-                            <li>1 - Déposez les cartes quizz dans l'emplacement prévue </li>
-                            <li>2 - Faire  </li>
+                            <li>1 - Lancez vos dés tous ensembles </li>
+                            <li>2 - Puis regroupez les dans la "réserve de dés"</li>
                         </ul>
                     </div>
-                    <button className='buttonChoixPerso' onClick={() => changeViewToAnimationComponent()} >C'est fait !</button>
+                    <button className='buttonChoixPerso' onClick={() => changeViewToAnimationComponent()} >Continuer</button>
                 </>
               )}
             </div>

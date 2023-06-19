@@ -5,6 +5,7 @@ import Quizz from "./components/Quizz/Quizz";
 import Galerie from "./components/Galerie/Galerie";
 import Nav from "./components/Nav/Nav";
 
+
 function App() {
   return (
       <div className="App">
