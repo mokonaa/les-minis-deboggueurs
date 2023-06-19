@@ -1,3 +1,237 @@
-@use 'base';
-@use 'abstracts';
-@use 'components';
+
+body {
+    margin: 0;
+}
+
+/*HOME*/
+.accueilBtns {
+    display: flex;
+    flex-direction: column;
+    background-color: #28226b;
+    padding: 30px 10px;
+
+    button {
+        width: 100%;
+        color: white;
+        border-style: solid;
+        border-color: transparent;
+        border-radius: 20px;
+        font-weight: bold;
+        margin: 10px 0;
+        padding: 20px 0;
+    }
+
+    button:nth-child(1) {
+        background-color: #4fab78;
+    }
+
+    button:nth-child(2) {
+        background-color: #e375a3;
+    }
+
+    button:nth-child(3) {
+        background-color: #e06f4d;
+    }
+}
+
+
+/*CONFIGURATION*/
+
+#configurationContainer {
+    color: white;
+
+    .buttonChoixPerso {
+        background-color: #28226b;
+        color: white;
+        border-style: solid;
+        border-color: transparent;
+        border-radius: 20px;
+        font-weight: bold;
+        margin: 20px auto;
+        padding: 16px;
+        width: 90%;
+    }
+
+    .subTitle {
+        text-align: center;
+    }
+
+    #choixNombreJoueur {
+        background-color: #28226b;
+        padding: 30px 10px;
+
+        div {
+            display: flex;
+            flex-direction: column;
+
+            button {
+                margin: 10px 0;
+                padding: 10px 0;
+                border-style: solid;
+                border-color: transparent;
+                border-radius: 20px;
+                font-weight: bold;
+            }
+        }
+    }
+
+
+
+    #joueursEnfants {
+        background-color: #28226b;
+        padding: 30px 10px;
+
+        .joueursEnfants_list {
+            display: flex;
+            flex-direction: column;
+
+                .enfantInfos {
+                    background-color: white;
+                    padding: 20px;
+                    color: black;
+                    text-align: center;
+                    border-style: solid;
+                    border-color: transparent;
+                    border-radius: 20px;
+                    margin: 10px 0;
+                }
+        }
+    }
+
+
+    #animateurs {
+        background-color: #28226b;
+        padding: 30px 10px;
+
+        .animateurs_list {
+            display: flex;
+            flex-direction: column;
+
+                .animateurInfos {
+                    background-color: white;
+                    padding: 20px;
+                    color: black;
+                    text-align: center;
+                    border-style: solid;
+                    border-color: transparent;
+                    border-radius: 20px;
+                    margin: 10px 0;
+                }
+        }
+    }
+
+    #installationPlateau {
+        background-color: #28226b;
+        padding: 30px 10px;
+    }
+}
+
+
+
+
+
+
+
+/* NAVBAR */
+nav {
+    height: 70px;
+}
+/* Burger */
+.bm-burger-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    right: 36px;
+    top: 20px;
+  }
+  
+  .bm-burger-bars {
+    background: black;
+    height: 15%!important;
+  }
+  
+  .bm-burger-bars-hover {
+    background: red;
+  }
+  
+  .bm-cross-button {
+    display: none;
+  }
+  
+  .bm-cross {
+    background: #bdc3c7;
+  }
+  
+  .bm-menu-wrap {
+    position: fixed;
+    height: 100%;
+  }
+  
+  .bm-menu {
+    background: white;
+    padding: 2.5em 1.5em 0;
+    font-size: 1.15em;
+  }
+  
+  .bm-morph-shape {
+    fill: white;
+  }
+  
+  .bm-item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    color: #b8b7ad;
+  }
+  
+  .bm-item-list a {
+    color: black;
+    font-weight: 500;
+    text-decoration: none;
+    display: flex !important;
+    flex-direction: row;
+    gap: 1rem;
+  }
+  
+  .bm-item {
+    display: inline-block;
+    padding: 0.2rem;
+  }
+  
+  .bm-overlay {
+    background: rgba(228, 106, 72, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  
+
+  /*GALERIE*/
+
+#thematiques {
+    color: white;
+    background-color: #28226b;
+    padding: 30px 10px;
+
+
+    .subTitle {
+        text-align: center;
+    }
+
+    #thematiques_list {
+        display: flex;
+        flex-direction: column;
+
+            .thematiquesInfos {
+                background-color: white;
+                padding: 20px;
+                color: black;
+                text-align: center;
+                border-style: solid;
+                border-color: transparent;
+                border-radius: 20px;
+                margin: 10px 0;
+            }
+    }
+    
+}
