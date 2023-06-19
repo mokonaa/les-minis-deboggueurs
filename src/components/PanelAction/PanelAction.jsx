@@ -9,6 +9,7 @@ export default function PanelAction({animateurs,thematiques}) {
     const [questionQuizz,setQuestionQuizz] = useState({});
     const [bonneReponse, setBonneReponse] = useState(2); // bon (1) mauvais (0) 
     const [displayQuestionView, setDisplayQuestionView] = useState(false); 
+    let tabReponseJoueurs = [];
 
     const displayPopIn = () => {
         console.log('display pop in ');
@@ -17,7 +18,6 @@ export default function PanelAction({animateurs,thematiques}) {
     }
 
     const reinit = () => {
-        console.log("foefe");
         setDisplayQuestionView(false);
         setAnimateursQuestionsInfos([]);
         setQuestionQuizz({});
@@ -35,21 +35,44 @@ export default function PanelAction({animateurs,thematiques}) {
         setQuestionQuizz(thematiques[nomThematique].questions[randomNumber]);
     }
 
-    const verifieReponse = (index, choixMultiples) => {
-        console.log(index);
+    const ajoutReponse = (index) => {
+        if (!tabReponseJoueurs.includes(index)) {
+            tabReponseJoueurs.push(index);
+        }
+        else {
+            console.log('already added');
+        }
+    }
+
+    const verifieReponse = () => {
+ 
+        console.log(tabReponseJoueurs);
         console.log(questionQuizz);
-        if (!choixMultiples) {
-            if (questionQuizz.bonne_reponse == index) {
+        if (!Array.isArray(questionQuizz.bonne_reponse)) { // unique bonne réponse
+            if (tabReponseJoueurs.length == 1 &&  questionQuizz.bonne_reponse == tabReponseJoueurs[0]) { // cocher qu"une case et c'est la bonne réponse
                 setBonneReponse(1);
+                console.log('gagné');
             }
             else {
                 setBonneReponse(0);
+                console.log('non gagné');
             }
         }
-        else { // gestion des bonnes réponses
+        else {
+                console.log('mchoice');
+                tabReponseJoueurs = tabReponseJoueurs.sort();
+                console.log(tabReponseJoueurs);
+                console.log(questionQuizz.bonne_reponse);
 
+                if (tabReponseJoueurs.sort().toString() == questionQuizz.bonne_reponse.sort().toString()) {
+                    console.log('gagné multiple choices');
+                    setBonneReponse(1);
+                }
+                else {
+                    setBonneReponse(0);
+                    console.log('non multiple choices');
+                }
         }
-    
     }
 
     return (
@@ -72,7 +95,7 @@ export default function PanelAction({animateurs,thematiques}) {
                                 {animateurs.map(animateur => <div  onClick={() => displayQuestion(animateur.nomThematique)}>{animateur.nom}</div>)}
                             </div>
 
-                            <button  onClick={() => setDisplayQuestionView(true)}>Super !</button>
+                            <button  onClick={() => questionQuizz.choix !== undefined ? setDisplayQuestionView(true) : console.log('nothing to display')}>Super !</button>
                         </div>
                    )}
 
@@ -83,11 +106,12 @@ export default function PanelAction({animateurs,thematiques}) {
                         <div>
                             <p>{questionQuizz.titre}</p>
                             {questionQuizz.choix.multiples ?
-                                 (<div>{questionQuizz.choix.multiples.map((choix,i) => <p onClick={() => verifieReponse(i, true)}>{choix}</p>)}</div>)
+                                 (<div>{questionQuizz.choix.multiples.map((choix,i) => <p onClick={() => ajoutReponse(i)}>{choix}</p>)}</div>)
                                  :
-                                 (<div>{questionQuizz.choix.map((choix,i) => <p onClick={() => verifieReponse(i,false)}>{choix}</p>)}</div>)
+                                 (<div>{questionQuizz.choix.map((choix,i) => <p onClick={() => ajoutReponse(i)}>{choix}</p>)}</div>)
 
                             }
+                            <button onClick={() => verifieReponse()}>Valider</button>
                         </div>
 
                         {/* BONNE REPONSE */}
@@ -104,7 +128,7 @@ export default function PanelAction({animateurs,thematiques}) {
                             <div>
                                 <p>Mince, pas de point pour cette fois</p>
                                 <p>Pour plus d’informations n’hésite pas à aller dans la galerie pour trouver des ressources</p>
-                                <button onClick={reinit()}>Fermer</button>
+                                <button>Fermer</button>
                             </div>
                         )}
                         
