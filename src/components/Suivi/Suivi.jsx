@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { data } from '../../data/fake-data'
 import FicheJoueur from '../FicheJoueur/FicheJoueur';
 
-export default function Suivi ({ joueursChoisis,animateursChoisis }) { // param -> data passé par Maria 
+export default function Suivi({ joueursChoisis,animateursChoisis }) { // param -> data passé par Maria 
 
     /**
      * 
