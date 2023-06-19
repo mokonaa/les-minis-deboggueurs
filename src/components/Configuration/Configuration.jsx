@@ -1,6 +1,5 @@
 import { data } from '../../data/data';
 import { useState, useRef } from 'react';
-import Suivi from "../Suivi/Suivi";
 
 export default function Configuration({joueursChoisis,setJoueursChoisis, animateursChoisis, setAnimateursChoisis}) {
 
