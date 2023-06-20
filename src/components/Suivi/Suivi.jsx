@@ -156,7 +156,9 @@ export default function Suivi ({ joueursChoisis,animateursChoisis }) { // param 
                 {nbTourActuel === 1 &&
                     <div>
                         <FicheJoueur nbDeplacements={animateursTries[0].deplacement} pouvoir={animateursTries[0].pouvoir} nom={animateursTries[0].nom} nbVie={5 - animateursTries[0].objectifs.enfants.points} description={animateursTries[0].description} maudit={animateursTries[0].maudit} objectif={animateursTries[0].objectifs.animateurs.points} role={roleActuel} img={animateursTries[0].img} />
-                        <PanelAction animateurs={animateursTries} thematiques={data.thematique}/>
+                        {roleActuel === 'enfant' && (
+                            <PanelAction animateurs={animateursTries} thematiques={data.thematique}/>
+                        )}
                     </div>
                 }
                 {nbTourActuel === 2 ?
