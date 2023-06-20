@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import { data } from '../../data/fake-data'
+import { data } from '../../data/data'
 import FicheJoueur from '../FicheJoueur/FicheJoueur';
 import PanelAction from '../PanelAction/PanelAction';
 
 
-export default function Suivi({ joueursChoisis,animateursChoisis }) { // param -> data passé par Maria 
+export default function Suivi({ joueursChoisis, animateursChoisis }) { // param -> data passé par Maria 
 
     /**
      * 
@@ -23,7 +23,7 @@ export default function Suivi({ joueursChoisis,animateursChoisis }) { // param -
     //const thematiques = data.thematique;
     let animateursTries = animateursChoisis;
     // Il faut récupérer chaque animateur de chaque thématique
-    
+
     /*
     Object.keys(thematiques).forEach((theme) => {
         const animateurs = thematiques[theme].animateurs;
@@ -33,7 +33,6 @@ export default function Suivi({ joueursChoisis,animateursChoisis }) { // param -
 
     // Tri des animateurs par priorité (ordre décroissant)
     animateursTries.sort((a, b) => b.priorite - a.priorite);
-    console.log(animateursTries);
 
     // console.log('----- Animateurs Triés en ordre décroissant -----');
     // console.log(animateursTries);
@@ -56,6 +55,7 @@ export default function Suivi({ joueursChoisis,animateursChoisis }) { // param -
     const nbManchesMax = 10;
     const [nbTours, setNbTours] = useState(nbDeJoueurs * 2);
     const [nbTourActuel, setNbTourActuel] = useState(1);
+    
 
     // Faire une phase "choisir l'ordre des enfants" qu'à partir du 2e tour de la 1e manche
     const phaseOrdre = () => {
@@ -122,8 +122,48 @@ export default function Suivi({ joueursChoisis,animateursChoisis }) { // param -
     };
 
 
+    const joueurActuel = nbTourActuel > 2 ? ordreFinal[nbTourActuel - 1] : animateursChoisis[0];
     // État pour stocker l'ordre des joueurs "enfant"
     const [ordreJoueursEnfant, setOrdreJoueursEnfant] = useState([]);
+
+
+    const thematiques = data.thematique;
+    console.log(joueurActuel.nom);
+    const nomDuJoueurActuel = joueurActuel.nom ? joueurActuel.nom : animateursChoisis[0].nom;
+    const [thematiqueActuel, setThematiqueActuel] = useState('');
+
+    // Récupérer le nom de tous les animateurs et ensuite le comparer au nom du joueur actuel pour récup la bonne thématique
+    const recupThematiqueActuel = () => {
+        const entriesTab = Object.keys(thematiques).map((key) => thematiques[key]);
+        const nomDesAnimateurs = [];
+
+        for (let i = 0; i < entriesTab.length; i++) {
+            const animateurs = entriesTab[i].animateurs;
+            for (let j = 0; j < animateurs.length; j++) {
+                nomDesAnimateurs.push(animateurs[j].nom);
+            }
+        };
+
+        const animateurTrouve = nomDesAnimateurs.find(
+            (nomAnimateur) => nomAnimateur === nomDuJoueurActuel
+        );
+
+        if (animateurTrouve) {
+            const thematiqueTrouvee = entriesTab.find((thematique) =>
+                thematique.animateurs.find((animateur) => animateur.nom === animateurTrouve)
+            );
+
+            if (thematiqueTrouvee) {
+                const thematique = thematiqueTrouvee.nomThematique;
+                if (thematique !== thematiqueActuel) {
+                    setThematiqueActuel(thematique);
+                }
+            }
+        }
+    };
+    console.log(thematiqueActuel);
+
+    recupThematiqueActuel();
 
     // Fonction pour gérer la sélection de l'ordre des joueurs "enfant"
     // Il faut que je teste et que j'affiche "les enfants" qui jouent 
@@ -139,13 +179,12 @@ export default function Suivi({ joueursChoisis,animateursChoisis }) { // param -
         setOrdreFinal(genererOrdreJoueurs(enfantsChoisis, animateursTries));
         setSelection(false);
     };
-    const joueurActuel = nbTourActuel > 0 ? ordreFinal[nbTourActuel - 1] : [];
-
 
     useEffect(() => {
-        console.log(joueursChoisis);
-        console.log(animateursChoisis);
+        // console.log(joueursChoisis);
+        // console.log(animateursChoisis);
     }, [joueursChoisis])
+
 
     // Il faut aussi penser à chaque déplacement, panel d'actions dont un seul qui est réellement intéractif (les questions)
     // Bouton Tour terminé selon cliquable dès qu'ils ont fait au moins toutes les actions qu'ils peuvent faire
@@ -155,8 +194,8 @@ export default function Suivi({ joueursChoisis,animateursChoisis }) { // param -
                 <h3>{nbManches}e Manche - {nbTourActuel}e Tour - role actuel : {roleActuel}</h3>
                 {nbTourActuel === 1 &&
                     <div>
-                        <FicheJoueur nbDeplacements={animateursTries[0].deplacement} pouvoir={animateursTries[0].pouvoir} nom={animateursTries[0].nom} nbVie={5 - animateursTries[0].objectifs.enfants.points} description={animateursTries[0].description} maudit={animateursTries[0].maudit} objectif={animateursTries[0].objectifs.animateurs.points} role={roleActuel} img={animateursTries[0].img} />
-                        <PanelAction animateurs={animateursTries}/>
+                        <FicheJoueur nbDeplacements={joueurActuel.deplacement} pouvoir={joueurActuel.pouvoir} nom={joueurActuel.nom} nbVie={5 - joueurActuel.objectifs.enfants.points} description={joueurActuel.description} maudit={joueurActuel.maudit} objectif={joueurActuel.objectifs.animateurs.points} role={roleActuel} img={joueurActuel.img} nomThematique={thematiqueActuel}/>
+                        <PanelAction animateurs={animateursTries} />
                     </div>
                 }
                 {nbTourActuel === 2 ?
@@ -181,8 +220,8 @@ export default function Suivi({ joueursChoisis,animateursChoisis }) { // param -
                             <div>
                                 {roleActuel === 'enfant' ?
                                     <>
-                                         <FicheJoueur nbDeplacements={joueurActuel.deplacement} pouvoir={joueurActuel.pouvoir} nom={joueurActuel.nom} nbVie={joueurActuel.pv} description={joueurActuel.description} maudit={""} objectif={""} role={roleActuel} img={joueurActuel.img} />
-                                         <PanelAction animateurs={animateursTries} />
+                                        <FicheJoueur nbDeplacements={joueurActuel.deplacement} pouvoir={joueurActuel.pouvoir} nom={joueurActuel.nom} nbVie={joueurActuel.pv} description={joueurActuel.description} nomThematique={thematiqueActuel} maudit={""} objectif={""} role={roleActuel} img={joueurActuel.img} />
+                                        <PanelAction animateurs={animateursTries} />
                                     </>
                                     :
                                     roleActuel === 'animateur' && (
@@ -190,7 +229,7 @@ export default function Suivi({ joueursChoisis,animateursChoisis }) { // param -
                                             <FicheJoueur nbDeplacements={joueurActuel.deplacement} pouvoir="" nom={joueurActuel.nom}
                                                 nbVie={joueurActuel.objectifs.animateurs.points ? 0 : 5 - joueurActuel.objectifs.animateurs.points}
                                                 description={joueurActuel.description} maudit={joueurActuel.maudit}
-                                                objectif={joueurActuel.objectifs.enfants.points ? joueurActuel.objectifs.enfants.points : 0} role={roleActuel} img={joueurActuel.img} />
+                                                objectif={joueurActuel.objectifs.enfants.points ? joueurActuel.objectifs.enfants.points : 0} role={roleActuel} img={joueurActuel.img} nomThematique={thematiqueActuel}/>
                                             <PanelAction animateurs={animateursTries} />
                                         </>
                                     )
@@ -203,36 +242,25 @@ export default function Suivi({ joueursChoisis,animateursChoisis }) { // param -
                     <div>
                         {nbTourActuel >= 3 && (
                             roleActuel === 'enfant' ?
-                            <>
-                                <FicheJoueur nbDeplacements={joueurActuel.deplacement} pouvoir={joueurActuel.pouvoir} nom={joueurActuel.nom} nbVie={joueurActuel.pv} description={joueurActuel.description} maudit={""} objectif={""} role={roleActuel} img={joueurActuel.img} />
-                                <PanelAction animateurs={animateursTries}/>
-                            </>
-                            :
-                            roleActuel === 'animateur' && (
                                 <>
-                                    <FicheJoueur nbDeplacements={joueurActuel.deplacement} pouvoir="" nom={joueurActuel.nom}
-                                        nbVie={joueurActuel.objectifs.animateurs.points ? 0 : 5 - joueurActuel.objectifs.animateurs.points}
-                                        description={joueurActuel.description} maudit={joueurActuel.maudit}
-                                        objectif={joueurActuel.objectifs.enfants.points ? joueurActuel.objectifs.enfants.points : 0} role={roleActuel} img={joueurActuel.img} />
+                                    <FicheJoueur nbDeplacements={joueurActuel.deplacement} pouvoir={joueurActuel.pouvoir} nom={joueurActuel.nom} nbVie={joueurActuel.pv} description={joueurActuel.description} maudit={""} objectif={""} role={roleActuel} img={joueurActuel.img} nomThematique={thematiqueActuel} />
                                     <PanelAction animateurs={animateursTries} />
                                 </>
-                            )
+                                :
+                                roleActuel === 'animateur' && (
+                                    <>
+                                        <FicheJoueur nbDeplacements={joueurActuel.deplacement} pouvoir="" nom={joueurActuel.nom}
+                                            nbVie={joueurActuel.objectifs.animateurs.points ? 0 : 5 - joueurActuel.objectifs.animateurs.points}
+                                            description={joueurActuel.description} maudit={joueurActuel.maudit}
+                                            objectif={joueurActuel.objectifs.enfants.points ? joueurActuel.objectifs.enfants.points : 0} role={roleActuel} img={joueurActuel.img} nomThematique={thematiqueActuel} />
+                                        <PanelAction animateurs={animateursTries} />
+                                    </>
+                                )
                         )}
                         <button onClick={gestionNbTours}>Passer au prochain tour</button>
                     </div>
                 }
 
-
-                <div>
-                    {/* Affichage du tour de l'animateur */}
-                    {joueurActuel === 'animateur' && (
-                        <div>
-                            Animateur
-                        </div>
-                    )}
-
-
-                </div>
             </div>
 
         </>
