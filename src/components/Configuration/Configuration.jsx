@@ -3,19 +3,18 @@ import { useState, useRef } from 'react';
 import de from '../../assets/img/de.svg';
 import stalkyProfil from '../../assets/img/perso-stalky.svg';
 import choisiIcon from '../../assets/img/persoValide.svg';
-import etape from '../../assets/img/cube.svg';
+import joueurIcon from '../../assets/img/player_icon.svg';
 
 export default function Configuration({joueursChoisis,setJoueursChoisis, animateursChoisis, setAnimateursChoisis,setAffichageSuiviComponent}) {
 
     let listJoueurs = data.enfants;
     let listAnimateurs = [];
     let thematique = data.thematique;
-    //let tabJoueursChoisis = [];
-    //let tabAnimateursChoisis = [];
     let [tabJoueursChoisis, setTabJoueursChoisis] = useState([]);
     let [tabAnimateursChoisis, setTabAnimateursChoisis] = useState([]);
     let [etapesConfiguration, setEtapesConfiguration] = useState(0);
     let [nbJoueursChoisi, setNbJoueursChoisi] = useState(0);
+    const nbjoueursTab = [2, 3, 4];
 
     // recup de la liste des animateurs 
    for (const property in thematique) {
@@ -26,11 +25,8 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
    }
 
     const choisirNombreJoueur = (nbJoueur) => {
-        //nbJoueursChoisi = nbJoueur; 
         setNbJoueursChoisi(nbJoueur);
-        //console.log('nb joueur total : '+nbJoueursChoisi);
         tabJoueursChoisis = [];
-        //console.log(document.getElementsByTagName('button'));
         document.getElementById('joueurTotal_'+nbJoueur).style.backgroundColor = "#4fab78";
         // changer le numéro de l'étape de la config 0 -> 1
         setEtapesConfiguration(1);
@@ -47,18 +43,12 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
         else {
             console.log('cannot add more players');
         }
-        //console.log(tabJoueursChoisis);
-        // console.log('joueurs choisis : '+tabJoueursChoisis.length);
     }
 
 
     const choixAnimateur = (animateur) => {
         if (tabAnimateursChoisis.length < (nbJoueursChoisi)) {
             tabAnimateursChoisis.push(animateur.animateur);
-            //document.getElementById('animateur_'+animateur.animateur.nom).style.backgroundColor = '#e46444';
-
-            console.log(animateur);
-            console.log(document.getElementById('profileOpacity_'+animateur.animateur.nom));
             document.getElementById('profileOpacity_'+animateur.animateur.nom).classList.add('ajoutBackgroundChoisi');
             document.getElementById('profileChecked_'+animateur.animateur.nom).style.display = 'block';
 
@@ -78,8 +68,6 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
         setJoueursChoisis(tabJoueursChoisis);
         setAnimateursChoisis(tabAnimateursChoisis);
         setAffichageSuiviComponent(true);
-        console.log(joueursChoisis);
-        console.log(animateursChoisis);
     }
 
     return (
@@ -90,10 +78,29 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
                     <div id='choixNombreJoueur'>
                         <p className='subTitle'>Combien de personnes jouent ? </p>
                         <div>
-                            <button id='joueurTotal_2' onClick={() => choisirNombreJoueur(2)}>2</button>
-                            <button id='joueurTotal_3' onClick={() => choisirNombreJoueur(3)}>3</button>
-                            <button id='joueurTotal_4' onClick={() => choisirNombreJoueur(4)}>4</button>
+                            <button id='joueurTotal_2' onClick={() => choisirNombreJoueur(2)}>
+                                <p>2</p>
+                                {/*<img src={joueurIcon}/>*/}
+                            </button>
+                            <button id='joueurTotal_3' onClick={() => choisirNombreJoueur(3)}>
+                                <p>3</p>
+                                {/*<img src={joueurIcon}/>*/}
+                            </button>
+                            <button id='joueurTotal_4' onClick={() => choisirNombreJoueur(4)}>
+                                <p>4</p>
+                                {/*<img src={joueurIcon}/>*/}
+                            </button>
+
+                            {/*
+                                {nbjoueursTab.map(nbJoueur =>   
+                                    <button id={'joueurTotal_'+nbJoueur} onClick={() => choisirNombreJoueur(nbJoueur)}>
+                                        
+                                        {nbJoueur}
+                                    </button>
+                                )}
+                            */}
                         </div>
+                        
                     </div>
                )}
 
@@ -109,7 +116,7 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
                                                 <div className='profil_containerImg'>
                                                     <div className='profileOpacity' id={'profileOpacity_'+enfant.nom}></div>
                                                     <div className='profileChecked' id={'profileChecked_'+enfant.nom}><img src={choisiIcon}/></div>
-                                                    <img src={stalkyProfil} />
+                                                    <img className='profil_photo' src={stalkyProfil} />
                                                 </div>
                                             </div>
                                             <p className='persoNom'>{enfant.nom}</p>
@@ -133,7 +140,7 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
                                                     <div className='profil_containerImg'>
                                                         <div className='profileOpacity' id={'profileOpacity_'+animateur.nom}></div>
                                                         <div className='profileChecked' id={'profileChecked_'+animateur.nom}><img src={choisiIcon}/></div>
-                                                        <img src={stalkyProfil} />
+                                                        <img className='profil_photo' src={stalkyProfil} />
                                                     </div>
                                                 </div>
                                                 <p className='persoNom'>{animateur.nom}</p>

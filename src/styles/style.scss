@@ -23,16 +23,18 @@ button {
 
 .persoNom {
     font-family: 'VT323', 'Roboto', Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    margin: 10px 0;
 }
 
 .profil {
     position: relative;
-    width: 151px;
-    height: 143px;
+    width: 145px;
+    height: 139px;
     margin: auto;
 
     .profil_containerImg {
-        height: 100px;
+        height: 100%;
         width: inherit;
 
         .profileOpacity {
@@ -55,6 +57,10 @@ button {
             height: inherit;
             top: 26%;
             display: none;
+        }
+
+        .profil_photo {
+            width: 100%;
         }
     }
 }
@@ -150,9 +156,6 @@ button {
                 font-size: 20px;
                 margin: 10px 0;
                 padding: 10px 0;
-                border-style: solid;
-                border-color: transparent;
-                border-radius: 20px;
                 font-weight: bold;
             }
         }
@@ -168,14 +171,22 @@ button {
 
         .joueursEnfants_list {
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        
 
                 .enfantInfos {
+                    width: 130px;
                     background-color: white;
-                    padding: 20px;
+                    padding: 8px 22px 0 8px;
                     color: black;
                     text-align: center;
-                    margin: 10px 0;
+                    margin: 15px;
+
+                    p {
+                        margin: 10px 0;
+                    }
                 }
         }
     }
@@ -187,14 +198,21 @@ button {
 
         .animateurs_list {
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
 
                 .animateurInfos {
+                    width: 130px;
                     background-color: white;
-                    padding: 20px;
+                    padding: 8px 22px 0 8px;
                     color: black;
                     text-align: center;
-                    margin: 10px 0;
+                    margin: 15px;
+                    
+                    p {
+                        margin: 10px 0;
+                    }
                 }
         }
     }
@@ -445,16 +463,17 @@ nav {
 
         .listAnimateurChoisis {
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
+            align-items: center;
             justify-content: center;
 
             .animateurInfos {
-                padding: 20px;
+                padding: 8px 8px 0 8px;
                 color: #28226b;
                 text-align: center;
                 box-shadow: 0 2px 10px #0000003d;
                 margin-right: 27px;
-                margin-bottom: 20px;
+                margin-bottom: 10px;
             }
         }
     }
