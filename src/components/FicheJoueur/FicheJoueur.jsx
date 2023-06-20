@@ -1,24 +1,17 @@
 import { useState } from 'react';
 import React from 'react';
-<<<<<<< HEAD
 import coeurPleinSrc from '../../assets/img/coeur_plein.svg';
 import coeurVideSrc from '../../assets/img/coeur_vide.svg';
 
 
 export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, description, maudit, objectif, role, img, nomThematique, objectifImg, joueurApres }) {
 
-=======
-
-export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, description, maudit, objectif, role, img, nomThematique }) {
-
->>>>>>> 68bc020 ((feat:) gestion de la vie sur Fiche animateur en process)
     if (maudit === true) {
         maudit = "oui"
     } else {
         maudit = "non"
     }
 
-<<<<<<< HEAD
     // gestion du nombre de vie selon nbVie du joueurActuel avec une image now it works
     
     const genererCoeurs = (nbVies, coeur_plein, coeur_vide) => {
@@ -50,27 +43,6 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
         console.log("----------");
     }
     
-=======
-    nbVie = 5;
-
-    // gestion du nombre de vie selon nbVie du joueurActuel avec une image
-    const nbVieStocker = nbVie;
-    const [pv, setPv] = useState([]);
-    console.log("---- nbVieStocker avant ----");
-    console.log(nbVieStocker);
-    console.log(pv);
-    console.log("----------------------");
-    let pvTab = [];
-    const gestionVie = () => {
-        if(nbVie != nbVieStocker) {
-            nbVieStocker--;
-        }
-    }
-    gestionVie();
-    console.log("---- nbVieStocker après ----");
-    console.log(nbVieStocker);
-    console.log("----------------------");
->>>>>>> 68bc020 ((feat:) gestion de la vie sur Fiche animateur en process)
     return (
         <div id='ficheJoueur'>
             {role === 'animateur' && (
@@ -86,37 +58,24 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
                         <div className="actions__deplacement">
                             <div className="actions__row">
                                 <div className="row__image">
-<<<<<<< HEAD
                                     <img src={img} alt={"image de " + nom} />
-=======
-                                    <img src="" alt={"image de " + nom} />
->>>>>>> 68bc020 ((feat:) gestion de la vie sur Fiche animateur en process)
                                 </div>
                                 <p><strong>{nom}</strong> peut avancer de <strong>{nbDeplacements}</strong></p>
                             </div>
                             <div className="actions__row">
                                 <div className="row__image">
-<<<<<<< HEAD
                                     <img src={objectifImg} alt={"image de jeton " + nomThematique} />
-=======
-                                    <img src="" alt={"image de jeton " + nomThematique} />
->>>>>>> 68bc020 ((feat:) gestion de la vie sur Fiche animateur en process)
                                 </div>
                                 <p><strong>{nom}</strong> ramasse tous les jetons rouges <strong>"{nomThematique}"</strong> de la pièce.</p>
                             </div>
                             <div className="actions__row">
                                 <div className="row__image">
-<<<<<<< HEAD
                                     <img src={require("../../assets/img/dortoir.png")} alt="image du Dortoir" />
-=======
-                                    <img src="" alt="image du Dortoir" />
->>>>>>> 68bc020 ((feat:) gestion de la vie sur Fiche animateur en process)
                                 </div>
                                 <p>Si un enfant est présent dans la pièce où arrive {nom}. Il est renvoyé au Dortoir</p>
                             </div>
                         </div>
                     </div>
-<<<<<<< HEAD
                     <button className="actions__button" onClick={retirerPointDeVie(joueurApres)}>Renvoyez un enfant dans le dortoir</button>
                 </div>
             )}
@@ -159,47 +118,6 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
                         </div>
                     </div>
                 </div>
-=======
-                </div>
-            )}
-            {role === 'enfant' && (
-                <div id='ficheEnfant'>
-                <div className='tour-wrapper'>
-                    <div className="tour-wrapper__sub">
-                        <img src={img} alt={"image de profil de " + nom} />
-                        <div className='tour-wrapper__role'>
-                            <p className='role__sous-titre'>{role}</p>
-                            <p className='role__nom'>{nom}</p>
-                        </div>
-                    </div>
-                    <div className="tour-wrapper__pv">
-
-                    </div>
-                </div>
-                <div className="actions">
-                    <div className="actions__deplacement">
-                        <div className="actions__row">
-                            <div className="row__image">
-                                <img src="" alt={"image de " + nom} />
-                            </div>
-                            <p><strong>{nom}</strong> peut avancer de <strong>{nbDeplacements}</strong></p>
-                        </div>
-                        <div className="actions__row">
-                            <div className="row__image">
-                                <img src="" alt={"image de jeton " + nomThematique} />
-                            </div>
-                            <p><strong>{nom}</strong> ramasse tous les jetons rouges <strong>"{nomThematique}"</strong> de la pièce.</p>
-                        </div>
-                        <div className="actions__row">
-                            <div className="row__image">
-                                <img src="" alt="image du Dortoir" />
-                            </div>
-                            <p>Si un enfant est présent dans la pièce où arrive {nom}. Il est renvoyé au Dortoir</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
->>>>>>> 68bc020 ((feat:) gestion de la vie sur Fiche animateur en process)
             )}
         </div>
     )
