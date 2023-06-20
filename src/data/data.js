@@ -55,6 +55,7 @@ export const data = {
             animateurs: [{
                 nom: "Kenza",
                 pseudo: "La Fouineuse",
+                nomThematique: "addiction",
                 maudit: true,
                 deplacement: 3,
                 priorite: 10,
@@ -75,13 +76,11 @@ export const data = {
             nomThematique: "Cyber-harcèlement",
             questions: [{
                     titre: "Quels sont les effets du cyberharcèlement ?",
-                    choix: {
-                        multiple: [
+                    choix:  [
                             "Mentalement : on se sent touché, dans l’embarras, stupide ou même en colère",
                             "Emotionnellement : on a honte ou on a moins d’intérêt pour les choses que l’on apprécie",
                             "Physiquement : on est fatigué (perte de sommeil) ou on fait l’expérience de douleurs comme des maux de ventre ou de crâne",
-                        ],
-                    },
+                    ],
                     bonne_reponse: [0, 1, 2],
                     ressource: "https://www.unicef.fr/convention-droits-enfants/protection/maltraitances-infantiles/harcelement-et-violence-lecole/"
                 },
@@ -95,6 +94,7 @@ export const data = {
             animateurs: [{
                 nom: "Kevin",
                 pseudo: "Aninomous",
+                nomThematique: "cyber_harcelement",
                 maudit: true,
                 deplacement: 3,
                 priorite: 9,
@@ -129,6 +129,7 @@ export const data = {
             animateurs: [{
                 nom: "David",
                 pseudo: "Mr.Trollolol",
+                nomThematique: "securite",
                 maudit: true,
                 deplacement: 3,
                 priorite: 7,
@@ -163,6 +164,7 @@ export const data = {
             animateurs: [{
                 nom: "Yuki",
                 pseudo: "Hyperco",
+                nomThematique: "fake_news",
                 maudit: true,
                 deplacement: 4,
                 priorite: 8,

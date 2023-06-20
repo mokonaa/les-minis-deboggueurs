@@ -1,4 +1,3 @@
-import CloseIcon from "../../assets/img/close-icon.svg"
 import { useRef, useEffect } from 'react';
 
 export default function Modal({ setShowModal, children}) {
@@ -19,10 +18,10 @@ export default function Modal({ setShowModal, children}) {
         <>
             <div ref={overlay} onClick={hideModal} className="modal-overlay"></div>
             <div ref={modal} className="modal">
-                {children}
                 <div onClick={hideModal} className="close-icon">
-                    <img src={CloseIcon} alt="icône fermeture" />
+                    x
                 </div>
+                {children}
             </div>
         </>
     )

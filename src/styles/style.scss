@@ -1,38 +1,72 @@
+@import "theme.scss";
+
 
 body {
     margin: 0;
 }
 
-/*HOME*/
-.accueilBtns {
-    display: flex;
-    flex-direction: column;
+button {
+    cursor: pointer;
+}
+
+.buttonChoixPerso, .buttonConfirmer {
+    font-family: 'VT323', 'Roboto', Arial, Helvetica, sans-serif;
+    font-size: 20px;
     background-color: #28226b;
-    padding: 30px 10px;
+    color: white;
+    border-style: solid;
+    border-color: transparent;
+    border-radius: 20px;
+    font-weight: bold;
+    margin: 24px auto 10px auto;
+    display: block;
+    padding: 16px;
+    width: 90%;
+}
 
-    button {
-        width: 100%;
-        color: white;
-        border-style: solid;
-        border-color: transparent;
-        border-radius: 20px;
-        font-weight: bold;
-        margin: 10px 0;
-        padding: 20px 0;
+/*HOME*/
+#home {
+    background-color: #28226b;
+    height: 90vh;
+
+    img {
+        display: block;
+        margin: 0px auto;
+        padding-top: 55px;
     }
 
-    button:nth-child(1) {
-        background-color: #4fab78;
-    }
-
-    button:nth-child(2) {
-        background-color: #e375a3;
-    }
-
-    button:nth-child(3) {
-        background-color: #e06f4d;
+    .accueilBtns {
+        display: flex;
+        flex-direction: column;
+        padding: 30px 10px;
+    
+        button {
+            width: 100%;
+            color: white;
+            border-style: solid;
+            border-color: transparent;
+            border-radius: 20px;
+            font-weight: bold;
+            margin: 10px 0;
+            padding: 20px 0;
+            font-family: 'VT323', 'Roboto', Arial, Helvetica, sans-serif;
+            font-size: 25px;
+        }
+    
+        button:nth-child(1) {
+            background-color: #4fab78;
+        }
+    
+        button:nth-child(2) {
+            background-color: #e375a3;
+        }
+    
+        button:nth-child(3) {
+            background-color: #e06f4d;
+        }
     }
 }
+
 
 
 /*CONFIGURATION*/
@@ -40,21 +74,59 @@ body {
 #configurationContainer {
     color: white;
 
-    .buttonChoixPerso {
+    .ajoutBackgroundChoisi {
         background-color: #28226b;
-        color: white;
-        border-style: solid;
-        border-color: transparent;
-        border-radius: 20px;
-        font-weight: bold;
-        margin: 24px auto 0 auto;
-        display: block;
-        padding: 16px;
-        width: 90%;
     }
 
     .subTitle {
         text-align: center;
+        font-size: 26px;
+        font-family: 'VT323', 'Roboto', Arial, Helvetica, sans-serif;
+    }
+
+    .persoNom {
+        font-family: 'VT323', 'Roboto', Arial, Helvetica, sans-serif;
+        font-size: 30px;
+        color: #28226b;
+    }
+
+    .enfantInfos, .animateurInfos {
+        cursor: pointer;
+    }
+
+
+    .profil {
+        position: relative;
+        width: 151px;
+        height: 143px;
+        margin: auto;
+
+        .profil_containerImg {
+            height: 100px;
+            width: inherit;
+
+            .profileOpacity {
+                /*background-color: #28226b;*/
+                opacity: 0.7;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+
+                img {
+                    object-fit: cover;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .profileChecked {
+                position: absolute;
+                width: inherit;
+                height: inherit;
+                top: 26%;
+                display: none;
+            }
+        }
     }
 
     #choixNombreJoueur {
@@ -66,6 +138,8 @@ body {
             flex-direction: column;
 
             button {
+                font-family: "VT323", "Roboto", Arial, Helvetica, sans-serif;
+                font-size: 20px;
                 margin: 10px 0;
                 padding: 10px 0;
                 border-style: solid;
@@ -82,6 +156,8 @@ body {
         background-color: #28226b;
         padding: 30px 10px;
 
+    
+
         .joueursEnfants_list {
             display: flex;
             flex-direction: column;
@@ -91,9 +167,6 @@ body {
                     padding: 20px;
                     color: black;
                     text-align: center;
-                    border-style: solid;
-                    border-color: transparent;
-                    border-radius: 20px;
                     margin: 10px 0;
                 }
         }
@@ -113,9 +186,6 @@ body {
                     padding: 20px;
                     color: black;
                     text-align: center;
-                    border-style: solid;
-                    border-color: transparent;
-                    border-radius: 20px;
                     margin: 10px 0;
                 }
         }
@@ -129,6 +199,28 @@ body {
             display: block;
             margin: 40px auto;
         }
+
+        ul {
+            padding: 0;
+            li {
+                display: flex;
+                align-items: center;
+                list-style: none;
+                margin: 10px 0;
+
+                .etapeImg {
+                    color: black;
+                    display: flex;
+                    margin-right: 10px;
+                    justify-content: center;
+                    align-items: center;
+                    width: 33px;
+                    height: 33px;
+                    background-repeat: no-repeat;
+                    background-image: url(../assets/img/cube.svg);
+                }
+            }
+        }
     }
 }
 
@@ -139,7 +231,11 @@ body {
 
 /* NAVBAR */
 nav {
-    height: 70px;
+    height: 77px;
+
+    img {
+        margin: 16px 8px;
+    }
 }
 /* Burger */
 .bm-burger-button {
@@ -221,6 +317,8 @@ nav {
 
     .subTitle {
         text-align: center;
+        font-size: 26px;
+        font-family: 'VT323', 'Roboto', Arial, Helvetica, sans-serif;
     }
 
     #thematiques_list {
@@ -286,6 +384,9 @@ nav {
 
 .close-icon {
     width: fit-content;
+    background: #eceafd;
+    font-size: 33px;
+    padding: 12px 20px;
     margin: 50px auto 0;
     cursor: pointer;
 }
@@ -307,5 +408,74 @@ nav {
 
     to {
         transform: translateY(100%);
+    }
+}
+
+
+/*POP IN QUIZZ*/
+
+#panelActions {
+    .subTitle {
+        color: #28226b;
+        font-size: 30px;
+        text-align: center;
+        font-family: 'VT323', 'Roboto', Arial, Helvetica, sans-serif;
+
+    }
+
+    #choixAnimateur {
+        
+        .remarque {
+            background-color: #fae3ed;
+            color: #E275A3;
+            font-weight: bold;
+            padding: 20px;
+        }
+
+        .listAnimateurChoisis {
+            display: flex;
+            flex-direction: row;
+            .animateurInfos {
+                padding: 20px;
+                color: #28226b;
+                text-align: center;
+                box-shadow: 0 2px 10px #0000003d;
+                margin-right: 27px;
+            }
+        }
+    }
+
+    #questionQuizz {
+        .nomThematique {
+            color: #E06F4D;
+            background-color: #fbf2ed;
+            padding: 20px;
+        }
+
+        .nomThematique, .questionTitre, .listReponses, .resultsContainer .result, .resultsContainer .infos {
+            text-align: center;
+        }
+
+        .questionTitre, .listReponses, .resultsContainer .infos {
+            color: #28226b;
+        }
+
+        .listReponses p{
+            padding: 20px;
+            background-color: #eceafd;
+            margin: 10px 0;
+        }
+
+        .resultsContainer {
+   
+            .result {
+                color: #e06f4d;
+                font-weight: bold;
+            }
+
+            
+        }
+
+      
     }
 }
