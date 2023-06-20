@@ -1,6 +1,9 @@
 import { data } from '../../data/data';
 import { useState, useRef } from 'react';
 import de from '../../assets/img/de.svg';
+import stalkyProfil from '../../assets/img/perso-stalky.svg';
+import choisiIcon from '../../assets/img/persoValide.svg';
+import etape from '../../assets/img/cube.svg';
 
 export default function Configuration({joueursChoisis,setJoueursChoisis, animateursChoisis, setAnimateursChoisis,setAffichageSuiviComponent}) {
 
@@ -37,7 +40,9 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
         if (tabJoueursChoisis.length < (nbJoueursChoisi)) {
             //console.log(joueur);
             tabJoueursChoisis.push(joueur.enfant);
-            document.getElementById('joueur_'+joueur.enfant.nom).style.backgroundColor = '#e46444';
+            document.getElementById('profileOpacity_'+joueur.enfant.nom).classList.add('ajoutBackgroundChoisi');
+            document.getElementById('profileChecked_'+joueur.enfant.nom).style.display = 'block';
+
         }
         else {
             console.log('cannot add more players');
@@ -50,7 +55,13 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
     const choixAnimateur = (animateur) => {
         if (tabAnimateursChoisis.length < (nbJoueursChoisi)) {
             tabAnimateursChoisis.push(animateur.animateur);
-            document.getElementById('animateur_'+animateur.animateur.nom).style.backgroundColor = '#e46444';
+            //document.getElementById('animateur_'+animateur.animateur.nom).style.backgroundColor = '#e46444';
+
+            console.log(animateur);
+            console.log(document.getElementById('profileOpacity_'+animateur.animateur.nom));
+            document.getElementById('profileOpacity_'+animateur.animateur.nom).classList.add('ajoutBackgroundChoisi');
+            document.getElementById('profileChecked_'+animateur.animateur.nom).style.display = 'block';
+
         }
         else {
             console.log('cannot add more animateurs');
@@ -91,7 +102,19 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
                         <div>
                             <div id='joueursEnfants'>
                                     <p className='subTitle'>Quels joueurs jouent ?</p>
-                                    <div className='joueursEnfants_list'>{listJoueurs.map(enfant => <div className='enfantInfos' id= {'joueur_'+enfant.nom} onClick={() => choixJoueur({enfant})} >{enfant.nom}</div>)}</div>                            
+                                    <div className='joueursEnfants_list'>
+                                        {listJoueurs.map(enfant =>
+                                         <div className='enfantInfos' id= {'joueur_'+enfant.nom} onClick={() => choixJoueur({enfant})} >
+                                            <div className='profil'>
+                                                <div className='profil_containerImg'>
+                                                    <div className='profileOpacity' id={'profileOpacity_'+enfant.nom}></div>
+                                                    <div className='profileChecked' id={'profileChecked_'+enfant.nom}><img src={choisiIcon}/></div>
+                                                    <img src={stalkyProfil} />
+                                                </div>
+                                            </div>
+                                            <p className='persoNom'>{enfant.nom}</p>
+                                        </div>)}
+                                    </div>                            
                             </div>
                             <button className='buttonChoixPerso'  onClick={() => changerEtapeConfiguration(2)}>Continuer</button>
                     
@@ -103,7 +126,20 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
                     <>
                         <div id='animateurs'>
                                 <p className='subTitle'>Quels animateurs jouent ?</p>
-                                <div className='animateurs_list'>{listAnimateurs.map(animateur => <div className='animateurInfos' id= {'animateur_'+animateur.nom} onClick={() => choixAnimateur({animateur})} >{animateur.nom}</div>)}</div>
+                                <div className='animateurs_list'>
+                                         {listAnimateurs.map(animateur =>
+                                            <div className='animateurInfos' id= {'animateur_'+animateur.nom} onClick={() => choixAnimateur({animateur})} >
+                                                <div className='profil'>
+                                                    <div className='profil_containerImg'>
+                                                        <div className='profileOpacity' id={'profileOpacity_'+animateur.nom}></div>
+                                                        <div className='profileChecked' id={'profileChecked_'+animateur.nom}><img src={choisiIcon}/></div>
+                                                        <img src={stalkyProfil} />
+                                                    </div>
+                                                </div>
+                                                <p className='persoNom'>{animateur.nom}</p>
+                                            </div>
+                                         )}
+                                </div>
                         </div>
                         <button className='buttonChoixPerso'  onClick={() => changerEtapeConfiguration(3)}>Débuter la partie</button>
                     </>
@@ -117,8 +153,14 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
                         <p className='subTitle'>DÉBUT DU TOUR</p>
                         <img src={de} />
                         <ul>
-                            <li>1 - Lancez vos dés tous ensembles </li>
-                            <li>2 - Puis regroupez les dans la "réserve de dés"</li>
+                            <li>
+                                <div className='etapeImg'>1</div> 
+                                <p>Lancez vos dés tous ensembles</p>
+                            </li>
+                            <li>
+                                <div className='etapeImg'>2</div> 
+                                <p> Puis regroupez les dans la "réserve de dés"</p>
+                            </li>
                         </ul>
                     </div>
                     <button className='buttonChoixPerso' onClick={() => changeViewToAnimationComponent()} >Continuer</button>
@@ -128,3 +170,4 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
         </div>
     )
 }
+

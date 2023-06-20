@@ -1,53 +1,72 @@
+@import "theme.scss";
+
 
 body {
     margin: 0;
 }
 
+button {
+    cursor: pointer;
+}
 
 .buttonChoixPerso, .buttonConfirmer {
+    font-family: 'VT323', 'Roboto', Arial, Helvetica, sans-serif;
+    font-size: 20px;
     background-color: #28226b;
     color: white;
     border-style: solid;
     border-color: transparent;
     border-radius: 20px;
     font-weight: bold;
-    margin: 24px auto 0 auto;
+    margin: 24px auto 10px auto;
     display: block;
     padding: 16px;
     width: 90%;
-    cursor: pointer;
 }
 
 /*HOME*/
-.accueilBtns {
-    display: flex;
-    flex-direction: column;
+#home {
     background-color: #28226b;
-    padding: 30px 10px;
+    height: 90vh;
 
-    button {
-        width: 100%;
-        color: white;
-        border-style: solid;
-        border-color: transparent;
-        border-radius: 20px;
-        font-weight: bold;
-        margin: 10px 0;
-        padding: 20px 0;
+    img {
+        display: block;
+        margin: 0px auto;
+        padding-top: 55px;
     }
 
-    button:nth-child(1) {
-        background-color: #4fab78;
-    }
-
-    button:nth-child(2) {
-        background-color: #e375a3;
-    }
-
-    button:nth-child(3) {
-        background-color: #e06f4d;
+    .accueilBtns {
+        display: flex;
+        flex-direction: column;
+        padding: 30px 10px;
+    
+        button {
+            width: 100%;
+            color: white;
+            border-style: solid;
+            border-color: transparent;
+            border-radius: 20px;
+            font-weight: bold;
+            margin: 10px 0;
+            padding: 20px 0;
+            font-family: 'VT323', 'Roboto', Arial, Helvetica, sans-serif;
+            font-size: 25px;
+        }
+    
+        button:nth-child(1) {
+            background-color: #4fab78;
+        }
+    
+        button:nth-child(2) {
+            background-color: #e375a3;
+        }
+    
+        button:nth-child(3) {
+            background-color: #e06f4d;
+        }
     }
 }
+
 
 
 /*CONFIGURATION*/
@@ -55,8 +74,59 @@ body {
 #configurationContainer {
     color: white;
 
+    .ajoutBackgroundChoisi {
+        background-color: #28226b;
+    }
+
     .subTitle {
         text-align: center;
+        font-size: 26px;
+        font-family: 'VT323', 'Roboto', Arial, Helvetica, sans-serif;
+    }
+
+    .persoNom {
+        font-family: 'VT323', 'Roboto', Arial, Helvetica, sans-serif;
+        font-size: 30px;
+        color: #28226b;
+    }
+
+    .enfantInfos, .animateurInfos {
+        cursor: pointer;
+    }
+
+
+    .profil {
+        position: relative;
+        width: 151px;
+        height: 143px;
+        margin: auto;
+
+        .profil_containerImg {
+            height: 100px;
+            width: inherit;
+
+            .profileOpacity {
+                /*background-color: #28226b;*/
+                opacity: 0.7;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+
+                img {
+                    object-fit: cover;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .profileChecked {
+                position: absolute;
+                width: inherit;
+                height: inherit;
+                top: 26%;
+                display: none;
+            }
+        }
     }
 
     #choixNombreJoueur {
@@ -68,6 +138,8 @@ body {
             flex-direction: column;
 
             button {
+                font-family: "VT323", "Roboto", Arial, Helvetica, sans-serif;
+                font-size: 20px;
                 margin: 10px 0;
                 padding: 10px 0;
                 border-style: solid;
@@ -84,6 +156,8 @@ body {
         background-color: #28226b;
         padding: 30px 10px;
 
+    
+
         .joueursEnfants_list {
             display: flex;
             flex-direction: column;
@@ -93,9 +167,6 @@ body {
                     padding: 20px;
                     color: black;
                     text-align: center;
-                    border-style: solid;
-                    border-color: transparent;
-                    border-radius: 20px;
                     margin: 10px 0;
                 }
         }
@@ -115,9 +186,6 @@ body {
                     padding: 20px;
                     color: black;
                     text-align: center;
-                    border-style: solid;
-                    border-color: transparent;
-                    border-radius: 20px;
                     margin: 10px 0;
                 }
         }
@@ -131,6 +199,28 @@ body {
             display: block;
             margin: 40px auto;
         }
+
+        ul {
+            padding: 0;
+            li {
+                display: flex;
+                align-items: center;
+                list-style: none;
+                margin: 10px 0;
+
+                .etapeImg {
+                    color: black;
+                    display: flex;
+                    margin-right: 10px;
+                    justify-content: center;
+                    align-items: center;
+                    width: 33px;
+                    height: 33px;
+                    background-repeat: no-repeat;
+                    background-image: url(../assets/img/cube.svg);
+                }
+            }
+        }
     }
 }
 
@@ -141,7 +231,11 @@ body {
 
 /* NAVBAR */
 nav {
-    height: 70px;
+    height: 77px;
+
+    img {
+        margin: 16px 8px;
+    }
 }
 /* Burger */
 .bm-burger-button {
@@ -223,6 +317,8 @@ nav {
 
     .subTitle {
         text-align: center;
+        font-size: 26px;
+        font-family: 'VT323', 'Roboto', Arial, Helvetica, sans-serif;
     }
 
     #thematiques_list {
@@ -323,6 +419,8 @@ nav {
         color: #28226b;
         font-size: 30px;
         text-align: center;
+        font-family: 'VT323', 'Roboto', Arial, Helvetica, sans-serif;
+
     }
 
     #choixAnimateur {
