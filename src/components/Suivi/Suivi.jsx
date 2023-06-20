@@ -54,15 +54,7 @@ export default function Suivi({ joueursChoisis, animateursChoisis }) { // param 
     const [nbManches, setNbManches] = useState(1);
     const nbManchesMax = 10;
     const [nbTours, setNbTours] = useState(nbDeJoueurs * 2);
-    const [nbTourActuel, setNbTourActuel] = useState(1);
-    
-
-    // Faire une phase "choisir l'ordre des enfants" qu'à partir du 2e tour de la 1e manche
-    const phaseOrdre = () => {
-        if (nbTourActuel === 2 && nbManches === 1) {
-            selectionnerOrdreJoueursEnfant();
-        }
-    };
+    const [nbTourActuel, setNbTourActuel] = useState(0);
 
     const deplacerJoueur = (index, nouvelIndex) => {
         const joueursEnfantCopies = [...enfantsChoisis];
@@ -122,13 +114,12 @@ export default function Suivi({ joueursChoisis, animateursChoisis }) { // param 
     };
 
 
-    const joueurActuel = nbTourActuel > 2 ? ordreFinal[nbTourActuel - 1] : animateursChoisis[0];
+    const joueurActuel = nbTourActuel > 1 ? ordreFinal[nbTourActuel - 1] : animateursChoisis[0];
     // État pour stocker l'ordre des joueurs "enfant"
     const [ordreJoueursEnfant, setOrdreJoueursEnfant] = useState([]);
 
 
     const thematiques = data.thematique;
-    console.log(joueurActuel.nom);
     const nomDuJoueurActuel = joueurActuel.nom ? joueurActuel.nom : animateursChoisis[0].nom;
     const [thematiqueActuel, setThematiqueActuel] = useState('');
 
@@ -178,7 +169,10 @@ export default function Suivi({ joueursChoisis, animateursChoisis }) { // param 
         setOrdreJoueursEnfant(enfantsChoisis);
         setOrdreFinal(genererOrdreJoueurs(enfantsChoisis, animateursTries));
         setSelection(false);
+        setNbTourActuel(nbTourActuel + 1);
     };
+
+
 
     useEffect(() => {
         // console.log(joueursChoisis);
@@ -192,75 +186,42 @@ export default function Suivi({ joueursChoisis, animateursChoisis }) { // param 
         <>
             <div>
                 <h3>{nbManches}e Manche - {nbTourActuel}e Tour - role actuel : {roleActuel}</h3>
-                {nbTourActuel === 1 &&
+                {nbTourActuel === 0 && afficherSelection &&
                     <div>
-                        <FicheJoueur nbDeplacements={joueurActuel.deplacement} pouvoir={joueurActuel.pouvoir} nom={joueurActuel.nom} nbVie={5 - joueurActuel.objectifs.enfants.points} description={joueurActuel.description} maudit={joueurActuel.maudit} objectif={joueurActuel.objectifs.animateurs.points} role={roleActuel} img={joueurActuel.img} nomThematique={thematiqueActuel}/>
-                        <PanelAction animateurs={animateursTries} />
+                        <h2>l'ordre des enfants</h2>
+                        <ul>
+                            {enfantsChoisis.map((enfant, index) => (
+                                <li key={enfant.id}>
+                                    {enfant.nom}
+                                    <button onClick={() => deplacerJoueur(index, index - 1)}>▲</button>
+                                    <button onClick={() => deplacerJoueur(index, index + 1)}>▼</button>
+                                </li>
+                            ))}
+                        </ul>
+                        <button onClick={validerOrdre}>Valider l'ordre</button>
                     </div>
-                }
-                {nbTourActuel === 2 ?
+                } 
+                {!afficherSelection &&  (
                     <div>
-                        {nbTourActuel === 2 && nbManches === 1 && afficherSelection && (
-                            <div>
-                                <h2>l'ordre des enfants</h2>
-                                <ul>
-                                    {enfantsChoisis.map((enfant, index) => (
-                                        <li key={enfant.id}>
-                                            {enfant.nom}
-                                            <button onClick={() => deplacerJoueur(index, index - 1)}>▲</button>
-                                            <button onClick={() => deplacerJoueur(index, index + 1)}>▼</button>
-                                        </li>
-                                    ))}
-                                </ul>
-                                <button onClick={validerOrdre}>Valider l'ordre</button>
-                            </div>
-                        )}
-
-                        {!afficherSelection && nbTourActuel > 0 && (
-                            <div>
-                                {roleActuel === 'enfant' ?
-                                    <>
-                                        <FicheJoueur nbDeplacements={joueurActuel.deplacement} pouvoir={joueurActuel.pouvoir} nom={joueurActuel.nom} nbVie={joueurActuel.pv} description={joueurActuel.description} nomThematique={thematiqueActuel} maudit={""} objectif={""} role={roleActuel} img={joueurActuel.img} />
-                                        <PanelAction animateurs={animateursTries} />
-                                    </>
-                                    :
-                                    roleActuel === 'animateur' && (
-                                        <>
-                                            <FicheJoueur nbDeplacements={joueurActuel.deplacement} pouvoir="" nom={joueurActuel.nom}
-                                                nbVie={joueurActuel.objectifs.animateurs.points ? 0 : 5 - joueurActuel.objectifs.animateurs.points}
-                                                description={joueurActuel.description} maudit={joueurActuel.maudit}
-                                                objectif={joueurActuel.objectifs.enfants.points ? joueurActuel.objectifs.enfants.points : 0} role={roleActuel} img={joueurActuel.img} nomThematique={thematiqueActuel}/>
-                                            <PanelAction animateurs={animateursTries} />
-                                        </>
-                                    )
-                                }
-                                <button onClick={gestionNbTours}>Passer au prochain tour</button>
-                            </div>
-                        )}
-                    </div>
-                    :
-                    <div>
-                        {nbTourActuel >= 3 && (
-                            roleActuel === 'enfant' ?
+                        {roleActuel === 'enfant' ?
+                            <>
+                                <FicheJoueur nbDeplacements={joueurActuel.deplacement} pouvoir={joueurActuel.pouvoir} nom={joueurActuel.nom} nbVie={joueurActuel.pv} description={joueurActuel.description} nomThematique={thematiqueActuel} maudit={""} objectif={""} role={roleActuel} img={joueurActuel.image} />
+                                <PanelAction animateurs={animateursTries} />
+                            </>
+                            :
+                            roleActuel === 'animateur' && (
                                 <>
-                                    <FicheJoueur nbDeplacements={joueurActuel.deplacement} pouvoir={joueurActuel.pouvoir} nom={joueurActuel.nom} nbVie={joueurActuel.pv} description={joueurActuel.description} maudit={""} objectif={""} role={roleActuel} img={joueurActuel.img} nomThematique={thematiqueActuel} />
+                                    <FicheJoueur nbDeplacements={joueurActuel.deplacement} pouvoir="" nom={joueurActuel.nom}
+                                        nbVie={joueurActuel.objectifs.animateurs.points ? 0 : 5 - joueurActuel.objectifs.animateurs.points}
+                                        description={joueurActuel.description} maudit={joueurActuel.maudit}
+                                        objectif={joueurActuel.objectifs.enfants.points ? joueurActuel.objectifs.enfants.points : 0} role={roleActuel} img={joueurActuel.image} nomThematique={thematiqueActuel} objectifImg={joueurActuel.objectifs.animateurs.img} joueurApres={ordreFinal[nbTourActuel]}/>
                                     <PanelAction animateurs={animateursTries} />
                                 </>
-                                :
-                                roleActuel === 'animateur' && (
-                                    <>
-                                        <FicheJoueur nbDeplacements={joueurActuel.deplacement} pouvoir="" nom={joueurActuel.nom}
-                                            nbVie={joueurActuel.objectifs.animateurs.points ? 0 : 5 - joueurActuel.objectifs.animateurs.points}
-                                            description={joueurActuel.description} maudit={joueurActuel.maudit}
-                                            objectif={joueurActuel.objectifs.enfants.points ? joueurActuel.objectifs.enfants.points : 0} role={roleActuel} img={joueurActuel.img} nomThematique={thematiqueActuel} />
-                                        <PanelAction animateurs={animateursTries} />
-                                    </>
-                                )
-                        )}
+                            )
+                        }
                         <button onClick={gestionNbTours}>Passer au prochain tour</button>
                     </div>
-                }
-
+                )}
             </div>
 
         </>

@@ -7,7 +7,7 @@ export const data = {
             nom: "Gaby",
             description: "Gaby est très maline ! Studieuse et sérieuse, ses parents l'ont envoyé à l'internat car elle commençait à se laisser distraire par les séries disponibles sur les différents plateformes de vidéo à la demande",
             deplacement: 3,
-            image: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2F0fGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
+            image: require("../assets/img/Gaby.png"),
             pv: 2,
             pouvoir: "Elle peut relancer un dé qui est dans la zone Réserve de Dé ! Mais ne peut pas l'utiliser.",
         },
@@ -15,7 +15,7 @@ export const data = {
             nom: "Ambre",
             description: "Ambre est très sportive, jolie mais très égocentrique. Elle diffusait à un peu trop gagner en confiance selon ses parents. Elle diffusait des photos d’elle et de ses résultats sportifs en permanence sur les réseaux sociaux !",
             deplacement: 3,
-            image: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2F0fGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
+            image: require("../assets/img/Ambre.png"),
             pv: 3,
             pouvoir: "",
         },
@@ -23,7 +23,7 @@ export const data = {
             nom: "Paul",
             description: "Paul est timide, discret, voire renfermé, il passe son temps à jouer aux jeux vidéo et à streamer... Ses parents souhaitent qu’il découvre le monde réel et qu’il se fasse de vrais amis.",
             deplacement: 3,
-            image: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2F0fGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
+            image: require("../assets/img/Paul.png"),
             pv: 2,
             pouvoir: "Il peut relancer un dé qui est dans la zone Réserve de Dé ! Mais ne peut pas l'utiliser.",
         },
@@ -31,7 +31,7 @@ export const data = {
             nom: "Ethan",
             description: "Ethan se la pète, il a tout fait, il a tout vu et s’en vante sur les réseaux sociaux et en live sur sa chaine youtube. Il a également tout acheté et tout testé... bref, ses parents veulent lui faire prendre conscience qu’il vaut mieux que ça.",
             deplacement: 4,
-            image: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2F0fGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
+            image: require("../assets/img/Ethan.png"),
             pv: 2,
             pouvoir: "",
         }
@@ -60,15 +60,14 @@ export const data = {
                 priorite: 10,
                 objectifs: {
                     animateurs: {
-                        img: "https://i.ibb.co/Jt7N2wQ/Capture-d-e-cran-2023-06-15-a-14-14-13.png",
+                        img: require("../assets/img/jeton_cyberharcelement.png"),
                         points: 0,
                     },
                     enfants: {
-                        img: "https://i.ibb.co/Jt7N2wQ/Capture-d-e-cran-2023-06-15-a-14-14-13.png",
                         points: 0,
                     }
                 },
-                image: "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2F0fGVufDB8fDB8fHww&auto=format&fit=crop&w=1400&q=60"
+                image: require("../assets/img/La_Fouineuse.png"),
             }]
         },
         cyber_harcelement: { 
@@ -100,15 +99,14 @@ export const data = {
                 priorite: 9,
                 objectifs: {
                     animateurs: {
-                        img: "https://i.ibb.co/Jt7N2wQ/Capture-d-e-cran-2023-06-15-a-14-14-13.png",
+                        img: require("../assets/img/jeton_cyberharcelement.png"),
                         points: 0,
                     },
                     enfants: {
-                        img: "https://i.ibb.co/Jt7N2wQ/Capture-d-e-cran-2023-06-15-a-14-14-13.png",
                         points: 0,
                     }
                 },
-                image: "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2F0fGVufDB8fDB8fHww&auto=format&fit=crop&w=1400&q=60"
+                image: require("../assets/img/Aninomous.png")
             }]
         },
         securite: {
@@ -134,15 +132,15 @@ export const data = {
                 priorite: 7,
                 objectifs: {
                     animateurs: {
-                        img: "https://i.ibb.co/Jt7N2wQ/Capture-d-e-cran-2023-06-15-a-14-14-13.png",
+                    img: require("../assets/img/jeton_cyberharcelement.png"),
                         points: 0,
                     },
                     enfants: {
-                        img: "https://i.ibb.co/Jt7N2wQ/Capture-d-e-cran-2023-06-15-a-14-14-13.png",
                         points: 0,
                     }
                 },
-                image: "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2F0fGVufDB8fDB8fHww&auto=format&fit=crop&w=1400&q=60"
+                image: require("../assets/img/Mr_Trollolol.png")
+
             }]
         },
         fake_news: {
@@ -168,15 +166,14 @@ export const data = {
                 priorite: 8,
                 objectifs: {
                     animateurs: {
-                        img: "https://i.ibb.co/Jt7N2wQ/Capture-d-e-cran-2023-06-15-a-14-14-13.png",
+                        img: require("../assets/img/jeton_cyberharcelement.png"),
                         points: 0,
                     },
                     enfants: {
-                        img: "https://i.ibb.co/Jt7N2wQ/Capture-d-e-cran-2023-06-15-a-14-14-13.png",
                         points: 0,
                     }
                 },
-                image: "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2F0fGVufDB8fDB8fHww&auto=format&fit=crop&w=1400&q=60"
+                image: require("../assets/img/Hyperco.png")
             }]
         }
     }
