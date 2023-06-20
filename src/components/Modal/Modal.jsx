@@ -1,4 +1,3 @@
-import CloseIcon from "../../assets/img/close-icon.svg"
 import { useRef, useEffect } from 'react';
 
 export default function Modal({ setShowModal, children}) {
