@@ -60,7 +60,10 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
     }
 
     const changerEtapeConfiguration = (etape) => {
-      setEtapesConfiguration(etape);
+        
+        if (((etape-1) === 1 && tabJoueursChoisis.length === (nbJoueursChoisi)) || ((etape-1) === 2 && tabAnimateursChoisis.length === (nbJoueursChoisi)) ) {
+            setEtapesConfiguration(etape);
+        }
     }
 
     const changeViewToAnimationComponent = () => {
