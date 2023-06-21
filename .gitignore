@@ -25,5 +25,6 @@ sketch
 *.css.map
 *.sass.map
 *.scss.map
+*.js.map
 
 # End of https://www.toptal.com/developers/gitignore/api/react,sass
