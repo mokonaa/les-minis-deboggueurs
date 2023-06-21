@@ -6,11 +6,12 @@ import coeurVideSrc from '../../assets/img/coeur_vide.svg';
 import Modal from '../Modal/Modal';
 
 
-export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, description, maudit, objectif, role, img, nomThematique, objectifImg, enfantsTab }) {
+export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, description, maudit, objectif, role, img, nomThematique, objectifImg, enfantsTab, enfantActuel, nbVieMax }) {
 
 
     const [showPopInEnfants, setShowPopInEnfants] = useState(false);
     const enfantPrevRef = useRef(null);
+    enfantActuel= "";
 
     const displayPopIn = () => {
         console.log('Display Pop In Animateurs');
@@ -74,25 +75,23 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
 
             setTimeout(() => {
                 setShowPopInEnfants(false);
-            }, 3500);
+            }, 1500);
             setMessage(message);
         }
     }
 
 
-    const genererCoeurs = (unEnfant, coeur_plein, coeur_vide) => {
-
+    const genererCoeurs = (pv, pvMax, coeur_plein, coeur_vide) => {
+        
         // faire une copie de tous les enfants
         const coeursTab = [];
 
-        for (let i = 0; i < unEnfant.pvMax; i++) {
+        for (let i = 0; i < pvMax; i++) {
             coeursTab.push(coeur_plein);
         }
-        if(unEnfant.pv <= unEnfant.pvMax) {
+        if(pv <= pvMax) {
             console.log("on rentre bien");
-            const pointsARetirer = unEnfant.pvMax - unEnfant.pv;
-            console.log(coeursTab);
-            console.log(pointsARetirer);
+            const pointsARetirer = pvMax - pv;
 
             for (let j = 0; j < pointsARetirer; j++) {
                 // retirer un cœur plein
@@ -126,7 +125,7 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
                             {enfantsTab.map((enfant, i) =>
                                 <div key={i} id={'enfantChoisis' + enfant.nom} onClick={() => choixEnfant(enfant)}>
                                     <p>{enfant.nom}</p>
-                                    {genererCoeurs(enfant, coeurPleinSrc, coeurVideSrc).map((image, index) => (
+                                    {genererCoeurs(enfant.pv, enfant.pvMax, coeurPleinSrc, coeurVideSrc).map((image, index) => (
                                         <img key={index} src={image} alt="coeur" />
                                     ))}
                                 </div>
@@ -135,7 +134,7 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
                                 enfantsPunis.map((enfant, i) =>
                                     <div key={i} id={'enfantChoisis' + enfant.nom}>
                                         <p>{enfant.nom} n'est plus jouable</p>
-                                        {genererCoeurs(enfant, coeurPleinSrc, coeurVideSrc).map((image, index) => (
+                                        {genererCoeurs(enfant.pv, enfant.pvMax, coeurPleinSrc, coeurVideSrc).map((image, index) => (
                                             <img key={index} src={image} alt="coeur" />
                                         ))}
                                     </div>
@@ -191,7 +190,7 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
                             </div>
                         </div>
                         <div className="tour-wrapper__pv">
-                            {genererCoeurs(nbVie, coeurPleinSrc, coeurVideSrc).map((image, index) => (
+                            {genererCoeurs(nbVie, nbVieMax, coeurPleinSrc, coeurVideSrc).map((image, index) => (
                                 <img key={index} src={image} alt="coeur" />
                             ))}
                         </div>

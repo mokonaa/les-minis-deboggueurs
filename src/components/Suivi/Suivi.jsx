@@ -166,7 +166,7 @@ export default function Suivi({ joueursChoisis, animateursChoisis }) { // param 
                     <div>
                         {roleActuel === 'enfant' ?
                             <>
-                                <FicheJoueur nbDeplacements={joueurActuel.deplacement} pouvoir={joueurActuel.pouvoir} nom={joueurActuel.nom} nbVie={joueurActuel.pv} description={joueurActuel.description} nomThematique={thematiqueActuel} maudit={""} objectif={""} role={roleActuel} img={joueurActuel.image} />
+                                <FicheJoueur nbDeplacements={joueurActuel.deplacement} pouvoir={joueurActuel.pouvoir} nom={joueurActuel.nom} nbVie={joueurActuel.pv} nbVieMax={joueurActuel.pvMax} description={joueurActuel.description} nomThematique={thematiqueActuel} maudit={""} objectif={""} role={roleActuel} img={joueurActuel.image} enfantActuel={joueurActuel}/>
                                 <PanelAction animateurs={animateursTries} thematiques={data.thematique} enfantsTab={ordreJoueursEnfant}/>
                             </>
                             :
@@ -175,7 +175,7 @@ export default function Suivi({ joueursChoisis, animateursChoisis }) { // param 
                                     <FicheJoueur nbDeplacements={joueurActuel.deplacement} pouvoir="" nom={joueurActuel.nom}
                                         nbVie={joueurActuel.objectifs.animateurs.points ? 0 : 5 - joueurActuel.objectifs.animateurs.points}
                                         description={joueurActuel.description} maudit={joueurActuel.maudit}
-                                        objectif={joueurActuel.objectifs.enfants.points ? joueurActuel.objectifs.enfants.points : 0} role={roleActuel} img={joueurActuel.image} nomThematique={thematiqueActuel} objectifImg={joueurActuel.objectifs.animateurs.img} enfantsTab={enfantsChoisis}/>
+                                        objectif={joueurActuel.objectifs.enfants.points ? joueurActuel.objectifs.enfants.points : 0} role={roleActuel} img={joueurActuel.image} nomThematique={thematiqueActuel} objectifImg={joueurActuel.objectifs.animateurs.img} enfantsTab={enfantsChoisis} enfantActuel=""/>
                                 </>
                             )
                         }
