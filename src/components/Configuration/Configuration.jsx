@@ -3,7 +3,6 @@ import { useState, useRef } from 'react';
 import de from '../../assets/img/de.svg';
 import stalkyProfil from '../../assets/img/perso-stalky.svg';
 import choisiIcon from '../../assets/img/persoValide.svg';
-import joueurIcon from '../../assets/img/player_icon.svg';
 
 export default function Configuration({joueursChoisis,setJoueursChoisis, animateursChoisis, setAnimateursChoisis,setAffichageSuiviComponent}) {
 
