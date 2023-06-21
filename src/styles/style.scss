@@ -9,6 +9,62 @@ button {
     cursor: pointer;
 }
 
+#choixNombreJoueur {
+    height: 88vh;
+}
+
+.enfantInfos, .animateurInfos {
+    cursor: pointer;
+}
+
+.ajoutBackgroundChoisi {
+    background-color: #28226b;
+}
+
+.persoNom {
+    font-family: 'VT323', 'Roboto', Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    margin: 10px 0;
+}
+
+.profil {
+    position: relative;
+    width: 145px;
+    height: 139px;
+    margin: auto;
+
+    .profil_containerImg {
+        height: 100%;
+        width: inherit;
+
+        .profileOpacity {
+            /*background-color: #28226b;*/
+            opacity: 0.7;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .profileChecked {
+            position: absolute;
+            width: inherit;
+            height: inherit;
+            top: 26%;
+            display: none;
+        }
+
+        .profil_photo {
+            width: 100%;
+        }
+    }
+}
+
 .buttonChoixPerso, .buttonConfirmer {
     font-family: 'VT323', 'Roboto', Arial, Helvetica, sans-serif;
     font-size: 20px;
@@ -74,10 +130,6 @@ button {
 #configurationContainer {
     color: white;
 
-    .ajoutBackgroundChoisi {
-        background-color: #28226b;
-    }
-
     .subTitle {
         text-align: center;
         font-size: 26px;
@@ -90,45 +142,7 @@ button {
         color: #28226b;
     }
 
-    .enfantInfos, .animateurInfos {
-        cursor: pointer;
-    }
-
-
-    .profil {
-        position: relative;
-        width: 151px;
-        height: 143px;
-        margin: auto;
-
-        .profil_containerImg {
-            height: 100px;
-            width: inherit;
-
-            .profileOpacity {
-                /*background-color: #28226b;*/
-                opacity: 0.7;
-                position: absolute;
-                width: 100%;
-                height: 100%;
-
-                img {
-                    object-fit: cover;
-                    width: 100%;
-                    height: 100%;
-                }
-            }
-
-            .profileChecked {
-                position: absolute;
-                width: inherit;
-                height: inherit;
-                top: 26%;
-                display: none;
-            }
-        }
-    }
-
+    
     #choixNombreJoueur {
         background-color: #28226b;
         padding: 30px 10px;
@@ -142,9 +156,6 @@ button {
                 font-size: 20px;
                 margin: 10px 0;
                 padding: 10px 0;
-                border-style: solid;
-                border-color: transparent;
-                border-radius: 20px;
                 font-weight: bold;
             }
         }
@@ -160,14 +171,22 @@ button {
 
         .joueursEnfants_list {
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        
 
                 .enfantInfos {
+                    width: 130px;
                     background-color: white;
-                    padding: 20px;
+                    padding: 8px 22px 0 8px;
                     color: black;
                     text-align: center;
-                    margin: 10px 0;
+                    margin: 15px;
+
+                    p {
+                        margin: 10px 0;
+                    }
                 }
         }
     }
@@ -179,14 +198,21 @@ button {
 
         .animateurs_list {
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
 
                 .animateurInfos {
+                    width: 130px;
                     background-color: white;
-                    padding: 20px;
+                    padding: 8px 22px 0 8px;
                     color: black;
                     text-align: center;
-                    margin: 10px 0;
+                    margin: 15px;
+                    
+                    p {
+                        margin: 10px 0;
+                    }
                 }
         }
     }
@@ -231,7 +257,7 @@ button {
 
 /* NAVBAR */
 nav {
-    height: 77px;
+    height: 12vh;
 
     img {
         margin: 16px 8px;
@@ -353,9 +379,10 @@ nav {
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: #ebebeb3e;
+    background-color: #442e6c;
     cursor: pointer;
     z-index: 1;
+    opacity:0.8;
 }
 
 .modal-overlay--hidden {
@@ -366,11 +393,10 @@ nav {
     position: fixed;
     bottom: 0;
     left: 0;
-    min-width: 700px;
+    min-width: 100%;
     width: 100%;
-    min-height: 300px;
-    height: 80%;
-    padding: 60px;
+    height: 70vh;
+    min-height: 70vh;
     background: #fff;
     border-radius: 70px 70px 0 0;
     overflow-y: auto;
@@ -417,35 +443,44 @@ nav {
 #panelActions {
     .subTitle {
         color: #28226b;
-        font-size: 30px;
+        margin: 20px 0;
+        font-size: 37px;
         text-align: center;
         font-family: 'VT323', 'Roboto', Arial, Helvetica, sans-serif;
 
     }
 
     #choixAnimateur {
+        padding: 2rem;
         
         .remarque {
             background-color: #fae3ed;
             color: #E275A3;
             font-weight: bold;
+            text-align: center;
             padding: 20px;
         }
 
         .listAnimateurChoisis {
             display: flex;
-            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+
             .animateurInfos {
-                padding: 20px;
+                padding: 8px 8px 0 8px;
                 color: #28226b;
                 text-align: center;
                 box-shadow: 0 2px 10px #0000003d;
                 margin-right: 27px;
+                margin-bottom: 10px;
             }
         }
     }
 
     #questionQuizz {
+        padding: 2rem;
+        
         .nomThematique {
             color: #E06F4D;
             background-color: #fbf2ed;

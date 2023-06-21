@@ -1,9 +1,10 @@
 import { useState } from "react";
 import Modal from "../Modal/Modal";
+import stalkyProfil from '../../assets/img/perso-stalky.svg';
+import choisiIcon from '../../assets/img/persoValide.svg';
 
 export default function PanelAction({animateurs,thematiques}) {
 
-    console.log(animateurs);
     const [showPopInQuestion,setShowPopInQuestion] = useState(false);
     const [animateursQuestionsInfos,setAnimateursQuestionsInfos] = useState([]);
     const [questionQuizz,setQuestionQuizz] = useState({});
@@ -12,9 +13,8 @@ export default function PanelAction({animateurs,thematiques}) {
     let tabReponseJoueurs = [];
 
     const displayPopIn = () => {
-        console.log('display pop in ');
         setShowPopInQuestion(true);
-        console.log(showPopInQuestion);
+        //console.log(showPopInQuestion);
     }
 
     const reinit = () => {
@@ -25,32 +25,31 @@ export default function PanelAction({animateurs,thematiques}) {
     }
 
     const displayQuestion = (nomThematique) => {
-        console.log(nomThematique);
-        console.log(thematiques);
-        console.log(thematiques[nomThematique]);
+
         setAnimateursQuestionsInfos(thematiques[nomThematique]);
         let randomNumber = Math.floor(Math.random() * (thematiques[nomThematique].questions.length - 0) + 0)
-        console.log(randomNumber);
-        console.log(thematiques[nomThematique].questions[randomNumber]);
         setQuestionQuizz(thematiques[nomThematique].questions[randomNumber]);
 
         let containersAnimateurs = document.getElementsByClassName('animateurInfos');
-        console.log(containersAnimateurs);
-        console.log(typeof containersAnimateurs);
-        //containersAnimateurs.map(animateurDiv => animateurDiv.style.background = 'red');
+        // retrait de l'icon checked partout
+        let containersprofileOpacity = document.getElementsByClassName('profileOpacity');
+        let containersprofileChecked = document.getElementsByClassName('profileChecked');
+        for (let k = 0; k<containersprofileOpacity.length; k++) {
+            containersprofileOpacity[k].classList.remove('ajoutBackgroundChoisi');
+            containersprofileChecked[k].style.display = 'none';
+        }
+
         for (let i=0; i<containersAnimateurs.length; i++) {
-            console.log(containersAnimateurs[i]);
+            //console.log(containersAnimateurs[i]);
             containersAnimateurs[i].style.background = "white";
             containersAnimateurs[i].style.color = "black";
 
-            console.log(containersAnimateurs[i].id);
+            //console.log(containersAnimateurs[i].id);
             if (containersAnimateurs[i].id == "animateur_"+nomThematique) {
-                containersAnimateurs[i].style.background = "#433162";
-                containersAnimateurs[i].style.color = "white";
+                document.getElementById('profileOpacity_'+nomThematique).classList.add('ajoutBackgroundChoisi');
+                document.getElementById('profileChecked_'+nomThematique).style.display = 'block';
             }
         }
-
-
     }
 
     const ajoutReponse = (index) => {
@@ -67,8 +66,8 @@ export default function PanelAction({animateurs,thematiques}) {
 
     const verifieReponse = () => {
  
-        console.log(tabReponseJoueurs);
-        console.log(questionQuizz);
+        //console.log(tabReponseJoueurs);
+        //console.log(questionQuizz);
         if (!Array.isArray(questionQuizz.bonne_reponse)) { // unique bonne réponse
             if (tabReponseJoueurs.length == 1 &&  questionQuizz.bonne_reponse == tabReponseJoueurs[0]) { // cocher qu"une case et c'est la bonne réponse
                 setBonneReponse(1);
@@ -138,7 +137,18 @@ export default function PanelAction({animateurs,thematiques}) {
                             <p className="remarque">À noter que la question quizz n’est disponible que lors de la récupération d‘un point </p>
 
                             <div className="listAnimateurChoisis">
-                                {animateurs.map(animateur => <div id={"animateur_"+animateur.nomThematique} className="animateurInfos" onClick={() => displayQuestion(animateur.nomThematique)}>{animateur.nom}</div>)}
+                                {animateurs.map(animateur =>
+                                        <div className='animateurInfos' id= {'animateur_'+animateur.nomThematique} onClick={() => displayQuestion(animateur.nomThematique)} >
+                                            <div className='profil'>
+                                                <div className='profil_containerImg'>
+                                                    <div className='profileOpacity' id={'profileOpacity_'+animateur.nomThematique}></div>
+                                                    <div className='profileChecked' id={'profileChecked_'+animateur.nomThematique}><img src={choisiIcon}/></div>
+                                                    <img className='profil_photo' src={stalkyProfil} />
+                                                </div>
+                                            </div>
+                                            <p className='persoNom'>{animateur.nom}</p>
+                                        </div>
+                                )}
                             </div>
 
                             <button className="buttonConfirmer"  onClick={() => questionQuizz.choix !== undefined ? setDisplayQuestionView(true) : console.log('nothing to display')}>Super !</button>

@@ -1,9 +1,104 @@
+@font-face {
+  font-family: "VT323";
+  src: url("../assets/fonts/VT323-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
   margin: 0;
 }
 
+button {
+  cursor: pointer;
+}
+
+#choixNombreJoueur {
+  height: 88vh;
+}
+
+.enfantInfos, .animateurInfos {
+  cursor: pointer;
+}
+
+.ajoutBackgroundChoisi {
+  background-color: #28226b;
+}
+
+.persoNom {
+  font-family: 'VT323', 'Roboto', Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  margin: 10px 0;
+}
+
+.profil {
+  position: relative;
+  width: 145px;
+  height: 139px;
+  margin: auto;
+}
+
+.profil .profil_containerImg {
+  height: 100%;
+  width: inherit;
+}
+
+.profil .profil_containerImg .profileOpacity {
+  /*background-color: #28226b;*/
+  opacity: 0.7;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.profil .profil_containerImg .profileOpacity img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.profil .profil_containerImg .profileChecked {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  top: 26%;
+  display: none;
+}
+
+.profil .profil_containerImg .profil_photo {
+  width: 100%;
+}
+
+.buttonChoixPerso, .buttonConfirmer {
+  font-family: 'VT323', 'Roboto', Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  background-color: #28226b;
+  color: white;
+  border-style: solid;
+  border-color: transparent;
+  border-radius: 20px;
+  font-weight: bold;
+  margin: 24px auto 10px auto;
+  display: block;
+  padding: 16px;
+  width: 90%;
+}
+
 /*HOME*/
-.accueilBtns {
+#home {
+  background-color: #28226b;
+  height: 90vh;
+}
+
+#home img {
+  display: block;
+  margin: 0px auto;
+  padding-top: 55px;
+}
+
+#home .accueilBtns {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -11,11 +106,10 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background-color: #28226b;
   padding: 30px 10px;
 }
 
-.accueilBtns button {
+#home .accueilBtns button {
   width: 100%;
   color: white;
   border-style: solid;
@@ -24,17 +118,19 @@ body {
   font-weight: bold;
   margin: 10px 0;
   padding: 20px 0;
+  font-family: 'VT323', 'Roboto', Arial, Helvetica, sans-serif;
+  font-size: 25px;
 }
 
-.accueilBtns button:nth-child(1) {
+#home .accueilBtns button:nth-child(1) {
   background-color: #4fab78;
 }
 
-.accueilBtns button:nth-child(2) {
+#home .accueilBtns button:nth-child(2) {
   background-color: #e375a3;
 }
 
-.accueilBtns button:nth-child(3) {
+#home .accueilBtns button:nth-child(3) {
   background-color: #e06f4d;
 }
 
@@ -43,20 +139,16 @@ body {
   color: white;
 }
 
-#configurationContainer .buttonChoixPerso {
-  background-color: #28226b;
-  color: white;
-  border-style: solid;
-  border-color: transparent;
-  border-radius: 20px;
-  font-weight: bold;
-  margin: 20px auto;
-  padding: 16px;
-  width: 90%;
-}
-
 #configurationContainer .subTitle {
   text-align: center;
+  font-size: 26px;
+  font-family: 'VT323', 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+#configurationContainer .persoNom {
+  font-family: 'VT323', 'Roboto', Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  color: #28226b;
 }
 
 #configurationContainer #choixNombreJoueur {
@@ -75,11 +167,10 @@ body {
 }
 
 #configurationContainer #choixNombreJoueur div button {
+  font-family: "VT323", "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 20px;
   margin: 10px 0;
   padding: 10px 0;
-  border-style: solid;
-  border-color: transparent;
-  border-radius: 20px;
   font-weight: bold;
 }
 
@@ -92,20 +183,26 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 #configurationContainer #joueursEnfants .joueursEnfants_list .enfantInfos {
+  width: 130px;
   background-color: white;
-  padding: 20px;
+  padding: 8px 22px 0 8px;
   color: black;
   text-align: center;
-  border-style: solid;
-  border-color: transparent;
-  border-radius: 20px;
+  margin: 15px;
+}
+
+#configurationContainer #joueursEnfants .joueursEnfants_list .enfantInfos p {
   margin: 10px 0;
 }
 
@@ -118,20 +215,26 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 #configurationContainer #animateurs .animateurs_list .animateurInfos {
+  width: 130px;
   background-color: white;
-  padding: 20px;
+  padding: 8px 22px 0 8px;
   color: black;
   text-align: center;
-  border-style: solid;
-  border-color: transparent;
-  border-radius: 20px;
+  margin: 15px;
+}
+
+#configurationContainer #animateurs .animateurs_list .animateurInfos p {
   margin: 10px 0;
 }
 
@@ -140,9 +243,51 @@ body {
   padding: 30px 10px;
 }
 
+#configurationContainer #installationPlateau img {
+  display: block;
+  margin: 40px auto;
+}
+
+#configurationContainer #installationPlateau ul {
+  padding: 0;
+}
+
+#configurationContainer #installationPlateau ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  list-style: none;
+  margin: 10px 0;
+}
+
+#configurationContainer #installationPlateau ul li .etapeImg {
+  color: black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-right: 10px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 33px;
+  height: 33px;
+  background-repeat: no-repeat;
+  background-image: url(../assets/img/cube.svg);
+}
+
 /* NAVBAR */
 nav {
-  height: 70px;
+  height: 12vh;
+}
+
+nav img {
+  margin: 16px 8px;
 }
 
 /* Burger */
@@ -234,6 +379,8 @@ nav {
 
 #thematiques .subTitle {
   text-align: center;
+  font-size: 26px;
+  font-family: 'VT323', 'Roboto', Arial, Helvetica, sans-serif;
 }
 
 #thematiques #thematiques_list {
@@ -255,5 +402,172 @@ nav {
   border-color: transparent;
   border-radius: 20px;
   margin: 10px 0;
+}
+
+/*MODAL*/
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #442e6c;
+  cursor: pointer;
+  z-index: 1;
+  opacity: 0.8;
+}
+
+.modal-overlay--hidden {
+  background-color: transparent;
+}
+
+.modal {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  min-width: 100%;
+  width: 100%;
+  height: 70vh;
+  min-height: 70vh;
+  background: #fff;
+  border-radius: 70px 70px 0 0;
+  overflow-y: auto;
+  z-index: 2;
+  -webkit-animation: showModal 0.5s forwards;
+          animation: showModal 0.5s forwards;
+}
+
+.modal--hidden {
+  -webkit-animation: hideModal 0.5s forwards;
+          animation: hideModal 0.5s forwards;
+}
+
+.close-icon {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  background: #eceafd;
+  font-size: 33px;
+  padding: 12px 20px;
+  margin: 50px auto 0;
+  cursor: pointer;
+}
+
+@-webkit-keyframes showModal {
+  from {
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+  }
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes showModal {
+  from {
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+  }
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@-webkit-keyframes hideModal {
+  from {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  to {
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+  }
+}
+
+@keyframes hideModal {
+  from {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  to {
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+  }
+}
+
+/*POP IN QUIZZ*/
+#panelActions .subTitle {
+  color: #28226b;
+  margin: 20px 0;
+  font-size: 37px;
+  text-align: center;
+  font-family: 'VT323', 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+#panelActions #choixAnimateur {
+  padding: 2rem;
+}
+
+#panelActions #choixAnimateur .remarque {
+  background-color: #fae3ed;
+  color: #E275A3;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px;
+}
+
+#panelActions #choixAnimateur .listAnimateurChoisis {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#panelActions #choixAnimateur .listAnimateurChoisis .animateurInfos {
+  padding: 8px 8px 0 8px;
+  color: #28226b;
+  text-align: center;
+  -webkit-box-shadow: 0 2px 10px #0000003d;
+          box-shadow: 0 2px 10px #0000003d;
+  margin-right: 27px;
+  margin-bottom: 10px;
+}
+
+#panelActions #questionQuizz {
+  padding: 2rem;
+}
+
+#panelActions #questionQuizz .nomThematique {
+  color: #E06F4D;
+  background-color: #fbf2ed;
+  padding: 20px;
+}
+
+#panelActions #questionQuizz .nomThematique, #panelActions #questionQuizz .questionTitre, #panelActions #questionQuizz .listReponses, #panelActions #questionQuizz .resultsContainer .result, #panelActions #questionQuizz .resultsContainer .infos {
+  text-align: center;
+}
+
+#panelActions #questionQuizz .questionTitre, #panelActions #questionQuizz .listReponses, #panelActions #questionQuizz .resultsContainer .infos {
+  color: #28226b;
+}
+
+#panelActions #questionQuizz .listReponses p {
+  padding: 20px;
+  background-color: #eceafd;
+  margin: 10px 0;
+}
+
+#panelActions #questionQuizz .resultsContainer .result {
+  color: #e06f4d;
+  font-weight: bold;
 }
 /*# sourceMappingURL=style.css.map */

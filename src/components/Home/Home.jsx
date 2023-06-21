@@ -9,7 +9,7 @@ export default function Home() {
 
     return (
         <div id="home">
-            <img src={logo} />
+                <img src={logo} />
             <div className='accueilBtns'>
                 <button  onClick={() => navigateTo("/partie")} >Commencer une partie</button>
                 <button  onClick={() => navigateTo("/quizzs")} >Carte Quizz</button>
