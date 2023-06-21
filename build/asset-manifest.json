@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/les-minis-deboggueurs/static/css/main.48b38028.css",
-    "main.js": "/les-minis-deboggueurs/static/js/main.70724921.js",
+    "main.js": "/les-minis-deboggueurs/static/js/main.27dcdb09.js",
     "static/media/perso-stalky.svg": "/les-minis-deboggueurs/static/media/perso-stalky.74b55f9d8302d42fdf36574bc54a9627.svg",
     "static/media/VT323-Regular.ttf": "/les-minis-deboggueurs/static/media/VT323-Regular.2bc43ad8eb2f60b39f27.ttf",
     "static/media/de.svg": "/les-minis-deboggueurs/static/media/de.6aae6cbb18e3fc0e6a17721114591d1c.svg",
@@ -13,10 +13,10 @@
     "static/media/persoValide.svg": "/les-minis-deboggueurs/static/media/persoValide.b1091fd82de553f15eaa16ec796f0121.svg",
     "static/media/cube.svg": "/les-minis-deboggueurs/static/media/cube.32bb215b88ed1030c4b9.svg",
     "main.48b38028.css.map": "/les-minis-deboggueurs/static/css/main.48b38028.css.map",
-    "main.70724921.js.map": "/les-minis-deboggueurs/static/js/main.70724921.js.map"
+    "main.27dcdb09.js.map": "/les-minis-deboggueurs/static/js/main.27dcdb09.js.map"
   },
   "entrypoints": [
     "static/css/main.48b38028.css",
-    "static/js/main.70724921.js"
+    "static/js/main.27dcdb09.js"
   ]
 }
