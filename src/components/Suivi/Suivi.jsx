@@ -175,7 +175,7 @@ export default function Suivi({ joueursChoisis, animateursChoisis }) { // param 
                                     <FicheJoueur nbDeplacements={joueurActuel.deplacement} pouvoir="" nom={joueurActuel.nom}
                                         nbVie={joueurActuel.objectifs.animateurs.points ? 0 : 5 - joueurActuel.objectifs.animateurs.points}
                                         description={joueurActuel.description} maudit={joueurActuel.maudit}
-                                        objectif={joueurActuel.objectifs.enfants.points ? joueurActuel.objectifs.enfants.points : 0} role={roleActuel} img={joueurActuel.image} nomThematique={thematiqueActuel} objectifImg={joueurActuel.objectifs.animateurs.img} joueurApres={ordreFinal[nbTourActuel]}/>
+                                        objectif={joueurActuel.objectifs.enfants.points ? joueurActuel.objectifs.enfants.points : 0} role={roleActuel} img={joueurActuel.image} nomThematique={thematiqueActuel} objectifImg={joueurActuel.objectifs.animateurs.img} enfantsTab={enfantsChoisis}/>
                                     <PanelAction animateurs={animateursTries} />
                                 </>
                             )

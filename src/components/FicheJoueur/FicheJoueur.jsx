@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import React from 'react';
 import coeurPleinSrc from '../../assets/img/coeur_plein.svg';
 import coeurVideSrc from '../../assets/img/coeur_vide.svg';
@@ -9,6 +9,7 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
 
 
     const [showPopInEnfants, setShowPopInEnfants] = useState(false);
+    const enfantPrevRef = useRef(null);
 
     const displayPopIn = () => {
         console.log('Display Pop In Animateurs');
@@ -49,11 +50,28 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
 
     // const [pointDeVie, setPointDeVie] = useState();
 
-    const [showPunition, setPunition] = useState(false);
     const [message, setMessage] = useState("");
 
     // il faut pendant l'affichage de la Modal, afficher le nombre de vies qu'il reste aux personnages
     const [messagePoint, setMessagePV] = useState(false);
+
+    const [enfantSelection, setEnfantSelection] = useState([]);
+
+    // Gérer la sélection, garder en stock et return enfantChoix
+    const choixEnfant = (enfantChoix) => {
+        const enfantPrev = enfantPrevRef.current;
+        console.log(enfantPrev);
+        if (enfantPrev !== null && enfantPrev !== enfantChoix) {
+            document.getElementById('enfantChoisis' + enfantPrev.nom).style.border = "none";
+        }
+
+        document.getElementById('enfantChoisis' + enfantChoix.nom).style.border = "1px solid red";
+        setEnfantSelection(enfantChoix);
+        enfantPrevRef.current = enfantChoix;
+
+    }
+
+    const [enfantsPunis, setEnfantsPunis] = useState([]);
 
     const retirerPointDeVie = (joueurChoisi) => {
         // match le nom du joueurChoisi et le nom dans le tableau enfantsTab
@@ -64,17 +82,23 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
         if (indexEnfantTrouve !== -1) {
             joueurChoisi.pv--;
             let message = `${nomJoueurChoisi} a ${joueurChoisi.pv} points de vie !`;
+
+            // si plus de vie, envoyé au Dortoir
             if (joueurChoisi.pv <= 0) {
                 message = `${nomJoueurChoisi} n'a plus de vie !`;
+                enfantsPunis.push(joueurChoisi);
                 enfantsTab.splice(indexEnfantTrouve, 1);
-                setTimeout(() => {
-                    setPunition(true);
-                    setShowPopInEnfants(false);
-                }, 3500);
+                console.log(enfantsPunis);
             }
+
+
+            setTimeout(() => {
+                setShowPopInEnfants(false);
+            }, 3500);
             setMessage(message);
         }
     }
+
 
     // const onClickConsole = (text, vara) => {
     //     console.log(text);
@@ -91,11 +115,24 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
                             <p className="title">Sélectionner l'enfant que l'animateur punie</p>
                             {console.log(enfantsTab)}
                             {enfantsTab.map((enfant, i) =>
-                                <div key={i} id="ficheEnfantPunition" onClick={() => retirerPointDeVie(enfant)}>
+                                <div key={i} id={'enfantChoisis' + enfant.nom} onClick={() => choixEnfant(enfant)}>
                                     <p>{enfant.nom}</p>
-                                    <p>{message}</p>
+                                    {genererCoeurs(nbVie, coeurPleinSrc, coeurVideSrc).map((image, index) => (
+                                        <img key={index} src={image} alt="coeur" />
+                                    ))}
                                 </div>
                             )}
+                            {enfantsPunis && (
+                                enfantsPunis.map((enfant, i) =>
+                                    <div key={i} id={'enfantChoisis' + enfant.nom}>
+                                        <p>{enfant.nom} n'est plus jouable</p>
+                                        {genererCoeurs(nbVie, coeurPleinSrc, coeurVideSrc).map((image, index) => (
+                                            <img key={index} src={image} alt="coeur" />
+                                        ))}
+                                    </div>
+                                )
+                            )}
+                            <button onClick={() => retirerPointDeVie(enfantSelection)}>Valider</button>
                         </>
                     )}
                 </Modal>
