@@ -1,5 +1,5 @@
 {
-  "name": "minis-deboggueurs",
+  "name": "les-minis-deboggueurs",
   "homepage": "https://mokonaa.github.io/les-minis-deboggueurs/",
   "version": "0.1.0",
   "private": true,
@@ -11,7 +11,7 @@
     "react-burger-menu": "^3.0.9",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.13.0",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "sass": "^1.63.4",
     "web-vitals": "^2.1.4"
   },
