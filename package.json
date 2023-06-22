@@ -16,7 +16,6 @@
     "sass": "^1.63.4",
     "web-vitals": "^2.1.4"
   },
-  "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
     "build": "parcel build index.html",
@@ -26,6 +25,9 @@
     "deploy": "gh-pages -d build",
     "parcel": "parcel build src/index.html",
     "dev": "parcel src/index.html"
+  },
+  "targets": {
+    "main":false
   },
   "eslintConfig": {
     "extends": [
