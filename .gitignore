@@ -31,3 +31,5 @@ sketch
 *.js.map
 
 # End of https://www.toptal.com/developers/gitignore/api/react,sass
+# Local Netlify folder
+.netlify
