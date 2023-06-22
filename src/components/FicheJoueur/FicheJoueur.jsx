@@ -14,9 +14,8 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
     enfantActuel= "";
 
     const displayPopIn = () => {
-        console.log('Display Pop In Animateurs');
         setShowPopInEnfants(true);
-        console.log(showPopInEnfants);
+        //console.log(showPopInEnfants);
     }
 
     if (maudit === true) {
@@ -40,7 +39,7 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
     // Gérer la sélection, garder en stock et return enfantChoix
     const choixEnfant = (enfantChoix) => {
         const enfantPrev = enfantPrevRef.current;
-        console.log(enfantPrev);
+        //console.log(enfantPrev);
         if (enfantPrev !== null && enfantPrev !== enfantChoix) {
             document.getElementById('enfantChoisis' + enfantPrev.nom).style.border = "none";
         }
@@ -52,6 +51,7 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
     }
 
     const [enfantsPunis, setEnfantsPunis] = useState([]);
+
 
     // changer pour que ca retire dans une copie des points de vie ou faire un state ?
     const retirerPointDeVie = (joueurChoisi) => {
@@ -69,7 +69,7 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
                 message = `${nomJoueurChoisi} n'a plus de vie !`;
                 enfantsPunis.push(joueurChoisi);
                 enfantsTab.splice(indexEnfantTrouve, 1);
-                console.log(enfantsPunis);
+                //console.log(enfantsPunis);
             }
 
 
@@ -86,11 +86,18 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
         // faire une copie de tous les enfants
         const coeursTab = [];
 
+        console.log('params function genererCoeurs');
+        console.log(pv);
+        console.log(pvMax);
+        console.log(coeur_plein);
+        console.log(coeur_vide);
+
         for (let i = 0; i < pvMax; i++) {
             coeursTab.push(coeur_plein);
         }
+
         if(pv <= pvMax) {
-            console.log("on rentre bien");
+            console.log("on rentre bien donc il a moins de pv que de points de vie max");
             const pointsARetirer = pvMax - pv;
 
             for (let j = 0; j < pointsARetirer; j++) {
@@ -103,6 +110,8 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
               }
         }
 
+        console.log('coeursTab');
+        console.log(coeursTab);
         return coeursTab;
     };
 
@@ -126,8 +135,9 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
                                 <div key={i} id={'enfantChoisis' + enfant.nom} onClick={() => choixEnfant(enfant)}>
                                     <p>{enfant.nom}</p>
                                     {genererCoeurs(enfant.pv, enfant.pvMax, coeurPleinSrc, coeurVideSrc).map((image, index) => (
-                                        <img key={index} src={image} alt="coeur" />
+                                        <img onClick={() =>genererCoeurs(enfant.pv, enfant.pvMax, coeurPleinSrc, coeurVideSrc)} key={index} src={image} alt="coeur" />
                                     ))}
+                                    
                                 </div>
                             )}
                             {enfantsPunis.length > 0 && (

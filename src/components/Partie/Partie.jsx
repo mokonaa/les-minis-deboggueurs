@@ -8,13 +8,14 @@ export default function Partie() {
   const [tabAnimateursChoisis, setTabAnimateursChoisis] = useState([]);
   const [displaySuiviComponent, setDisplaySuiviComponent] = useState(false);
 
+    /*
     useEffect(() => {
       console.log(tabEnfantsChoisis);
       console.log(tabAnimateursChoisis);
       console.log(displaySuiviComponent);
     });
+    //*/
 
-    // TODO gestion des affichages (affichers d'abord component config puis animation)
     return (
           <div>
                 {!displaySuiviComponent &&
