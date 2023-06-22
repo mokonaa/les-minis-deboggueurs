@@ -55,7 +55,7 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
         else {
             console.log('cannot add more animateurs');
         }
-         console.log(tabAnimateursChoisis);
+         //console.log(tabAnimateursChoisis);
         // console.log('joueurs choisis : '+tabJoueursChoisis.length);
     }
 

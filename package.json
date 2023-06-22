@@ -7,6 +7,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "parcel": "^2.9.2",
     "react": "^18.2.0",
     "react-burger-menu": "^3.0.9",
     "react-dom": "^18.2.0",
@@ -17,11 +18,13 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "parcel build src/index.html",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "parcel": "parcel build src/index.html",
+    "dev": "parcel src/index.html"
   },
   "eslintConfig": {
     "extends": [
@@ -43,5 +46,9 @@
   },
   "devDependencies": {
     "gh-pages": "^5.0.0"
+    "@parcel/compressor-brotli": "^2.9.2",
+    "@parcel/compressor-gzip": "^2.9.2",
+    "@parcel/transformer-sass": "^2.9.2",
+    "process": "^0.11.10"
   }
 }

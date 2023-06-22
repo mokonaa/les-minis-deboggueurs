@@ -121,7 +121,7 @@ export default function Suivi({ joueursChoisis, animateursChoisis }) { // param 
             }
         }
     };
-    console.log(thematiqueActuel);
+    //console.log(thematiqueActuel);
     recupThematiqueActuel();
     // Fonction pour gérer la sélection de l'ordre des joueurs "enfant"
     // Il faut que je teste et que j'affiche "les enfants" qui jouent

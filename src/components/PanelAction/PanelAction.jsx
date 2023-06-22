@@ -71,26 +71,19 @@ export default function PanelAction({animateurs,thematiques}) {
         if (!Array.isArray(questionQuizz.bonne_reponse)) { // unique bonne réponse
             if (tabReponseJoueurs.length == 1 &&  questionQuizz.bonne_reponse == tabReponseJoueurs[0]) { // cocher qu"une case et c'est la bonne réponse
                 setBonneReponse(1);
-                console.log('gagné');
             }
             else {
                 setBonneReponse(0);
-                console.log('non gagné');
             }
         }
         else {
-                console.log('mchoice');
                 tabReponseJoueurs = tabReponseJoueurs.sort();
-                console.log(tabReponseJoueurs);
-                console.log(questionQuizz.bonne_reponse);
 
                 if (tabReponseJoueurs.sort().toString() == questionQuizz.bonne_reponse.sort().toString()) {
-                    console.log('gagné multiple choices');
                     setBonneReponse(1);
                 }
                 else {
                     setBonneReponse(0);
-                    console.log('non multiple choices');
                 }
         }
 
@@ -105,13 +98,10 @@ export default function PanelAction({animateurs,thematiques}) {
 
         if (Array.isArray(questionQuizz.bonne_reponse)) {
             for (let i=0; i<questionQuizz.bonne_reponse.length; i++) {
-                console.log(questionQuizz.bonne_reponse[i]);
                 document.getElementById('reponse'+questionQuizz.bonne_reponse[i]).style.background = '#4fab78';
             }
         }
         else {
-            console.log(document.getElementById('reponse'+questionQuizz.bonne_reponse[0]));
-            console.log(questionQuizz.bonne_reponse);
             document.getElementById('reponse'+questionQuizz.bonne_reponse).style.background = '#4fab78';
             document.getElementById('reponse'+questionQuizz.bonne_reponse).style.color = 'white';
         }
@@ -151,7 +141,7 @@ export default function PanelAction({animateurs,thematiques}) {
                                 )}
                             </div>
 
-                            <button className="buttonConfirmer"  onClick={() => questionQuizz.choix !== undefined ? setDisplayQuestionView(true) : console.log('nothing to display')}>Super !</button>
+                            <button className="buttonConfirmer"  onClick={() => questionQuizz.choix !== undefined ? setDisplayQuestionView(true) : null}>Super !</button>
                         </div>
                    )}
 
