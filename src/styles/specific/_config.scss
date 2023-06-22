@@ -172,7 +172,7 @@ button {
 
 
     #joueursEnfants {
-        background-color: #28226b;
+        background-color: $bleu;
         padding-block: 30px 3rem;
 
         .joueursEnfants_list {
@@ -201,6 +201,7 @@ button {
 
     #animateurs {
         padding-block: 30px 3rem;
+        background-color: $bleu;
 
         .animateurs_list {
             display: flex;
@@ -224,6 +225,7 @@ button {
     }
 
     #installationPlateau {
+        height: 60vh;
         background-color: $bleu;
         padding-block: 3rem;
         display: flex;

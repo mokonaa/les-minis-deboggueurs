@@ -120,14 +120,16 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
               { etapesConfiguration === 1 && (
                         <div>
                             <div id='joueursEnfants'>
-                                    <p className='subTitle'>Quels joueurs jouent ?</p>
+                                    <p className='cta-text align-center'>Quels joueurs jouent ?</p>
                                     <div className='joueursEnfants_list'>
                                         {listJoueurs.map(enfant =>
                                          <div className='enfantInfos' id= {'joueur_'+enfant.nom} onClick={() => choixJoueur({enfant})} >
                                             <div className='profil'>
                                                 <div className='profil_containerImg'>
                                                     <div className='profileOpacity' id={'profileOpacity_'+enfant.nom}></div>
-                                                    <div className='profileChecked' id={'profileChecked_'+enfant.nom}><img src={choisiIcon}/></div>
+                                                    <div className='profileChecked' id={'profileChecked_'+enfant.nom}>
+                                                        <img src={choisiIcon}/>
+                                                    </div>
                                                     <img className='profil_photo' src={stalkyProfil} />
                                                 </div>
                                             </div>
@@ -146,7 +148,7 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
               { etapesConfiguration === 2 && (
                     <>
                         <div id='animateurs'>
-                                <p className='subTitle'>Quels animateurs jouent ?</p>
+                                <p className='cta-text align-center'>Quels animateurs jouent ?</p>
                                 <div className='animateurs_list'>
                                          {listAnimateurs.map(animateur =>
                                             <div className='animateurInfos' id= {'animateur_'+animateur.nom} onClick={() => choixAnimateur({animateur})} >
