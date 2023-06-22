@@ -1,15 +1,17 @@
 import { useState, useRef } from 'react';
 import React from 'react';
+import { data } from '../../data/data';
 import coeurPleinSrc from '../../assets/img/coeur_plein.svg';
 import coeurVideSrc from '../../assets/img/coeur_vide.svg';
 import Modal from '../Modal/Modal';
 
 
-export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, description, maudit, objectif, role, img, nomThematique, objectifImg, enfantsTab }) {
+export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, description, maudit, objectif, role, img, nomThematique, objectifImg, enfantsTab, enfantActuel, nbVieMax }) {
 
 
     const [showPopInEnfants, setShowPopInEnfants] = useState(false);
     const enfantPrevRef = useRef(null);
+    enfantActuel= "";
 
     const displayPopIn = () => {
         console.log('Display Pop In Animateurs');
@@ -22,28 +24,6 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
     } else {
         maudit = "non"
     }
-
-    // gestion du nombre de vie selon nbVie du joueurActuel avec une image now it works
-
-    const genererCoeurs = (nbVies, coeur_plein, coeur_vide) => {
-        const coeursTab = [];
-        const nbViesMax = nbVies + 1; // valeur que je souhaite stocker
-        console.log("----- Points de vie Max -----");
-        console.log(nbViesMax);
-        console.log("----------");
-
-        // Là ca génère le nombre de vie
-        for (let i = 0; i < nbVies; i++) {
-            coeursTab.push(coeur_plein);
-        }
-
-        if (coeursTab.length < nbViesMax) {
-            coeursTab.push(coeur_vide);
-        }
-
-
-        return coeursTab;
-    };
 
     // bouton dans ficheAnimateur "Renvoyer un enfant au Dortoir" 
     // Méthode pour supprimer un point de vie --> ca pas prio gérer si il en a plus console.log(joueurActuel est OUT faut l'enlever de OrdreFinal)
@@ -73,6 +53,7 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
 
     const [enfantsPunis, setEnfantsPunis] = useState([]);
 
+    // changer pour que ca retire dans une copie des points de vie ou faire un state ?
     const retirerPointDeVie = (joueurChoisi) => {
         // match le nom du joueurChoisi et le nom dans le tableau enfantsTab
         const nomJoueurChoisi = joueurChoisi.nom;
@@ -94,16 +75,43 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
 
             setTimeout(() => {
                 setShowPopInEnfants(false);
-            }, 3500);
+            }, 1500);
             setMessage(message);
         }
     }
 
 
+    const genererCoeurs = (pv, pvMax, coeur_plein, coeur_vide) => {
+        
+        // faire une copie de tous les enfants
+        const coeursTab = [];
+
+        for (let i = 0; i < pvMax; i++) {
+            coeursTab.push(coeur_plein);
+        }
+        if(pv <= pvMax) {
+            console.log("on rentre bien");
+            const pointsARetirer = pvMax - pv;
+
+            for (let j = 0; j < pointsARetirer; j++) {
+                // retirer un cœur plein
+                const indexCoeurPlein = coeursTab.indexOf(coeur_plein);
+                coeursTab.splice(indexCoeurPlein, 1);
+              
+                // ajouter un cœur vide
+                coeursTab.push(coeur_vide);
+              }
+        }
+
+        return coeursTab;
+    };
+
     // const onClickConsole = (text, vara) => {
     //     console.log(text);
     //     console.log(vara);
     // }
+
+    console.log(enfantsTab);
 
     return (
         <div id='ficheJoueur'>
@@ -117,16 +125,16 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
                             {enfantsTab.map((enfant, i) =>
                                 <div key={i} id={'enfantChoisis' + enfant.nom} onClick={() => choixEnfant(enfant)}>
                                     <p>{enfant.nom}</p>
-                                    {genererCoeurs(nbVie, coeurPleinSrc, coeurVideSrc).map((image, index) => (
+                                    {genererCoeurs(enfant.pv, enfant.pvMax, coeurPleinSrc, coeurVideSrc).map((image, index) => (
                                         <img key={index} src={image} alt="coeur" />
                                     ))}
                                 </div>
                             )}
-                            {enfantsPunis && (
+                            {enfantsPunis.length > 0 && (
                                 enfantsPunis.map((enfant, i) =>
                                     <div key={i} id={'enfantChoisis' + enfant.nom}>
                                         <p>{enfant.nom} n'est plus jouable</p>
-                                        {genererCoeurs(nbVie, coeurPleinSrc, coeurVideSrc).map((image, index) => (
+                                        {genererCoeurs(enfant.pv, enfant.pvMax, coeurPleinSrc, coeurVideSrc).map((image, index) => (
                                             <img key={index} src={image} alt="coeur" />
                                         ))}
                                     </div>
@@ -182,7 +190,7 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
                             </div>
                         </div>
                         <div className="tour-wrapper__pv">
-                            {genererCoeurs(nbVie, coeurPleinSrc, coeurVideSrc).map((image, index) => (
+                            {genererCoeurs(nbVie, nbVieMax, coeurPleinSrc, coeurVideSrc).map((image, index) => (
                                 <img key={index} src={image} alt="coeur" />
                             ))}
                         </div>
