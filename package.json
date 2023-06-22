@@ -1,5 +1,6 @@
 {
-  "name": "minis-deboggueurs",
+  "name": "les-minis-deboggueurs",
+  "homepage": "https://mokonaa.github.io/les-minis-deboggueurs/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -20,6 +21,8 @@
     "build": "parcel build --no-content-hash index.html",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "parcel": "parcel build src/index.html",
     "dev": "parcel src/index.html"
   },
@@ -42,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^5.0.0",
     "@parcel/compressor-brotli": "^2.9.2",
     "@parcel/compressor-gzip": "^2.9.2",
     "@parcel/transformer-sass": "^2.9.2",
