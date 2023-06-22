@@ -112,9 +112,9 @@ export default function PanelAction({animateurs,thematiques}) {
 
     return (
         <div id="panelActions">
-            <div>
+            <div className='espaceBoutonAnimateur'>
                 {/* <div>Peut relancer un dé par tour</div> */}
-                <button onClick={() => displayPopIn()}>Question Quizz</button>
+                <button className='cta-button-orange' onClick={() => displayPopIn()}>Question Quizz</button>
                 {/* <div>Acces après avoir débloquer la cave</div> */}
             </div>
 

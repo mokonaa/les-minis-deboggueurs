@@ -1,0 +1,251 @@
+@use '../abstracts/'as *;
+
+.fichejoueur_parent {
+    width: 100%;
+}
+
+.ficheSelection {
+    padding: 1rem 1rem 2rem;
+}
+
+.ficheSelection {
+    background-color: $bleu;
+
+    &__subwrapper {
+        padding: 1rem 1rem 0 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .subwrapper {
+        &__nbManches {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: .5rem;
+            padding-block: 1rem .5rem;
+            text-align: center;
+
+            .body2 {
+                color: white;
+            }
+        }
+
+        &__selection {
+            padding-block: 2rem;
+            width: 100%;
+            background: white;
+            text-align: center;
+
+            .body2 {
+                margin-top: .5rem;
+                margin-bottom: 1rem;
+                color: #5C5696;
+            }
+
+            .listeEnfants {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+
+                .listeEnfants_un {
+                    padding-block: 1rem;
+                    background-color: $violet-clair2;
+                    color: $bleu;
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+
+                    .cta-text {
+                        margin-left: 1rem;
+                    }
+
+                    &__buttons {
+                        gap: .3rem;
+                        margin-right: 1rem;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        button {
+                            background-color: white;
+                            color: $bleu;
+                            border: 1px solid $bleu;
+                            width: 50px;
+                            height: 45px;
+                        }
+                    }
+                }
+            }
+        }
+
+        &__joueurActuel {
+            background-color: white;
+        }
+    }
+
+}
+
+.tour-all-wrapper {
+    background-color: white;
+    padding: 1rem;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    .tour-wrapper {
+        background-color: $violet-clair2;
+        padding: .5rem;
+        display: flex;
+        align-items: center;
+
+        &__image {
+            display: flex;
+            width: 64px;
+            height: 64px;
+            img {
+                border-radius: 10rem;
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .tour-wrapper__role {
+            margin-left: 21px;
+            .role__sous-titre {
+                color: $violet2;
+                text-transform: capitalize;
+            }
+            .role__nom {
+                color: $bleu;
+                margin: 0;
+            }
+        }
+    }
+
+}
+.role-enfants {
+    justify-content: space-between;
+    .tour-wrapper__role {
+        margin-left: 0 !important;
+        display: flex;
+        align-items: center;
+        .tour-wrapper__image {
+            margin-right: 21px;
+            display: flex;
+            width: 64px;
+            height: 64px;
+            img {
+                border-radius: 10rem;
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .role__sous-titre {
+            color: $violet2;
+            text-transform: capitalize;
+        }
+        .role__nom {
+            color: $bleu;
+            margin: 0;
+        }
+    }
+    .tour-wrapper__pv {
+        display: flex;
+        gap: .5rem;
+        
+    }
+}
+
+.bg-pink {
+    background-color: $rose;
+}
+
+.bg-orange {
+    background-color: $orange;
+}
+
+
+.ficheAnimateur {
+    padding-inline: 1rem;
+}
+.ficheEnfant {
+    padding-inline: 1rem;
+}
+
+.pre-wrapper {
+    padding: 0 .5rem 1rem;
+}
+
+.ficheJoueur {
+    background-color: $bleu;
+    &__subwrapper {
+        padding: 1rem 1rem 0;
+    }
+    .subwrapper {
+        &__nbManches {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: .5rem;
+            padding-block: 1rem .5rem;
+            text-align: center;
+
+            .body2 {
+                color: white;
+            }
+        }
+    }
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    &__row {
+        &:first-child {
+            .row__image {
+                background-color: $violet-clair;
+            }
+        }
+        .jeton {
+            background-color: $orange-clair;
+        }
+        .deplacement {
+            background-color: $violet-clair;
+        }
+        &:last-child {
+            .row__image {
+                background-color: $rose-clair;
+            }
+        }
+        display: flex;
+        align-items: center;
+        .row__image {
+            margin-right: 1rem;
+            img {
+                height: 47px;
+                width: 47px;
+                object-fit: contain;
+            }
+        }
+    }
+}
+
+.espaceBoutonAnimateur {
+    display: flex;
+    justify-content: center;
+    padding-block: 19.5px;
+}
+
+.noiretblanc {
+    filter: grayscale(100%);
+}

@@ -87,7 +87,7 @@ export default function Suivi({ joueursChoisis, animateursChoisis }) { // param 
             setRoleActuel('animateur');
         }
         if (nbManches > nbManchesMax && enfantsChoisis.length === 0) {
-            setNbManches(11); 
+            setNbManches(11);
         }
     };
     const joueurActuel = nbTourActuel > 1 ? ordreFinal[nbTourActuel - 1] : animateursChoisis[0];
@@ -144,49 +144,70 @@ export default function Suivi({ joueursChoisis, animateursChoisis }) { // param 
     // Il faut aussi penser à chaque déplacement, panel d'actions dont un seul qui est réellement intéractif (les questions)
     // Bouton Tour terminé selon cliquable dès qu'ils ont fait au moins toutes les actions qu'ils peuvent faire
     return (
-        <>
-            <div>
-                <h3>{nbManches}e Manche - {nbTourActuel}e Tour - role actuel : {roleActuel}</h3>
-                {nbTourActuel === 0 && afficherSelection && (
-                    <div>
-                        <h2>l'ordre des enfants</h2>
-                        <ul>
-                            {enfantsChoisis.map((enfant, index) => (
-                                <li key={enfant.id}>
-                                    {enfant.nom}
-                                    <button onClick={() => deplacerJoueur(index, index - 1)}>▲</button>
-                                    <button onClick={() => deplacerJoueur(index, index + 1)}>▼</button>
-                                </li>
-                            ))}
-                        </ul>
-                        <button onClick={validerOrdre}>Valider l'ordre</button>
+        <div className='fichejoueur_parent'>
+            {nbManches >= 2 ? 
+            <div className='cfinito'>
+                <h3>Merci d'avoir <br />testé la démo !</h3>    
+            </div>
+            :
+            <div className={nbTourActuel <= 0 ? 'ficheSelection' : 'ficheJoueur'}>
+                <div className='ficheJoueur__subwrapper'>
+                    <div className={roleActuel === 'animateur' ? 'subwrapper__nbManches bg-pink' : 'subwrapper__nbManches bg-orange'}>
+                        <h3>{nbManches <= 1 ? nbManches + "ère Manche" : nbManches + "e Manche"}</h3>
+                        <p className="body2">
+                            {nbTourActuel <= 0 ? "Avant de commencer" : "Tour de l'" + roleActuel}
+                        </p>
                     </div>
-                )}
-                {!afficherSelection &&  (
+                    {nbTourActuel === 0 && afficherSelection && (
+                        <>
+                            <div className='subwrapper__selection'>
+                                <p className="sous-titre">Ordre des joueurs</p>
+                                <p className="body2">Veuillez choisir l'ordre des joueurs</p>
+                                <div className='listeEnfants'>
+                                    {enfantsChoisis.map((enfant, index) => (
+                                        <div key={enfant.id} className='listeEnfants_un'>
+                                            <p className='cta-text'>{enfant.nom}</p>
+                                            <div className="listeEnfants_un__buttons">
+                                                <button onClick={() => deplacerJoueur(index, index - 1)}>▲</button>
+                                                <button onClick={() => deplacerJoueur(index, index + 1)}>▼</button>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </>
+                    )}
+                </div>
+                {!afficherSelection && (
                     <div>
                         {roleActuel === 'enfant' ?
                             <>
-                                <FicheJoueur nbDeplacements={joueurActuel.deplacement} pouvoir={joueurActuel.pouvoir} nom={joueurActuel.nom} nbVie={joueurActuel.pv} nbVieMax={joueurActuel.pvMax} description={joueurActuel.description} nomThematique={thematiqueActuel} maudit={""} objectif={""} role={roleActuel} img={joueurActuel.image} enfantActuel={joueurActuel}/>
-                                <PanelAction animateurs={animateursTries} thematiques={data.thematique} enfantsTab={ordreJoueursEnfant}/>
+                                <FicheJoueur nbDeplacements={joueurActuel.deplacement} pouvoir={joueurActuel.pouvoir} nom={joueurActuel.nom} nbVie={joueurActuel.pv} nbVieMax={joueurActuel.pvMax} description={joueurActuel.description} nomThematique={thematiqueActuel} maudit={""} objectif={""} role={roleActuel} img={joueurActuel.image} enfantActuel={joueurActuel} />
+                                <PanelAction animateurs={animateursTries} thematiques={data.thematique} enfantsTab={ordreJoueursEnfant} />
                             </>
                             :
                             roleActuel === 'animateur' && (
                                 <>
-                                    <FicheJoueur nbDeplacements={joueurActuel.deplacement} pouvoir="" nom={joueurActuel.nom}
+                                    <FicheJoueur nbDeplacements={joueurActuel.deplacement} pouvoir="" nom={joueurActuel.pseudo}
                                         nbVie={joueurActuel.objectifs.animateurs.points ? 0 : 5 - joueurActuel.objectifs.animateurs.points}
                                         description={joueurActuel.description} maudit={joueurActuel.maudit}
-                                        objectif={joueurActuel.objectifs.enfants.points ? joueurActuel.objectifs.enfants.points : 0} role={roleActuel} img={joueurActuel.image} nomThematique={thematiqueActuel} objectifImg={joueurActuel.objectifs.animateurs.img} enfantsTab={enfantsChoisis} enfantActuel=""/>
+                                        objectif={joueurActuel.objectifs.enfants.points ? joueurActuel.objectifs.enfants.points : 0} role={roleActuel} img={joueurActuel.image} nomThematique={thematiqueActuel} objectifImg={joueurActuel.objectifs.animateurs.img} enfantsTab={enfantsChoisis} enfantActuel="" />
                                 </>
                             )
                         }
-                        <button onClick={gestionNbTours}>Passer au prochain tour</button>
                     </div>
                 )}
-                {nbManches === 11 && (
-                    <p>C'est fini c'est perdu !</p>
-                )}
             </div>
-        </>
+            }
+        
+            {nbTourActuel === 0 ?
+                <button className='cta-button' onClick={validerOrdre}>Valider l'ordre</button>
+                :
+                nbManches === 1 && (<button className='cta-button' onClick={gestionNbTours}>Tour terminé</button>)
+            }
+
+
+        </div>
     )
 }
 
