@@ -17,7 +17,7 @@ button {
 }
 
 .ajoutBackgroundChoisi {
-    background-color: #28226b;
+    background-color: $bleu;
 }
 
 .persoNom {
@@ -27,12 +27,14 @@ button {
 }
 
 .profil {
+    display: flex;
     position: relative;
-    width: 145px;
-    height: 139px;
+    width: 100%;
+    height: 100%;
     margin: auto;
 
     .profil_containerImg {
+        display: flex;
         height: 100%;
         width: inherit;
 
@@ -43,11 +45,6 @@ button {
             width: 100%;
             height: 100%;
 
-            img {
-                object-fit: cover;
-                width: 100%;
-                height: 100%;
-            }
         }
 
         .profileChecked {
@@ -60,10 +57,14 @@ button {
 
         .profil_photo {
             width: 100%;
+            height: 100%;
         }
     }
 }
-
+.validation {
+    position: absolute;
+    width: 100%;
+}
 .buttonChoixPerso, .buttonConfirmer {
     font-family: 'VT323', 'Roboto', Arial, Helvetica, sans-serif;
     font-size: 20px;
@@ -122,23 +123,31 @@ button {
     }
 }
 
-
-
 /*CONFIGURATION*/
+
+.joueursPicto {
+    margin-bottom: .5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    img {
+        object-fit: contain;
+        height: 19.04px;
+    }
+}
 
 #configurationContainer {
     color: white;
 
-    .subTitle {
+    .cta-texte {
+        width: 100%;
         text-align: center;
-        font-size: 26px;
-        font-family: 'VT323', 'Roboto', Arial, Helvetica, sans-serif;
     }
 
     .persoNom {
         font-family: 'VT323', 'Roboto', Arial, Helvetica, sans-serif;
         font-size: 30px;
-        color: #28226b;
+        color: $bleu;
     }
 
     
@@ -148,13 +157,13 @@ button {
 
         div {
             display: flex;
+            gap: 1rem;
             flex-direction: column;
 
             button {
                 font-family: "VT323", "Roboto", Arial, Helvetica, sans-serif;
                 font-size: 20px;
-                margin: 10px 0;
-                padding: 10px 0;
+                padding: 1rem 0;
                 font-weight: bold;
             }
         }
@@ -163,25 +172,24 @@ button {
 
 
     #joueursEnfants {
-        background-color: #28226b;
-        padding: 30px 10px;
-
-    
+        background-color: $bleu;
+        padding-block: 30px 3rem;
 
         .joueursEnfants_list {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             justify-content: center;
+            gap: 1rem;
         
 
                 .enfantInfos {
-                    width: 130px;
+                    // width: 130px;
+                    width: 40%;
                     background-color: white;
-                    padding: 8px 22px 0 8px;
+                    padding: 8px;
                     color: black;
                     text-align: center;
-                    margin: 15px;
 
                     p {
                         margin: 10px 0;
@@ -192,22 +200,22 @@ button {
 
 
     #animateurs {
-        background-color: #28226b;
-        padding: 30px 10px;
+        padding-block: 30px 3rem;
+        background-color: $bleu;
 
         .animateurs_list {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             justify-content: center;
+            gap: 1rem;
 
                 .animateurInfos {
-                    width: 130px;
+                    width: 40%;
                     background-color: white;
-                    padding: 8px 22px 0 8px;
+                    padding: 8px;
                     color: black;
                     text-align: center;
-                    margin: 15px;
                     
                     p {
                         margin: 10px 0;
@@ -217,121 +225,51 @@ button {
     }
 
     #installationPlateau {
-        background-color: #28226b;
-        padding: 30px 10px;
-
+        height: 60vh;
+        background-color: $bleu;
+        padding-block: 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-inline: 1rem;
+        margin: 0;
         img {
             display: block;
-            margin: 40px auto;
+            margin-block: 4rem;
         }
 
-        ul {
+        .listEtapes {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
             padding: 0;
+            gap: 1rem;
             li {
                 display: flex;
                 align-items: center;
                 list-style: none;
-                margin: 10px 0;
 
                 .etapeImg {
+                    font-family: "Cabin", Arial, Helvetica, sans-serif;
+                    font-weight: bold;
+                    font-size: 23px;
                     color: black;
                     display: flex;
-                    margin-right: 10px;
+                    margin-right: 1rem;
                     justify-content: center;
                     align-items: center;
-                    width: 33px;
-                    height: 33px;
+                    width: 36px;
+                    height: 36px;
                     background-repeat: no-repeat;
                     /*background-image: url('../../assets/img/cube.svg');//*/
-                    background-image: url('../assets/img/cube.svg');//*/
+                    background-image: url('../../assets/img/cube.svg');
+                    background-size: contain;
                 }
             }
         }
     }
 }
-
-
-
-
-
-
-/* NAVBAR */
-nav {
-    height: 12vh;
-
-    img {
-        margin: 16px 8px;
-    }
-}
-/* Burger */
-.bm-burger-button {
-    position: absolute;
-    width: 36px;
-    height: 30px;
-    right: 36px;
-    top: 20px;
-  }
-  
-  .bm-burger-bars {
-    background: black;
-    height: 15%!important;
-  }
-  
-  .bm-burger-bars-hover {
-    background: red;
-  }
-  
-  .bm-cross-button {
-    display: none;
-  }
-  
-  .bm-cross {
-    background: #bdc3c7;
-  }
-  
-  .bm-menu-wrap {
-    position: fixed;
-    height: 100%;
-  }
-  
-  .bm-menu {
-    background: white;
-    padding: 2.5em 1.5em 0;
-    font-size: 1.15em;
-  }
-  
-  .bm-morph-shape {
-    fill: white;
-  }
-  
-  .bm-item-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    color: #b8b7ad;
-  }
-  
-  .bm-item-list a {
-    color: black;
-    font-weight: 500;
-    text-decoration: none;
-    display: flex !important;
-    flex-direction: row;
-    gap: 1rem;
-  }
-  
-  .bm-item {
-    display: inline-block;
-    padding: 0.2rem;
-  }
-  
-  .bm-overlay {
-    background: rgba(228, 106, 72, 0.3);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-  }
-  
 
   /*GALERIE*/
 

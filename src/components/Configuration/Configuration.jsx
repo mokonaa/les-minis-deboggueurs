@@ -3,6 +3,10 @@ import { useState, useRef } from 'react';
 import de from '../../assets/img/de.svg';
 import stalkyProfil from '../../assets/img/perso-stalky.svg';
 import choisiIcon from '../../assets/img/persoValide.svg';
+import icon2 from '../../assets/img/2_joueurs.svg';
+import icon3 from '../../assets/img/3_joueurs.svg';
+import icon4 from '../../assets/img/4_joueurs.svg';
+
 
 export default function Configuration({joueursChoisis,setJoueursChoisis, animateursChoisis, setAnimateursChoisis,setAffichageSuiviComponent}) {
 
@@ -78,19 +82,25 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
               {/* CHOIX DU NOMBRE DE JOUEURS */}
               { etapesConfiguration === 0 && (
                     <div id='choixNombreJoueur'>
-                        <p className='subTitle'>Combien de personnes jouent ? </p>
+                        <p className='cta-text align-center'>Combien de personnes jouent ? </p>
                         <div>
                             <button id='joueurTotal_2' onClick={() => choisirNombreJoueur(2)}>
-                                <p>2</p>
-                                {/*<img src={joueurIcon}/>*/}
+                                <div className='joueursPicto'>
+                                    <img src={icon2} alt='pictogramme représentant le nombre de deux joueurs'/>
+                                </div>
+                                <p className='body2'>2</p>
                             </button>
                             <button id='joueurTotal_3' onClick={() => choisirNombreJoueur(3)}>
-                                <p>3</p>
-                                {/*<img src={joueurIcon}/>*/}
+                                <div className='joueursPicto'>
+                                    <img src={icon3} alt='pictogramme représentant le nombre de trois joueurs'/>
+                                </div>
+                                <p className='body2'>3</p>
                             </button>
                             <button id='joueurTotal_4' onClick={() => choisirNombreJoueur(4)}>
-                                <p>4</p>
-                                {/*<img src={joueurIcon}/>*/}
+                                <div className='joueursPicto'>
+                                    <img src={icon4} alt='pictogramme représentant le nombre de quatre joueurs'/>
+                                </div>
+                                <p className='body2'>4</p>
                             </button>
 
                             {/*
@@ -110,14 +120,16 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
               { etapesConfiguration === 1 && (
                         <div>
                             <div id='joueursEnfants'>
-                                    <p className='subTitle'>Quels joueurs jouent ?</p>
+                                    <p className='cta-text align-center'>Quels joueurs jouent ?</p>
                                     <div className='joueursEnfants_list'>
                                         {listJoueurs.map(enfant =>
                                          <div className='enfantInfos' id= {'joueur_'+enfant.nom} onClick={() => choixJoueur({enfant})} >
                                             <div className='profil'>
                                                 <div className='profil_containerImg'>
                                                     <div className='profileOpacity' id={'profileOpacity_'+enfant.nom}></div>
-                                                    <div className='profileChecked' id={'profileChecked_'+enfant.nom}><img src={choisiIcon}/></div>
+                                                    <div className='profileChecked' id={'profileChecked_'+enfant.nom}>
+                                                        <img src={choisiIcon}/>
+                                                    </div>
                                                     <img className='profil_photo' src={stalkyProfil} />
                                                 </div>
                                             </div>
@@ -125,7 +137,9 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
                                         </div>)}
                                     </div>                            
                             </div>
-                            <button className='buttonChoixPerso'  onClick={() => changerEtapeConfiguration(2)}>Continuer</button>
+                            <div className='validation'>
+                                <button className='buttonChoixPerso' onClick={() => changerEtapeConfiguration(2)}>Continuer</button>
+                            </div>
                     
                         </div>
                )}
@@ -134,7 +148,7 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
               { etapesConfiguration === 2 && (
                     <>
                         <div id='animateurs'>
-                                <p className='subTitle'>Quels animateurs jouent ?</p>
+                                <p className='cta-text align-center'>Quels animateurs jouent ?</p>
                                 <div className='animateurs_list'>
                                          {listAnimateurs.map(animateur =>
                                             <div className='animateurInfos' id= {'animateur_'+animateur.nom} onClick={() => choixAnimateur({animateur})} >
@@ -150,7 +164,9 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
                                          )}
                                 </div>
                         </div>
-                        <button className='buttonChoixPerso'  onClick={() => changerEtapeConfiguration(3)}>Débuter la partie</button>
+                        <div className='validation'>
+                            <button className='buttonChoixPerso' onClick={() => changerEtapeConfiguration(3)}>Débuter la partie</button>
+                        </div>
                     </>
               )}
 
@@ -159,16 +175,16 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
               { etapesConfiguration === 3 && (
                 <>
                     <div id='installationPlateau'>
-                        <p className='subTitle'>DÉBUT DU TOUR</p>
+                        <h3>DÉBUT DU TOUR</h3>
                         <img src={de} />
-                        <ul>
+                        <ul className='listEtapes'>
                             <li>
                                 <div className='etapeImg'>1</div> 
-                                <p>Lancez vos dés tous ensembles</p>
+                                <p className='body2'>Lancez vos dés tous ensembles</p>
                             </li>
                             <li>
                                 <div className='etapeImg'>2</div> 
-                                <p> Puis regroupez les dans la "réserve de dés"</p>
+                                <p className='body2'> Puis regroupez les dans la "réserve de dés"</p>
                             </li>
                         </ul>
                     </div>
