@@ -11,7 +11,7 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
 
     const [showPopInEnfants, setShowPopInEnfants] = useState(false);
     const enfantPrevRef = useRef(null);
-    enfantActuel= "";
+    enfantActuel = "";
 
     const displayPopIn = () => {
         setShowPopInEnfants(true);
@@ -41,10 +41,10 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
         const enfantPrev = enfantPrevRef.current;
         //console.log(enfantPrev);
         if (enfantPrev !== null && enfantPrev !== enfantChoix) {
-            document.getElementById('enfantChoisis' + enfantPrev.nom).style.border = "none";
+            document.getElementById('enfantChoisis' + enfantPrev.nom).style.border = "1px solid white";
         }
 
-        document.getElementById('enfantChoisis' + enfantChoix.nom).style.border = "1px solid red";
+        document.getElementById('enfantChoisis' + enfantChoix.nom).style.border = "1px dotted #E275A3";
         setEnfantSelection(enfantChoix);
         enfantPrevRef.current = enfantChoix;
 
@@ -71,8 +71,8 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
                 enfantsTab.splice(indexEnfantTrouve, 1);
                 //console.log(enfantsPunis);
             }
-
-
+            document.querySelector(".modal").classList.add("modal-overlay--hidden");
+            document.querySelector(".modal-overlay").classList.add("modal--hidden");
             setTimeout(() => {
                 setShowPopInEnfants(false);
             }, 1500);
@@ -82,7 +82,7 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
 
 
     const genererCoeurs = (pv, pvMax, coeur_plein, coeur_vide) => {
-        
+
         // faire une copie de tous les enfants
         const coeursTab = [];
 
@@ -96,7 +96,7 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
             coeursTab.push(coeur_plein);
         }
 
-        if(pv <= pvMax) {
+        if (pv <= pvMax) {
             console.log("on rentre bien donc il a moins de pv que de points de vie max");
             const pointsARetirer = pvMax - pv;
 
@@ -104,10 +104,10 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
                 // retirer un cœur plein
                 const indexCoeurPlein = coeursTab.indexOf(coeur_plein);
                 coeursTab.splice(indexCoeurPlein, 1);
-              
+
                 // ajouter un cœur vide
                 coeursTab.push(coeur_vide);
-              }
+            }
         }
 
         console.log('coeursTab');
@@ -123,112 +123,137 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
     console.log(enfantsTab);
 
     return (
-        <div id='ficheJoueur'>
-            {showPopInEnfants && (
-                <Modal setShowModal={setShowPopInEnfants}>
-                    {/* il faut que je réupere tous les enfantsChoisis */}
-                    {enfantsTab && (
-                        <>
-                            <p className="title">Sélectionner l'enfant que l'animateur punie</p>
-                            {console.log(enfantsTab)}
-                            {enfantsTab.map((enfant, i) =>
-                                <div key={i} id={'enfantChoisis' + enfant.nom} onClick={() => choixEnfant(enfant)}>
-                                    <p>{enfant.nom}</p>
-                                    {genererCoeurs(enfant.pv, enfant.pvMax, coeurPleinSrc, coeurVideSrc).map((image, index) => (
-                                        <img onClick={() =>genererCoeurs(enfant.pv, enfant.pvMax, coeurPleinSrc, coeurVideSrc)} key={index} src={image} alt="coeur" />
-                                    ))}
-                                    
+        <>
+            <div id='ficheJoueur'>
+                {showPopInEnfants && (
+                    <Modal setShowModal={setShowPopInEnfants}>
+                        {/* il faut que je réupere tous les enfantsChoisis */}
+                        {enfantsTab && (
+                            <div className='FJoutModal'>
+                                <div className='FJmodal'>
+                                    <h3 className='FJmodal__title'>Sélectionner l'enfant que l'animateur punie</h3>
+                                    {console.log(enfantsTab)}
+                                    {enfantsTab.map((enfant, i) =>
+                                        <div key={i} class='FJmodal__card' id={'enfantChoisis' + enfant.nom} onClick={() => choixEnfant(enfant)}>
+                                            <div className='card__image'>
+                                                <img src={img} alt={"image du personnage " + { nom }} />
+                                            </div>
+                                            <p className='cta-text'>{enfant.nom}</p>
+                                            {genererCoeurs(enfant.pv, enfant.pvMax, coeurPleinSrc, coeurVideSrc).map((image, index) => (
+                                                <img onClick={() => genererCoeurs(enfant.pv, enfant.pvMax, coeurPleinSrc, coeurVideSrc)} key={index} src={image} alt="coeur" />
+                                            ))}
+                                        </div>
+                                    )}
+                                    {enfantsPunis.length > 0 && (
+                                        enfantsPunis.map((enfant, i) =>
+                                            <div key={i} class='FJmodal__card' id={'enfantChoisis' + enfant.nom} onClick={() => choixEnfant(enfant)}>
+                                                <div className='card__image'>
+                                                    <img className='noiretblanc' src={img} alt={"image du personnage " + { nom }} />
+                                                </div>
+                                                <p className='cta-text'>{enfant.nom}</p>
+                                                {genererCoeurs(enfant.pv, enfant.pvMax, coeurPleinSrc, coeurVideSrc).map((image, index) => (
+                                                    <img onClick={() => genererCoeurs(enfant.pv, enfant.pvMax, coeurPleinSrc, coeurVideSrc)} key={index} src={image} alt="coeur" />
+                                                ))}
+                                            </div>
+                                        )
+                                    )}
                                 </div>
-                            )}
-                            {enfantsPunis.length > 0 && (
-                                enfantsPunis.map((enfant, i) =>
-                                    <div key={i} id={'enfantChoisis' + enfant.nom}>
-                                        <p>{enfant.nom} n'est plus jouable</p>
-                                        {genererCoeurs(enfant.pv, enfant.pvMax, coeurPleinSrc, coeurVideSrc).map((image, index) => (
-                                            <img key={index} src={image} alt="coeur" />
-                                        ))}
+                                <button className='cta-button' onClick={() => retirerPointDeVie(enfantSelection)}>Valider</button>
+                            </div>
+                        )}
+                    </Modal>
+                )}
+                {role === 'animateur' && (
+                    <div className='ficheAnimateur'>
+                        <div className='pre-wrapper bg-pink'>
+                            <p className="body1">{nom} doit ramasser 6 jetons rouges<br />"{nomThematique}" pour remporter la partie.</p>
+                        </div>
+                        <div className='tour-all-wrapper'>
+                            <div className='tour-wrapper'>
+                                <div className='tour-wrapper__image'>
+                                    <img src={img} alt={"image de profil de l'animateur " + nom} />
+                                </div>
+                                <div className='tour-wrapper__role'>
+                                    <p className='role__sous-titre body2'>{role}</p>
+                                    <p className='role__nom cta-text'>{nom}</p>
+                                </div>
+                            </div>
+                            <div className="actions">
+                                <div className="actions__row">
+                                    <div className="row__image">
+                                        <img src={require("../../assets/img/deplacement.png")} alt={"image de " + nom} />
                                     </div>
-                                )
-                            )}
-                            <button onClick={() => retirerPointDeVie(enfantSelection)}>Valider</button>
-                        </>
-                    )}
-                </Modal>
-            )}
+                                    <p className='body2'><strong>{nom}</strong> peut avancer de <strong>{nbDeplacements}</strong></p>
+                                </div>
+                                <div className="actions__row">
+                                    <div className="row__image">
+                                        <img src={objectifImg} alt={"image de jeton " + nomThematique} />
+                                    </div>
+                                    <p className='body2'><strong>{nom}</strong> ramasse tous les jetons rouges <strong>"{nomThematique}"</strong> de la pièce.</p>
+                                </div>
+                                <div className="actions__row">
+                                    <div className="row__image jeton">
+                                        <img src={require("../../assets/img/dortoir.png")} alt="image du Dortoir" />
+                                    </div>
+                                    <p className='body2'>Si un enfant est présent dans la pièce où arrive {nom}. Il est renvoyé au Dortoir</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
+                {role === 'enfant' && (
+                    <div className='ficheEnfant'>
+                        <div className='pre-wrapper bg-orange'>
+                            <p className="body1">{nom} doit ramasser 6 jetons bleus<br />d'un animateur pour le sauver</p>
+                        </div>
+                        <div className='tour-all-wrapper'>
+                            <div className='tour-wrapper role-enfants'>
+                                <div className='tour-wrapper__role'>
+                                    <div className='tour-wrapper__image'>
+                                        <img src={img} alt={"image de profil de l'animateur " + nom} />
+                                    </div>
+                                    <div className='tour-wrapper__texte'>
+                                        <p className='role__sous-titre body2'>{role}</p>
+                                        <p className='role__nom cta-text'>{nom}</p>
+                                    </div>
+                                </div>
+                                <div className="tour-wrapper__pv">
+                                    {genererCoeurs(nbVie, nbVieMax, coeurPleinSrc, coeurVideSrc).map((image, index) => (
+                                        <img key={index} src={image} alt="coeur" />
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="actions">
+                                <div className="actions__row">
+                                    <div className="row__image">
+                                        <img src={require("../../assets/img/deplacement.png")} alt={"image de " + nom} />
+                                    </div>
+                                    <p className='body2'><strong>{nom}</strong> se déplace de <strong>{nbDeplacements}</strong> case indiqué sur la carte</p>
+                                </div>
+                                <div className="actions__row">
+                                    <div className="row__image deplacement">
+                                        <img src={require("../../assets/img/deFiche.png")} alt="image pictogramme du Dortoir" />
+                                    </div>
+                                    <p className='body2'>Le joueur doit effectuer 2 actions présentes dans la réserve de dés.</p>
+                                </div>
+                                <div className="actions__row">
+                                    <div className="row__image">
+                                        <img src={require("../../assets/img/pouvoir.png")} alt="image du Dortoir" />
+                                    </div>
+                                    <p className='body2'>{pouvoir}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
+            </div >
+
             {role === 'animateur' && (
-                <div id='ficheAnimateur'>
-                    <div className='tour-wrapper'>
-                        <img src={img} alt={"image de profil de l'animateur " + nom} />
-                        <div className='tour-wrapper__role'>
-                            <p className='role__sous-titre'>{role}</p>
-                            <p className='role__nom'>{nom}</p>
-                        </div>
-                    </div>
-                    <div className="actions">
-                        <div className="actions__deplacement">
-                            <div className="actions__row">
-                                <div className="row__image">
-                                    <img src={img} alt={"image de " + nom} />
-                                </div>
-                                <p><strong>{nom}</strong> peut avancer de <strong>{nbDeplacements}</strong></p>
-                            </div>
-                            <div className="actions__row">
-                                <div className="row__image">
-                                    <img src={objectifImg} alt={"image de jeton " + nomThematique} />
-                                </div>
-                                <p><strong>{nom}</strong> ramasse tous les jetons rouges <strong>"{nomThematique}"</strong> de la pièce.</p>
-                            </div>
-                            <div className="actions__row">
-                                <div className="row__image">
-                                    <img src={require("../../assets/img/dortoir.png")} alt="image du Dortoir" />
-                                </div>
-                                <p>Si un enfant est présent dans la pièce où arrive {nom}. Il est renvoyé au Dortoir</p>
-                            </div>
-                        </div>
-                    </div>
-                    <button className="actions__button" onClick={displayPopIn}>Renvoyez un enfant dans le dortoir</button>
+                <div className="espaceBoutonAnimateur">
+                    <button className="cta-button-orange" onClick={displayPopIn}>Renvoyez un enfant dans le dortoir</button>
                 </div>
-            )}
-            {role === 'enfant' && (
-                <div id='ficheEnfant'>
-                    <div className='tour-wrapper'>
-                        <div className="tour-wrapper__sub">
-                            <img src={img} alt={"image de profil de " + nom} />
-                            <div className='tour-wrapper__role'>
-                                <p className='role__sous-titre'>{role}</p>
-                                <p className='role__nom'>{nom}</p>
-                            </div>
-                        </div>
-                        <div className="tour-wrapper__pv">
-                            {genererCoeurs(nbVie, nbVieMax, coeurPleinSrc, coeurVideSrc).map((image, index) => (
-                                <img key={index} src={image} alt="coeur" />
-                            ))}
-                        </div>
-                    </div>
-                    <div className="actions">
-                        <div className="actions__deplacement">
-                            <div className="actions__row">
-                                <div className="row__image">
-                                    <img src={require("../../assets/img/deplacement.png")} alt={"image de " + nom} />
-                                </div>
-                                <p><strong>{nom}</strong> peut avancer de <strong>{nbDeplacements}</strong></p>
-                            </div>
-                            <div className="actions__row">
-                                <div className="row__image">
-                                    <img src={require("../../assets/img/deFiche.png")} alt="image pictogramme du Dortoir" />
-                                </div>
-                                <p>Le joueur doit effectuer 2 actions présentes dans la réserve de dés.</p>
-                            </div>
-                            <div className="actions__row">
-                                <div className="row__image">
-                                    <img src={require("../../assets/img/dortoir.png")} alt="image du Dortoir" />
-                                </div>
-                                <p>Si un enfant est présent dans la pièce où arrive {nom}. Il est renvoyé au Dortoir</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )}
-        </div>
+            )
+            }
+        </>
     )
 }

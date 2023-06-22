@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 
-export default function Modal({ setShowModal, children}) {
+export default function Modal({ setShowModal, children }) {
     const modal = useRef();
     const overlay = useRef();
 

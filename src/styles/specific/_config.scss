@@ -188,7 +188,7 @@ button {
                     width: 40%;
                     background-color: white;
                     padding: 8px;
-                    color: black;
+                    color: $bleu;
                     text-align: center;
 
                     p {
@@ -301,78 +301,6 @@ button {
             }
     }
     
-}
-
-
-
-
-
-
-/*MODAL*/
-
-
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: #442e6c;
-    cursor: pointer;
-    z-index: 1;
-    opacity:0.8;
-}
-
-.modal-overlay--hidden {
-    background-color: transparent;
-}
-
-.modal {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    min-width: 100%;
-    width: 100%;
-    height: 70vh;
-    min-height: 70vh;
-    background: #fff;
-    border-radius: 70px 70px 0 0;
-    overflow-y: auto;
-    z-index: 2;
-    animation: showModal 0.5s forwards;
-}
-
-.modal--hidden {
-    animation: hideModal 0.5s forwards;
-}
-
-.close-icon {
-    width: fit-content;
-    background: #eceafd;
-    font-size: 33px;
-    padding: 12px 20px;
-    margin: 50px auto 0;
-    cursor: pointer;
-}
-
-@keyframes showModal {
-    from {
-        transform: translateY(100%);
-    }
-
-    to {
-        transform: translateY(0);
-    }
-}
-
-@keyframes hideModal {
-    from {
-        transform: translateY(0);
-    }
-
-    to {
-        transform: translateY(100%);
-    }
 }
 
 
