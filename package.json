@@ -45,7 +45,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^5.0.0"
+    "gh-pages": "^5.0.0",
     "@parcel/compressor-brotli": "^2.9.2",
     "@parcel/compressor-gzip": "^2.9.2",
     "@parcel/transformer-sass": "^2.9.2",
