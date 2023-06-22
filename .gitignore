@@ -5,6 +5,9 @@ logs
 **/*.backup.*
 **/*.back.*
 
+build
+dist
+
 node_modules
 bower_components
 
