@@ -83,7 +83,7 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
               { etapesConfiguration === 0 && (
                     <div id='choixNombreJoueur'>
                         <p className='cta-text align-center'>Combien de personnes jouent ? </p>
-                        <div>
+                        <div className='choixNombreJoueurs__buttons'>
                             <button id='joueurTotal_2' onClick={() => choisirNombreJoueur(2)}>
                                 <div className='joueursPicto'>
                                     <img src={icon2} alt='pictogramme représentant le nombre de deux joueurs'/>
