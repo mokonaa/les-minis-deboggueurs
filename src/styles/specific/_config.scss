@@ -380,3 +380,10 @@ button {
       
     }
 }
+
+.choixNombreJoueurs__buttons button {
+    padding-block: 2rem;
+    color: $bleu;
+    background-color: white;
+    border: 1px solid white;
+}
