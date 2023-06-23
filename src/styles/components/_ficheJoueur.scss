@@ -249,3 +249,9 @@
 .noiretblanc {
     filter: grayscale(100%);
 }
+.border-bottom-pink {
+    border-bottom: 1px solid $rose;
+}
+.border-bottom-orange {
+    border-bottom: 1px solid $orange;
+}
