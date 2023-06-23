@@ -6,7 +6,6 @@ import choisiIcon from '../../assets/img/persoValide.svg';
 import icon2 from '../../assets/img/2_joueurs.svg';
 import icon3 from '../../assets/img/3_joueurs.svg';
 import icon4 from '../../assets/img/4_joueurs.svg';
-import Gaby from '../../assets/img/Gaby.svg';
 
 
 export default function Configuration({joueursChoisis,setJoueursChoisis, animateursChoisis, setAnimateursChoisis,setAffichageSuiviComponent}) {

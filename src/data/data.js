@@ -42,7 +42,7 @@ export const data = {
         {
             nom: "Issam",
             description: "Issam passe l’intégralité de son temps libre sur des platformes de streaming pour regarder diverses séries.",
-            deplacement: 4,
+            deplacement: 3,
             image: require("../assets/img/Issam.svg"),
             pvMax: 2,
             pv: 2,
