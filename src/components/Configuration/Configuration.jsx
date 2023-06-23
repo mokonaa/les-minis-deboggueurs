@@ -84,26 +84,26 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
               {/* CHOIX DU NOMBRE DE JOUEURS */}
               { etapesConfiguration === 0 && (
                     <div id='choixNombreJoueur'>
-                        <p className='cta-text align-center'>Combien de personnes jouent ? </p>
+                        <p className='cta-text align-center'>Sélectionnez le nombre de joueurs</p>
                         <div className='choixNombreJoueurs__buttons'>
-                            <button id='joueurTotal_2' onClick={() => choisirNombreJoueur(2)}>
+                            <div className='button_choixJoueur' id='joueurTotal_2' onClick={() => choisirNombreJoueur(2)}>
                                 <div className='joueursPicto'>
                                     <img src={icon2} alt='pictogramme représentant le nombre de deux joueurs'/>
                                 </div>
                                 <p className='body2'>2</p>
-                            </button>
-                            <button id='joueurTotal_3' onClick={() => choisirNombreJoueur(3)}>
+                            </div>
+                            <div className='button_choixJoueur' id='joueurTotal_3' onClick={() => choisirNombreJoueur(3)}>
                                 <div className='joueursPicto'>
                                     <img src={icon3} alt='pictogramme représentant le nombre de trois joueurs'/>
                                 </div>
                                 <p className='body2'>3</p>
-                            </button>
-                            <button id='joueurTotal_4' onClick={() => choisirNombreJoueur(4)}>
+                            </div>
+                            <div className='button_choixJoueur' id='joueurTotal_4' onClick={() => choisirNombreJoueur(4)}>
                                 <div className='joueursPicto'>
                                     <img src={icon4} alt='pictogramme représentant le nombre de quatre joueurs'/>
                                 </div>
                                 <p className='body2'>4</p>
-                            </button>
+                            </div>
 
                             {/*
                                 {nbjoueursTab.map(nbJoueur =>   
@@ -122,7 +122,7 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
               { etapesConfiguration === 1 && (
                         <div>
                             <div id='joueursEnfants'>
-                                    <p className='cta-text align-center'>Quels joueurs jouent ?</p>
+                                    <p className='cta-text align-center'>Sélectionnez les {nbJoueursChoisi} enfants que vous souhaitez jouer</p>
                                     <div className='joueursEnfants_list'>
                                         {listJoueurs.map(enfant =>
                                          <div className='enfantInfos' id= {'joueur_'+enfant.nom} onClick={() => choixJoueur({enfant})} >
@@ -151,7 +151,7 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
               { etapesConfiguration === 2 && (
                     <>
                         <div id='animateurs'>
-                                <p className='cta-text align-center'>Quels animateurs jouent ?</p>
+                                <p className='cta-text align-center'>Sélectionnez {nbJoueursChoisi} animateurs</p>
                                 <div className='animateurs_list'>
                                          {listAnimateurs.map(animateur =>
                                             <div className='animateurInfos' id= {'animateur_'+animateur.nom} onClick={() => choixAnimateur({animateur})} >
