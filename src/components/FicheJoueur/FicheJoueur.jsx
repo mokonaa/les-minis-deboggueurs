@@ -7,7 +7,7 @@ import Modal from '../Modal/Modal';
 
 
 export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, description, maudit, objectif, role, img, nomThematique, objectifImg, enfantsTab, enfantActuel, nbVieMax }) {
-
+    console.log(img);
 
     const [showPopInEnfants, setShowPopInEnfants] = useState(false);
     const enfantPrevRef = useRef(null);
@@ -136,7 +136,7 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
                                     {enfantsTab.map((enfant, i) =>
                                         <div key={i} class='FJmodal__card' id={'enfantChoisis' + enfant.nom} onClick={() => choixEnfant(enfant)}>
                                             <div className='card__image'>
-                                                <img src={img} alt={"image du personnage " + { nom }} />
+                                                <img src={enfant.image.default} alt={"image du personnage " + { nom }} />
                                             </div>
                                             <p className='cta-text'>{enfant.nom}</p>
                                             {genererCoeurs(enfant.pv, enfant.pvMax, coeurPleinSrc, coeurVideSrc).map((image, index) => (
@@ -148,7 +148,7 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
                                         enfantsPunis.map((enfant, i) =>
                                             <div key={i} class='FJmodal__card' id={'enfantChoisis' + enfant.nom} onClick={() => choixEnfant(enfant)}>
                                                 <div className='card__image'>
-                                                    <img className='noiretblanc' src={img} alt={"image du personnage " + { nom }} />
+                                                    <img className='noiretblanc' src={enfant.image.default} alt={"image du personnage " + { nom }} />
                                                 </div>
                                                 <p className='cta-text'>{enfant.nom}</p>
                                                 {genererCoeurs(enfant.pv, enfant.pvMax, coeurPleinSrc, coeurVideSrc).map((image, index) => (
@@ -171,7 +171,7 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
                         <div className='tour-all-wrapper'>
                             <div className='tour-wrapper'>
                                 <div className='tour-wrapper__image'>
-                                    <img src={img} alt={"image de profil de l'animateur " + nom} />
+                                    <img src={img.default} alt={"image de profil de l'animateur " + nom} />
                                 </div>
                                 <div className='tour-wrapper__role'>
                                     <p className='role__sous-titre body2'>{role}</p>
@@ -210,7 +210,7 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
                             <div className='tour-wrapper role-enfants'>
                                 <div className='tour-wrapper__role'>
                                     <div className='tour-wrapper__image'>
-                                        <img src={img} alt={"image de profil de l'animateur " + nom} />
+                                        <img src={img.default} alt={"image de profil de l'animateur " + nom} />
                                     </div>
                                     <div className='tour-wrapper__texte'>
                                         <p className='role__sous-titre body2'>{role}</p>

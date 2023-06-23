@@ -119,7 +119,7 @@ export const data = {
                         points: 0,
                     }
                 },
-                image: require("../assets/img/La_Fouineuse.png")
+                image: require("../assets/img/La_Fouineuse.svg")
             }]
         },
         securite: {
@@ -146,7 +146,7 @@ export const data = {
                 priorite: 10,
                 objectifs: {
                     animateurs: {
-                    img: require("../assets/img/jeton_cyberharcelement.png"),
+                        img: require("../assets/img/jeton_cyberharcelement.png"),
                         points: 0,
                     },
                     enfants: {

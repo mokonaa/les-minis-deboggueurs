@@ -53,6 +53,7 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
 
 
     const choixAnimateur = (animateur) => {
+        console.log(animateur);
         if (tabAnimateursChoisis.length < (nbJoueursChoisi)) {
             tabAnimateursChoisis.push(animateur.animateur);
             document.getElementById('profileOpacity_'+animateur.animateur.nom).classList.add('ajoutBackgroundChoisi');
