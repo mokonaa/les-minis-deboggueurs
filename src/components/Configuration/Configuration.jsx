@@ -6,6 +6,7 @@ import choisiIcon from '../../assets/img/persoValide.svg';
 import icon2 from '../../assets/img/2_joueurs.svg';
 import icon3 from '../../assets/img/3_joueurs.svg';
 import icon4 from '../../assets/img/4_joueurs.svg';
+import Gaby from '../../assets/img/Gaby.svg';
 
 
 export default function Configuration({joueursChoisis,setJoueursChoisis, animateursChoisis, setAnimateursChoisis,setAffichageSuiviComponent}) {
@@ -37,7 +38,7 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
 
     const choixJoueur = (joueur) => {
         if (tabJoueursChoisis.length < (nbJoueursChoisi)) {
-            //console.log(joueur);
+            console.log(joueur);
             tabJoueursChoisis.push(joueur.enfant);
             document.getElementById('profileOpacity_'+joueur.enfant.nom).classList.add('ajoutBackgroundChoisi');
             document.getElementById('profileChecked_'+joueur.enfant.nom).style.display = 'block';
@@ -46,6 +47,8 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
         else {
             console.log('cannot add more players');
         }
+        console.log(listJoueurs);
+
     }
 
 
@@ -128,9 +131,10 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
                                                 <div className='profil_containerImg'>
                                                     <div className='profileOpacity' id={'profileOpacity_'+enfant.nom}></div>
                                                     <div className='profileChecked' id={'profileChecked_'+enfant.nom}>
+                                
                                                         <img src={choisiIcon}/>
                                                     </div>
-                                                    <img className='profil_photo' src={stalkyProfil} />
+                                                    <img className='profil_photo' src={enfant.image.default} />
                                                 </div>
                                             </div>
                                             <p className='persoNom'>{enfant.nom}</p>
@@ -156,7 +160,7 @@ export default function Configuration({joueursChoisis,setJoueursChoisis, animate
                                                     <div className='profil_containerImg'>
                                                         <div className='profileOpacity' id={'profileOpacity_'+animateur.nom}></div>
                                                         <div className='profileChecked' id={'profileChecked_'+animateur.nom}><img src={choisiIcon}/></div>
-                                                        <img className='profil_photo' src={stalkyProfil} />
+                                                        <img className='profil_photo' src={animateur.image.default} />
                                                     </div>
                                                 </div>
                                                 <p className='persoNom'>{animateur.nom}</p>
