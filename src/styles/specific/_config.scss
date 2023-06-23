@@ -157,7 +157,9 @@ button {
 
         div {
             display: flex;
-            gap: 1rem;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
             flex-direction: column;
 
             button {
@@ -383,10 +385,14 @@ button {
     }
 }
 
-.choixNombreJoueurs__buttons button {
+.choixNombreJoueurs__buttons .button_choixJoueur {
+    padding-block: 1rem;
     border-radius: 0;
-    padding-block: 2rem;
     color: $bleu;
     background-color: white;
     border: 1px solid white;
+}
+
+.choixNombreJoueurs__buttons {
+    gap: 1rem;
 }

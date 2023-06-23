@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { data } from '../../data/data';
 import FicheJoueur from '../FicheJoueur/FicheJoueur';
+import merciimg from '../../assets/img/merci.png';
 import PanelAction from '../PanelAction/PanelAction';
 export default function Suivi({ joueursChoisis, animateursChoisis }) { // param -> data passé par Maria
     /**
@@ -147,8 +148,10 @@ export default function Suivi({ joueursChoisis, animateursChoisis }) { // param 
         <div className='fichejoueur_parent'>
             {nbManches >= 2 ? 
             <div className='cfinito'>
-                <h3>Merci d'avoir <br />testé la démo !</h3>    
-                <p className="body2">- La team des minis déboggueurs</p>
+                <p className='cfinito__title cta-text align-center'>Merci d'avoir <br />testé la démo !</p>    
+                <div className='cfinito__image'>
+                    <img src={merciimg} alt="merci" />
+                </div>
             </div>
             :
             <div className={nbTourActuel <= 0 ? 'ficheSelection' : 'ficheJoueur'}>
