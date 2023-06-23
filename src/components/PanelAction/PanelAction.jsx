@@ -133,7 +133,7 @@ export default function PanelAction({animateurs,thematiques}) {
                                                 <div className='profil_containerImg'>
                                                     <div className='profileOpacity' id={'profileOpacity_'+animateur.nomThematique}></div>
                                                     <div className='profileChecked' id={'profileChecked_'+animateur.nomThematique}><img src={choisiIcon}/></div>
-                                                    <img className='profil_photo' src={stalkyProfil} />
+                                                    <img className='profil_photo' src={animateur.image.default} />
                                                 </div>
                                             </div>
                                             <p className='persoNom'>{animateur.nom}</p>

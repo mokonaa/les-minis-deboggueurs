@@ -5,39 +5,48 @@ import {
 export const data = {
     enfants: [{
             nom: "Gaby",
-            description: "Gaby est très maline ! Studieuse et sérieuse, ses parents l'ont envoyé à l'internat car elle commençait à se laisser distraire par les séries disponibles sur les différents plateformes de vidéo à la demande",
+            description: "D'apparence réservée, Gaby passe toute ses soirées à jouer à des jeux en ligne avec ses amis. Ses parents souhaitent qu'elle découvre d'autres activités.",
             deplacement: 3,
-            image: require("../assets/img/Gaby.png"),
+            image: require("../assets/img/Gaby.svg"),
             pvMax: 2,
             pv: 2,
-            pouvoir: "Elle peut relancer un dé qui est dans la zone Réserve de Dé ! Mais ne peut pas l'utiliser.",
+            pouvoir: "Gaby peut relancer 1 dès par manche.",
         },
         {
             nom: "Ambre",
-            description: "Ambre est très sportive, jolie mais très égocentrique. Elle diffusait à un peu trop gagner en confiance selon ses parents. Elle diffusait des photos d’elle et de ses résultats sportifs en permanence sur les réseaux sociaux !",
+            description: "Ambre adore poster sa vie sur ses réseaux sociaux, si bien qu’elle ne manque jamais de filmer chaque instant de sa journée. ",
             deplacement: 3,
-            image: require("../assets/img/Ambre.png"),
-            pvMax: 3,
-            pv: 3,
-            pouvoir: "",
+            image: require("../assets/img/Ambre.svg"),
+            pvMax: 2,
+            pv: 2,
+            pouvoir: "Ambre peut se cacher directement dans sa pièce, une seule fois dans la partie",
         },
         {
             nom: "Paul",
-            description: "Paul est timide, discret, voire renfermé, il passe son temps à jouer aux jeux vidéo et à streamer... Ses parents souhaitent qu’il découvre le monde réel et qu’il se fasse de vrais amis.",
-            deplacement: 3,
-            image: require("../assets/img/Paul.png"),
-            pvMax: 2,
-            pv: 2,
-            pouvoir: "Il peut relancer un dé qui est dans la zone Réserve de Dé ! Mais ne peut pas l'utiliser.",
+            description: "Paul adore jouer à des jeux vidéos, si bien qu’il reste souvent enfermé chez lui à jouer seul dans le noir.",
+            deplacement: 2,
+            image: require("../assets/img/Paul.svg"),
+            pvMax: 3,
+            pv: 3,
+            pouvoir: "Paul peut retourner un jeton rouge dans sa pièce une fois par manche",
         },
         {
-            nom: "Ethan",
-            description: "Ethan se la pète, il a tout fait, il a tout vu et s’en vante sur les réseaux sociaux et en live sur sa chaine youtube. Il a également tout acheté et tout testé... bref, ses parents veulent lui faire prendre conscience qu’il vaut mieux que ça.",
+            nom: "Emma",
+            description: "Emma est très sportive. Malheureusement, elle consomme trop de contenus d’influenceurs fitness, si bien qu’elle croit tout ce qu’ils racontent",
             deplacement: 4,
-            image: require("../assets/img/Ethan.png"),
+            image: require("../assets/img/Emma.svg"),
+            pvMax: 3,
+            pv: 3,
+            pouvoir: "Lorsque qu’Emma est envoyée au Dortoir, elle ne passe pas son tour.",
+        },
+        {
+            nom: "Issam",
+            description: "Issam passe l’intégralité de son temps libre sur des platformes de streaming pour regarder diverses séries.",
+            deplacement: 3,
+            image: require("../assets/img/Issam.svg"),
             pvMax: 2,
             pv: 2,
-            pouvoir: "",
+            pouvoir: "Lorsqu’Issam est à la cave,il peut aller directement àla case pour piocher unecarte métier.",
         }
     ],
     thematique: {
@@ -57,12 +66,12 @@ export const data = {
                 }
             ],
             animateurs: [{
-                nom: "Kenza",
-                pseudo: "La Fouineuse",
+                nom: "Yuki",
+                pseudo: "Hyperco",
                 nomThematique: "addiction",
                 maudit: true,
-                deplacement: 3,
-                priorite: 10,
+                deplacement: 2,
+                priorite: 6,
                 objectifs: {
                     animateurs: {
                         img: require("../assets/img/jeton_cyberharcelement.png"),
@@ -72,7 +81,7 @@ export const data = {
                         points: 0,
                     }
                 },
-                image: require("../assets/img/La_Fouineuse.png"),
+                image: require("../assets/img/Hyperco.svg")
             }]
         },
         cyber_harcelement: { 
@@ -95,12 +104,12 @@ export const data = {
                 }
             ],
             animateurs: [{
-                nom: "Kevin",
-                pseudo: "Aninomous",
+                nom: "Kenza",
+                pseudo: "La Fouineuse",
                 nomThematique: "cyber_harcelement",
                 maudit: true,
                 deplacement: 3,
-                priorite: 9,
+                priorite: 7,
                 objectifs: {
                     animateurs: {
                         img: require("../assets/img/jeton_cyberharcelement.png"),
@@ -110,7 +119,7 @@ export const data = {
                         points: 0,
                     }
                 },
-                image: require("../assets/img/Aninomous.png")
+                image: require("../assets/img/La_Fouineuse.svg")
             }]
         },
         securite: {
@@ -129,22 +138,22 @@ export const data = {
                 }
             ],
             animateurs: [{
-                nom: "David",
-                pseudo: "Mr.Trollolol",
+                nom: "Kevin",
+                pseudo: "Anynomous",
                 nomThematique: "securite",
                 maudit: true,
-                deplacement: 3,
-                priorite: 7,
+                deplacement: 2,
+                priorite: 10,
                 objectifs: {
                     animateurs: {
-                    img: require("../assets/img/jeton_cyberharcelement.png"),
+                        img: require("../assets/img/jeton_cyberharcelement.png"),
                         points: 0,
                     },
                     enfants: {
                         points: 0,
                     }
                 },
-                image: require("../assets/img/Mr_Trollolol.png")
+                image: require("../assets/img/Anynomous.svg")
 
             }]
         },
@@ -164,12 +173,12 @@ export const data = {
                 }
             ],
             animateurs: [{
-                nom: "Yuki",
-                pseudo: "Hyperco",
+                nom: "David",
+                pseudo: "Mr. Trololol",
                 nomThematique: "fake_news",
                 maudit: true,
                 deplacement: 4,
-                priorite: 8,
+                priorite: 5,
                 objectifs: {
                     animateurs: {
                         img: require("../assets/img/jeton_cyberharcelement.png"),
@@ -179,7 +188,7 @@ export const data = {
                         points: 0,
                     }
                 },
-                image: require("../assets/img/Hyperco.png")
+                image: require("../assets/img/Mr_Trollolol.svg")
             }]
         }
     }
