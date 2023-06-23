@@ -165,7 +165,7 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
                 )}
                 {role === 'animateur' && (
                     <div className='ficheAnimateur'>
-                        <div className='pre-wrapper bg-pink'>
+                        <div className='pre-wrapper bg-pink border-bottom-pink'>
                             <p className="body1">{nom} doit ramasser 6 jetons rouges<br />"{nomThematique}" pour remporter la partie.</p>
                         </div>
                         <div className='tour-all-wrapper'>
@@ -186,7 +186,7 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
                                     <p className='body2'><strong>{nom}</strong> peut avancer de <strong>{nbDeplacements}</strong></p>
                                 </div>
                                 <div className="actions__row">
-                                    <div className="row__image">
+                                    <div className="row__image jeton">
                                         <img src={objectifImg} alt={"image de jeton " + nomThematique} />
                                     </div>
                                     <p className='body2'><strong>{nom}</strong> ramasse tous les jetons rouges <strong>"{nomThematique}"</strong> de la pièce.</p>
@@ -203,7 +203,7 @@ export default function FicheJoueur({ nbDeplacements, pouvoir, nom, nbVie, descr
                 )}
                 {role === 'enfant' && (
                     <div className='ficheEnfant'>
-                        <div className='pre-wrapper bg-orange'>
+                        <div className='pre-wrapper bg-orange border-bottom-orange'>
                             <p className="body1">{nom} doit ramasser 6 jetons bleus<br />d'un animateur pour le sauver</p>
                         </div>
                         <div className='tour-all-wrapper'>
