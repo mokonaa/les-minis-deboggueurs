@@ -148,6 +148,7 @@ export default function Suivi({ joueursChoisis, animateursChoisis }) { // param 
             {nbManches >= 2 ? 
             <div className='cfinito'>
                 <h3>Merci d'avoir <br />testé la démo !</h3>    
+                <p className="body2">- La team des minis déboggueurs</p>
             </div>
             :
             <div className={nbTourActuel <= 0 ? 'ficheSelection' : 'ficheJoueur'}>
