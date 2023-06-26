@@ -17,4 +17,4 @@ npm start
 http://localhost:3000/
 
 ## Hébergement 
-Le projet est consultable depuis le site suivant : [https://mokonaa.github.io/les-minis-deboggueurs/](https://les-minis-deboggueurs-project.netlify.app/ )https://les-minis-deboggueurs-project.netlify.app/  .
+Le projet est consultable depuis le site suivant : [https://les-minis-deboggueurs-project.netlify.app/].
